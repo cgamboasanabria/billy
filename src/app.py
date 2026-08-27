@@ -97,8 +97,12 @@ def _render_tutor_panel(subject: str, exam_round: str) -> None:
         with st.chat_message("user"):
             st.markdown(prompt)
         try:
+            history = st.session_state.messages[:-1][-6:]
             answer = grounded_answer(
-                prompt, filtered_bundle, asked=st.session_state.asked_questions
+                prompt,
+                filtered_bundle,
+                asked=st.session_state.asked_questions,
+                history=history,
             )
         except Exception as exc:  # noqa: BLE001
             answer = describe_llm_error(exc)
@@ -113,8 +117,12 @@ def _render_tutor_panel(subject: str, exam_round: str) -> None:
         with st.chat_message("user"):
             st.markdown(prompt)
         try:
+            history = st.session_state.messages[:-1][-6:]
             answer = grounded_answer(
-                prompt, filtered_bundle, asked=st.session_state.asked_questions
+                prompt,
+                filtered_bundle,
+                asked=st.session_state.asked_questions,
+                history=history,
             )
         except Exception as exc:  # noqa: BLE001
             answer = describe_llm_error(exc)

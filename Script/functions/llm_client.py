@@ -79,15 +79,17 @@ def tutor_answer(
     user: str,
     temperature: float = TUTOR_TEMPERATURE,
     max_tokens: int = 2000,
+    history: list[dict[str, str]] | None = None,
 ) -> str:
-    """Single-turn chat completion with the tutor model at near-zero temp."""
+    """Chat completion with the tutor model, optionally with prior turns."""
+    messages: list[dict[str, str]] = [{"role": "system", "content": system}]
+    if history:
+        messages.extend(history)
+    messages.append({"role": "user", "content": user})
     client = get_llm_client()
     response = client.chat.completions.create(
         model=DEFAULT_LLM_MODEL,
-        messages=[
-            {"role": "system", "content": system},
-            {"role": "user", "content": user},
-        ],
+        messages=messages,
         temperature=temperature,
         max_tokens=max_tokens,
     )
