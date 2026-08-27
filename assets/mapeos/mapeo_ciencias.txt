@@ -1,0 +1,145 @@
+Mapeo de Contenido - Ciencias
+
+---
+
+**Archivo de Imagen:** `Ciencias/Módulo 1/WhatsApp Image 2025-08-27 at 6.17.31 PM.jpeg`
+**Transcripción:** "Biodiversidad. Es una variedad de climas, flora y fauna que existe en el planeta."
+**Pregunta:** ¿Qué es la biodiversidad según la imagen?
+**Respuesta:** Es una variedad de climas, flora y fauna que existe en el planeta.
+**Cita Textual:** "Es una variedad de climas, flora y fauna que existe en el planeta."
+
+---
+
+**Archivo de Imagen:** `Ciencias/Módulo 1/WhatsApp Image 2025-08-27 at 6.17.32 PM (1).jpeg`
+**Transcripción:** "La célula. Unidad estructural y funcional de los seres vivos."
+**Pregunta:** ¿Cuál es la unidad estructural y funcional de los seres vivos?
+**Respuesta:** La célula.
+**Cita Textual:** "Unidad estructural y funcional de los seres vivos."
+
+---
+
+**Archivo de Imagen:** `Ciencias/Módulo 1/WhatsApp Image 2025-08-27 at 6.17.32 PM.jpeg`
+**Transcripción:** "Clasificación de las células. Según su estructura. - Procariota - Eucariota."
+**Pregunta:** Según su estructura, ¿cómo se clasifican las células?
+**Respuesta:** En procariotas y eucariotas.
+**Cita Textual:** "- Procariota - Eucariota."
+
+---
+
+**Archivo de Imagen:** `Ciencias/Módulo 1/WhatsApp Image 2025-08-27 at 6.17.33 PM (1).jpeg`
+**Transcripción:** "Célula Eucariota. Posee núcleo definido."
+**Pregunta:** ¿Qué característica principal tiene la célula eucariota?
+**Respuesta:** Posee un núcleo definido.
+**Cita Textual:** "Posee núcleo definido."
+
+---
+
+**Archivo de Imagen:** `Ciencias/Módulo 1/WhatsApp Image 2025-08-27 at 6.17.33 PM.jpeg`
+**Transcripción:** "Célula procariota. No posee núcleo definido."
+**Pregunta:** ¿Qué caracteriza a una célula procariota?
+**Respuesta:** No posee un núcleo definido.
+**Cita Textual:** "No posee núcleo definido."
+
+---
+
+**Archivo de Imagen:** `Ciencias/Módulo 1/WhatsApp Image 2025-08-27 at 6.17.34 PM.jpeg`
+**Transcripción:** "Célula animal. - Membrana celular - Citoplasma - Núcleo."
+**Pregunta:** ¿Cuáles son las tres partes de la célula animal mencionadas?
+**Respuesta:** Membrana celular, citoplasma y núcleo.
+**Cita Textual:** "- Membrana celular - Citoplasma - Núcleo."
+
+---
+
+**Archivo de Imagen:** `Ciencias/Módulo 1/WhatsApp Image 2025-08-27 at 6.17.35 PM (1).jpeg`
+**Transcripción:** "Célula vegetal. - Pared celular - Membrana celular - Citoplasma - Núcleo - Cloroplastos."
+**Pregunta:** Nombra dos componentes que tiene la célula vegetal.
+**Respuesta:** Pared celular y cloroplastos (entre otros).
+**Cita Textual:** "- Pared celular - Membrana celular - Citoplasma - Núcleo - Cloroplastos."
+
+---
+
+**Archivo de Imagen:** `Ciencias/Módulo 1/WhatsApp Image 2025-08-27 at 6.17.35 PM (2).jpeg`
+**Transcripción:** "Pared celular: Da rigidez y protección a la célula."
+**Pregunta:** ¿Cuál es la función de la pared celular?
+**Respuesta:** Dar rigidez y protección a la célula.
+**Cita Textual:** "Da rigidez y protección a la célula."
+
+---
+
+**Archivo de Imagen:** `Ciencias/Módulo 1/WhatsApp Image 2025-08-27 at 6.17.36 PM (1).jpeg`
+**Transcripción:** "Tejido: Agrupación de células que realizan una misma función."
+**Pregunta:** ¿Qué es un tejido?
+**Respuesta:** Una agrupación de células que realizan una misma función.
+**Cita Textual:** "Agrupación de células que realizan una misma función."
+
+---
+
+**Archivo de Imagen:** `Ciencias/Módulo 1/WhatsApp Image 2025-08-27 at 6.17.36 PM (2).jpeg`
+**Transcripción:** "Órgano: Unión de varios tejidos que cumplen una función específica."
+**Pregunta:** ¿Cómo se forma un órgano?
+**Respuesta:** Por la unión de varios tejidos que cumplen una función específica.
+**Cita Textual:** "Unión de varios tejidos que cumplen una función específica."
+
+---
+
+**Archivo de Imagen:** `Ciencias/Módulo 1/WhatsApp Image 2025-08-27 at 6.17.36 PM (3).jpeg`
+**Transcripción:** "Sistema: Conjunto de órganos que cumplen una función."
+**Pregunta:** ¿Qué es un sistema?
+**Respuesta:** Un conjunto de órganos que cumplen una función.
+**Cita Textual:** "Conjunto de órganos que cumplen una función."
+
+---
+
+**Archivo de Imagen:** `Ciencias/Módulo 1/WhatsApp Image 2025-08-27 at 6.17.36 PM.jpeg`
+**Transcripción:** "Organismo: Integración de todos los sistemas."
+**Pregunta:** ¿Qué es un organismo?
+**Respuesta:** La integración de todos los sistemas.
+**Cita Textual:** "Integración de todos los sistemas."
+
+---
+
+**Archivo de Imagen:** `Ciencias/Módulo 1/WhatsApp Image 2025-08-27 at 6.17.38 PM (1).jpeg`
+**Transcripción:** "Sistema Digestivo: Se encarga de la digestión de los alimentos."
+**Pregunta:** ¿De qué se encarga el Sistema Digestivo?
+**Respuesta:** De la digestión de los alimentos.
+**Cita Textual:** "Se encarga de la digestión de los alimentos."
+
+---
+
+**Archivo de Imagen:** `Ciencias/Módulo 1/WhatsApp Image 2025-08-27 at 6.17.38 PM.jpeg`
+**Transcripción:** "Sistema Respiratorio: Se encarga de la respiración."
+**Pregunta:** ¿Cuál es la función del Sistema Respiratorio?
+**Respuesta:** Se encarga de la respiración.
+**Cita Textual:** "Se encarga de la respiración."
+
+---
+
+**Archivo de Imagen:** `Ciencias/Módulo 1/WhatsApp Image 2025-08-27 at 6.17.40 PM (1).jpeg`
+**Transcripción:** "Sistema Circulatorio: Transporta la sangre por todo el cuerpo."
+**Pregunta:** ¿Qué hace el Sistema Circulatorio?
+**Respuesta:** Transporta la sangre por todo el cuerpo.
+**Cita Textual:** "Transporta la sangre por todo el cuerpo."
+
+---
+
+**Archivo de Imagen:** `Ciencias/Módulo 1/WhatsApp Image 2025-08-27 at 6.17.40 PM.jpeg`
+**Transcripción:** "Sistema Nervioso: Controla las funciones del cuerpo."
+**Pregunta:** ¿Qué sistema controla las funciones del cuerpo?
+**Respuesta:** El Sistema Nervioso.
+**Cita Textual:** "Controla las funciones del cuerpo."
+
+---
+
+**Archivo de Imagen:** `Ciencias/Módulo 1/WhatsApp Image 2025-08-27 at 6.17.41 PM (1).jpeg`
+**Transcripción:** "Sistema Muscular: Permite el movimiento del cuerpo."
+**Pregunta:** ¿Qué sistema permite el movimiento del cuerpo?
+**Respuesta:** El Sistema Muscular.
+**Cita Textual:** "Permite el movimiento del cuerpo."
+
+---
+
+**Archivo de Imagen:** `Ciencias/Módulo 1/WhatsApp Image 2025-08-27 at 6.17.41 PM.jpeg`
+**Transcripción:** "Sistema Óseo: Da soporte al cuerpo."
+**Pregunta:** ¿Cuál es la función del Sistema Óseo?
+**Respuesta:** Dar soporte al cuerpo.
+**Cita Textual:** "Da soporte al cuerpo."

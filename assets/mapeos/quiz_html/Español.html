@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio de Español - Quinto Grado</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; color: #333; line-height: 1.6; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .stats { display: flex; justify-content: space-around; background: #ecf0f1; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: bold; }
+        .question-card { display: none; margin-bottom: 20px; }
+        .question-card.active { display: block; }
+        .question-text { font-size: 1.2em; font-weight: bold; margin-bottom: 15px; }
+        .options { display: flex; flex-direction: column; gap: 10px; }
+        .option-btn { padding: 12px; border: 2px solid #bdc3c7; border-radius: 8px; background: white; cursor: pointer; transition: all 0.3s; text-align: left; }
+        .option-btn:hover { background: #f8f9fa; border-color: #3498db; }
+        .option-btn.correct { background: #2ecc71; color: white; border-color: #27ae60; }
+        .option-btn.incorrect { background: #e74c3c; color: white; border-color: #c0392b; }
+        .feedback { display: none; margin-top: 20px; padding: 15px; border-radius: 8px; border-left: 5px solid; }
+        .feedback.correct-fb { background: #d4edda; border-color: #28a745; color: #155724; }
+        .feedback.incorrect-fb { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+        .fragment-box { background-color: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 15px; margin-top: 10px; border-radius: 5px; font-style: italic; }
+        .controls { margin-top: 30px; display: flex; justify-content: space-between; }
+        button.nav-btn { padding: 10px 20px; border: none; border-radius: 5px; background: #3498db; color: white; cursor: pointer; }
+        button.nav-btn:disabled { background: #bdc3c7; cursor: not-allowed; }
+        #results-screen { display: none; text-align: center; }
+        .category-tag { display: inline-block; background: #3498db; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Estudio de Español - Quinto Grado</h1>
+    
+    <div id="quiz-ui">
+        <div class="stats">
+            <span>Pregunta: <span id="current-idx">1</span> / 70</span>
+            <span>Aciertos: <span id="score">0</span></span>
+        </div>
+
+        <div id="questions-container"></div>
+
+        <div class="controls">
+            <button id="prev-btn" class="nav-btn" disabled>Anterior</button>
+            <button id="next-btn" class="nav-btn" style="display:none;">Siguiente</button>
+        </div>
+    </div>
+
+    <div id="results-screen">
+        <h2>¡Práctica Terminada!</h2>
+        <p style="font-size: 1.5em;">Tu puntaje final es: <span id="final-score">0</span> / 70</p>
+        <button onclick="location.reload()" class="nav-btn">Reiniciar Práctica</button>
+    </div>
+</div>
+
+<script>
+    const questions = [
+        // TEXTOS (1-20)
+        { cat: "Textos", q: "¿Cuál es el objetivo principal de un texto narrativo?", a: ["Contar una historia de manera interesante", "Dar instrucciones", "Describir un objeto"], correct: 0, p: 21, frag: "El objetivo principal es contar una historia de manera interesante y entretenida." },
+        { cat: "Textos", q: "¿Qué parte del texto narrativo presenta a los personajes y el entorno?", a: ["Desarrollo", "Introducción", "Desenlace"], correct: 1, p: 21, frag: "Introducción: Se presenta el entorno, los personajes principales, secundarios y se establece la situación inicial." },
+        { cat: "Textos", q: "¿Cómo se llama el punto sobresaliente de máxima tensión en una narración?", a: ["Clímax", "Nudo", "Final"], correct: 0, p: 21, frag: "Clímax: Es el punto sobresaliente de la historia, donde se alcanza el máximo nivel de tensión." },
+        { cat: "Textos", q: "¿Qué ocurre en el desenlace de un texto narrativo?", a: ["Se presentan los personajes", "Se solucionan los conflictos", "Hay máxima tensión"], correct: 1, p: 21, frag: "Desenlace: Se solucionan los conflictos y se presentan las consecuencias de las acciones tomadas." },
+        { cat: "Textos", q: "¿Cuál es una de las claves para trabajar un texto narrativo?", a: ["Uso de tablas", "Descripción del ambiente", "Listado de precios"], correct: 1, p: 21, frag: "Descripción del ambiente: utiliza detalles descriptivos para contar el ambiente de la historia y crear imágenes vívidas en la mente del lector." },
+        { cat: "Textos", q: "¿En qué se centra el texto explicativo?", a: ["En emocionar al lector", "En dar instrucciones o clarificar algo", "En contar rimas"], correct: 1, p: 24, frag: "Texto explicativo: Se centra en proporcionar instrucciones o clarificar el funcionamiento de algo." },
+        { cat: "Textos", q: "¿Qué se busca en la introducción de un texto explicativo?", a: ["Captar la atención del lector", "Dar la conclusión", "Pedir una opinión"], correct: 0, p: 24, frag: "Introducción: El texto comienza con una introducción que capta la atención del lector y establece el tema principal a explicar." },
+        { cat: "Textos", q: "¿Para qué se usan los recursos gráficos en textos explicativos?", a: ["Para decorar", "Para apoyar y clarificar la explicación", "Para rellenar espacio"], correct: 1, p: 24, frag: "Uso de recursos gráficos: se pueden utilizar recursos gráficos como imágenes, diagramas, tablas o gráficos para apoyar y clarificar la explicación." },
+        { cat: "Textos", q: "¿Cómo deben estar organizadas las ideas en un texto explicativo?", a: ["Al azar", "De manera lógica y coherente", "Solo en rimas"], correct: 1, p: 24, frag: "Organización de ideas: Las ideas deben estar organizadas de manera lógica y coherente en todo el texto." },
+        { cat: "Textos", q: "¿Qué busca estimular el texto descriptivo?", a: ["El apetito", "Los sentidos del lector", "La velocidad de lectura"], correct: 1, p: 33, frag: "El texto descriptivo busca estimular los sentidos del lector, utilizando descripciones que apelen a la vista, el oído, el olfato, el gusto y el tacto." },
+        { cat: "Textos", q: "¿Qué tipo de lenguaje utiliza el texto descriptivo?", a: ["Lenguaje matemático", "Lenguaje descriptivo", "Lenguaje de señas"], correct: 1, p: 33, frag: "Utiliza un lenguaje descriptivo que permite al lector visualizar y comprender claramente lo que se está describiendo." },
+        { cat: "Textos", q: "¿Puede un texto descriptivo incluir elementos subjetivos?", a: ["Sí, impresiones y emociones del autor", "No, debe ser puramente científico", "Solo si es un texto narrativo"], correct: 0, p: 33, frag: "El texto descriptivo también puede incluir ciertos elementos subjetivos. El autor puede manifestar sus propias impresiones, emociones y puntos de vista." },
+        { cat: "Textos", q: "¿Qué debe mantener un buen texto descriptivo?", a: ["Suspenso", "Coherencia y cohesión", "Mucha acción"], correct: 1, p: 33, frag: "Un buen texto descriptivo debe mantener la coherencia y la cohesión en la presentación de las características." },
+        { cat: "Textos", q: "Según el esquema del texto descriptivo, ¿qué elemento acompaña a las características?", a: ["Un mapa", "Una imagen", "Un índice"], correct: 1, p: 35, frag: "Esquema del texto descriptivo: Título, Oración temática, Imagen, Características descriptivas, Comentario final." },
+        { cat: "Textos", q: "¿En qué año se vio por última vez al sapo dorado?", a: ["1999", "1989", "1979"], correct: 1, p: 12, frag: "En el año 1989, fue la última vez que se pudo ver un sapo dorado." },
+        { cat: "Textos", q: "¿Qué factor contribuye a la proliferación de enfermedades en los anfibios?", a: ["El exceso de lluvia", "El aumento de temperaturas", "El frío intenso"], correct: 1, p: 12, frag: "Muchos investigadores coinciden en que el aumento de las temperaturas es el factor común en el fenómeno de las extinciones." },
+        { cat: "Textos", q: "¿Qué característica física favorecía el reconocimiento visual del sapo dorado?", a: ["Su gran tamaño", "Su piel dorada", "Su canto fuerte"], correct: 1, p: 12, frag: "La visibilidad de su piel dorada que favorecía el reconocimiento visual en la época de apareamiento." },
+        { cat: "Textos", q: "¿Qué hongo puede absorber nutrientes de los anfibios?", a: ["Hongo quítrido", "Levadura", "Champiñón"], correct: 0, p: 12, frag: "Algunos científicos consideran la presencia de un hongo quítrido, capaz de absorber los nutrientes que requieren estos anfibios." },
+        { cat: "Textos", q: "¿Cómo era la frecuencia de las llamadas del sapo dorado?", a: ["Inusualmente fuerte", "Inusualmente débil", "Muy aguda"], correct: 1, p: 12, frag: "El reconocimiento vocal de esta especie era inusualmente débil: la frecuencia y la duración de estas llamadas solo se podían escuchar en unos pocos metros." },
+        { cat: "Textos", q: "¿Cuál es una causa de extinción mencionada para el sapo dorado?", a: ["La caza", "El levantamiento de la niebla", "La falta de comida"], correct: 1, p: 12, frag: "La extinción de estos animales parece haber sido el levantamiento generalizado de la niebla que penetra en este bosque." },
+
+        // VOCABULARIO (21-55)
+        { cat: "Vocabulario", q: "¿Qué son los sinónimos?", a: ["Palabras que significan lo opuesto", "Palabras con significado similar", "Palabras que suenan igual"], correct: 1, p: 74, frag: "Los sinónimos son palabras que tienen un significado similar o casi idéntico, pero que se escriben y se pronuncian de manera diferente." },
+        { cat: "Vocabulario", q: "Un sinónimo de 'Felicidad' es:", a: ["Tristeza", "Alegría", "Enojo"], correct: 1, p: 74, frag: "Felicidad -> alegría" },
+        { cat: "Vocabulario", q: "Un sinónimo de 'Anteojos' es:", a: ["Gafas", "Ojos", "Espejos"], correct: 0, p: 74, frag: "Anteojos -> gafas" },
+        { cat: "Vocabulario", q: "Sustituya por sinónimo: 'Jorge tiene mucha TRISTEZA'.", a: ["Pena", "Alegría", "Hambre"], correct: 0, p: 75, frag: "Sustituyendo por sinónimos según contexto de oraciones en pág. 75." },
+        { cat: "Vocabulario", q: "Sinónimo de 'Camino':", a: ["Destino", "Sendero", "Lugar"], correct: 1, p: 75, frag: "Camino (Ejercicios de sinónimos pág. 75)." },
+        { cat: "Vocabulario", q: "¿Qué son los antónimos?", a: ["Palabras con significado igual", "Palabras con significados opuestos", "Palabras que riman"], correct: 1, p: 76, frag: "Los antónimos son palabras que tienen significados opuestos o contrarios entre sí." },
+        { cat: "Vocabulario", q: "Antónimo de 'Noche':", a: ["Oscuridad", "Día", "Tarde"], correct: 1, p: 76, frag: "Noche -> día" },
+        { cat: "Vocabulario", q: "Antónimo de 'Complicado':", a: ["Difícil", "Sencillo", "Enredado"], correct: 1, p: 76, frag: "Sencillo -> complicado" },
+        { cat: "Vocabulario", q: "Antónimo de 'Amor':", a: ["Cariño", "Odio", "Amistad"], correct: 1, p: 76, frag: "Amor -> odio" },
+        { cat: "Vocabulario", q: "Complete con el antónimo: 'Ayer fue un día CLARO, hoy es un día...'", a: ["Luminoso", "Oscuro", "Lluvioso"], correct: 1, p: 77, frag: "Ejercicio de completar con antónimos (pág. 77)." },
+        { cat: "Vocabulario", q: "¿Qué son los parónimos?", a: ["Escritura y pronunciación similar pero significado diferente", "Escritura igual pero pronunciación diferente", "Significado opuesto"], correct: 0, p: 78, frag: "Los parónimos son palabras que tienen escritura y pronunciación similar o parecida, sin embargo, su significado es diferente." },
+        { cat: "Vocabulario", q: "Son parónimos: 'Abeja' y...", a: ["Miel", "Oveja", "Volar"], correct: 1, p: 78, frag: "abeja (insecto) / oveja (animal ovino)" },
+        { cat: "Vocabulario", q: "¿Qué es la 'Apertura'?", a: ["Una grieta", "La acción de abrir", "Cerrar algo"], correct: 1, p: 78, frag: "apertura (acción abrir) / abertura (grieta, hendidura)" },
+        { cat: "Vocabulario", q: "Parónimo de 'Afecto':", a: ["Cariño", "Efecto", "Defecto"], correct: 1, p: 79, frag: "Palabras parónimas: afecto / efecto." },
+        { cat: "Vocabulario", q: "Diferencia entre 'Sexto' y 'Cesto':", a: ["Ninguna", "Sexto es número, cesto es canasta", "Sexto es fruta"], correct: 1, p: 79, frag: "cesto / sexto (Ejercicios pág. 79)." },
+        { cat: "Vocabulario", q: "¿Qué son los homónimos?", a: ["Palabras que se escriben igual pero significan diferente", "Palabras que se pronuncian igual pero significan diferente", "Ambas son correctas"], correct: 2, p: 80, frag: "Los homónimos son palabras que se pronuncian igual, pero tienen significados diferentes. También existen homónimos que se escriben de la misma manera." },
+        { cat: "Vocabulario", q: "Ejemplo de homónimo de 'Bota':", a: ["Vota (de votar)", "Zapato", "Pelota"], correct: 0, p: 80, frag: "bota (calzado) / Bota (acción de botar algo)" },
+        { cat: "Vocabulario", q: "Diferencia entre 'Tubo' y 'Tuvo':", a: ["Tubo es cilindro, tuvo es de tener", "Son lo mismo", "Tubo es de tener"], correct: 0, p: 81, frag: "tubo / tuvo (Ejercicios pág. 81)." },
+        { cat: "Vocabulario", q: "Diferencia entre 'Asia' y 'hacia':", a: ["Asia es lugar, hacia es dirección", "Son lo mismo", "Asia es tiempo"], correct: 0, p: 81, frag: "Asia / hacia (Ejercicios pág. 81)." },
+        { cat: "Vocabulario", q: "¿Qué es la polisemia?", a: ["Palabras con un solo significado", "Palabras con varios significados", "Palabras que no significan nada"], correct: 1, p: 82, frag: "Las palabras polisémicas son aquellas que, siendo una sola palabra, poseen varios y diferentes significados." },
+        { cat: "Vocabulario", q: "La palabra 'Banco' puede significar:", a: ["Solo dinero", "Solo sentarse", "Dinero, sentarse o peces"], correct: 2, p: 82, frag: "Banco: de peces, de sentarse, de crédito." },
+        { cat: "Vocabulario", q: "¿Qué significado de 'Sierra' se refiere al relieve?", a: ["Herramienta", "Cadena montañosa", "Pez"], correct: 1, p: 83, frag: "Sierra: Cadena montañosa / Herramienta para cortar." },
+        { cat: "Vocabulario", q: "¿Qué es una familia léxica?", a: ["Palabras que riman", "Palabras que comparten una raíz común", "Palabras del mismo país"], correct: 1, p: 84, frag: "Las familias léxicas son grupos de palabras que comparten una raíz común, es decir, tienen un origen etimológico similar." },
+        { cat: "Vocabulario", q: "En la familia 'Libro, librería, librero', la raíz es:", a: ["Libro", "Libr-", "Libre"], correct: 1, p: 84, frag: "Libro - librería - librero... La raíz de la familia léxica es libr." },
+        { cat: "Vocabulario", q: "¿Qué es un campo semántico?", a: ["Palabras con la misma raíz", "Palabras que comparten un tema o concepto", "Un campo lleno de flores"], correct: 1, p: 85, frag: "Los campos semánticos son el conjunto de palabras que comparten un tema o concepto común." },
+        { cat: "Vocabulario", q: "Campo semántico de 'Natación, ciclismo, golf':", a: ["Transportes", "Deportes", "Humedad"], correct: 1, p: 85, frag: "Las palabras anteriores pertenecen al campo semántico: deportes." },
+        { cat: "Vocabulario", q: "Palabras del campo semántico 'Escuela':", a: ["Tucán, melón", "Pupitres, docentes", "Cuchara, tenedor"], correct: 1, p: 85, frag: "Pupitres, docentes, estudiantes y cuadernos son elementos que pertenecen a un mismo campo semántico denominado: escuela." },
+        { cat: "Vocabulario", q: "Campo semántico de 'Sandía, mandarina, mango':", a: ["Verduras", "Frutas", "Colores"], correct: 1, p: 86, frag: "Sandía, mandarina, mango, naranja, manzana pertenecen al campo semántico: frutas." },
+        { cat: "Vocabulario", q: "Campo semántico de 'Cala, rosa, tulipán':", a: ["Flores", "Árboles", "Hierbas"], correct: 0, p: 86, frag: "Cala, rosa, tulipán, lirio, girasol pertenecen al campo semántico: flores." },
+        { cat: "Vocabulario", q: "Son de la familia léxica de 'Flor':", a: ["Florero, florería", "Fruta, frutería", "Flauta, flautista"], correct: 0, p: 86, frag: "Flor, floreado, floristería, florecer." },
+        { cat: "Vocabulario", q: "¿Qué son los homónimos que se escriben igual?", a: ["Homófonos", "Homógrafos", "Sinónimos"], correct: 1, p: 80, frag: "También existen homónimos que se escriben de la misma manera (como bota de calzado y bota de tirar)." },
+        { cat: "Vocabulario", q: "Homónimo de 'Vela':", a: ["Cera para luz y tela de barco", "Solo para luz", "Solo de barco"], correct: 0, p: 83, frag: "Vela: Pieza cilíndrica de cera / Permanecer despierto / Tela de barco." },
+        { cat: "Vocabulario", q: "Palabra polisémica que es parte del cuerpo e idioma:", a: ["Cabeza", "Lengua", "Pluma"], correct: 1, p: 83, frag: "Lengua: Órgano ubicado en el interior de la boca / Idioma o código." },
+        { cat: "Vocabulario", q: "Palabras que suenan igual pero se escriben diferente:", a: ["Homófonos", "Antónimos", "Polisémicas"], correct: 0, p: 80, frag: "Los homónimos son palabras que se pronuncian igual (aunque pueden escribirse diferente)." },
+        { cat: "Vocabulario", q: "¿Cuál es la raíz de 'Panadero'?", a: ["Panad-", "Pan", "Panader-"], correct: 1, p: 86, frag: "Raíz común de pancito, panadera, panadería: pan." },
+
+        // MORFOLOGÍA (56-70)
+        { cat: "Morfología", q: "¿Qué es un afijo?", a: ["Una palabra completa", "Un tipo de raíz", "Prefijos y sufijos que cambian el significado"], correct: 2, p: 89, frag: "Tanto los sufijos como los prefijos son tipos de afijos." },
+        { cat: "Morfología", q: "¿Dónde se coloca el prefijo?", a: ["Al final de la palabra", "Al principio de la palabra", "En el medio"], correct: 1, p: 89, frag: "Un prefijo es un afijo que se coloca al principio de una palabra para cambiar o agregar significado." },
+        { cat: "Morfología", q: "¿Dónde se coloca el sufijo?", a: ["Al principio", "Al final de la palabra", "No existe"], correct: 1, p: 89, frag: "Por otro lado, un sufijo, es un afijo que se agrega al final de una palabra para cambiar o agregar significado." },
+        { cat: "Morfología", q: "Prefijo de 'Bicicleta' significa:", a: ["Uno", "Dos", "Muchos"], correct: 1, p: 89, frag: "Ejemplos de prefijos: bi- -> bicicleta." },
+        { cat: "Morfología", q: "Prefijo de 'Extraterrestre' significa:", a: ["Dentro", "Fuera de", "Debajo"], correct: 1, p: 89, frag: "Ejemplos de prefijos: extra- -> extraterrestre." },
+        { cat: "Morfología", q: "Prefijo de 'Submúltiplo' significa:", a: ["Encima", "Debajo de", "Cerca"], correct: 1, p: 89, frag: "Ejemplos de prefijos: sub- -> submúltiplo." },
+        { cat: "Morfología", q: "Prefijo de 'Inmortal' significa:", a: ["Mucha vida", "Privación o negación", "Para siempre"], correct: 1, p: 89, frag: "Ejemplos de prefijos: in- -> inmortal." },
+        { cat: "Morfología", q: "Sufijo de 'Buenísima' es:", a: ["Buena", "Ísima", "Ma"], correct: 1, p: 89, frag: "Ejemplos de sufijos: -ísima -> buenísima." },
+        { cat: "Morfología", q: "Sufijo de 'Chiquitito' indica:", a: ["Algo grande", "Algo pequeño", "Algo malo"], correct: 1, p: 89, frag: "Ejemplos de sufijos: -ito -> chiquitito." },
+        { cat: "Morfología", q: "Sufijo de 'Casucha' indica:", a: ["Casa bonita", "Casa despectiva/pequeña", "Mansión"], correct: 1, p: 89, frag: "Ejemplos de sufijos: -ucha -> casucha." },
+        { cat: "Morfología", q: "Prefijo de 'Televisión' es:", a: ["Tele", "Vision", "Tele-"], correct: 2, p: 89, frag: "Ejemplos de prefijos: tele- -> televisión." },
+        { cat: "Morfología", q: "Prefijo de 'Exnovio' significa:", a: ["Que es nuevo", "Que ya dejó de ser", "Que es mejor"], correct: 1, p: 89, frag: "Ejemplos de prefijos: ex- -> exnovio." },
+        { cat: "Morfología", q: "Sufijo en 'Leoncito' es:", a: ["Leon", "Cito", "Ito"], correct: 1, p: 89, frag: "Ejemplos de sufijos: -cito -> leoncito." },
+        { cat: "Morfología", q: "Sufijo en 'Amigazo' es:", a: ["Amigo", "Azo", "Go"], correct: 1, p: 89, frag: "Ejemplos de sufijos: -azo -> amigazo." },
+        { cat: "Morfología", q: "En la palabra 'Inmortal', 'In-' es:", a: ["Sufijo", "Prefijo", "Raíz"], correct: 1, p: 89, frag: "Prefijo: se coloca al principio de una palabra. Ejemplo: in- -> inmortal." }
+    ];
+
+    let currentQuestionIdx = 0;
+    let score = 0;
+    let answered = new Array(questions.length).fill(false);
+
+    function initQuiz() {
+        const container = document.getElementById('questions-container');
+        questions.forEach((q, idx) => {
+            const card = document.createElement('div');
+            card.className = `question-card ${idx === 0 ? 'active' : ''}`;
+            card.id = `q-${idx}`;
+            
+            card.innerHTML = `
+                <div class="category-tag">${q.cat}</div>
+                <div class="question-text">${idx + 1}. ${q.q}</div>
+                <div class="options">
+                    ${q.a.map((opt, optIdx) => `
+                        <button class="option-btn" onclick="checkAnswer(${idx}, ${optIdx})">${opt}</button>
+                    `).join('')}
+                </div>
+                <div id="fb-${idx}" class="feedback">
+                    <span id="fb-text-${idx}"></span>
+                    <div class="fragment-box">
+                        <strong>FRAGMENTO DEL LIBRO (Página ${q.p}):</strong><br>
+                        "${q.frag}"
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    window.checkAnswer = function(qIdx, optIdx) {
+        if (answered[qIdx]) return;
+        
+        answered[qIdx] = true;
+        const q = questions[qIdx];
+        const fb = document.getElementById(`fb-${qIdx}`);
+        const fbText = document.getElementById(`fb-text-${qIdx}`);
+        const btns = document.querySelectorAll(`#q-${qIdx} .option-btn`);
+        
+        btns[q.correct].classList.add('correct');
+        
+        if (optIdx === q.correct) {
+            score++;
+            fb.classList.add('correct-fb');
+            fbText.innerText = "¡Correcto! Excelente trabajo.";
+        } else {
+            btns[optIdx].classList.add('incorrect');
+            fb.classList.add('incorrect-fb');
+            fbText.innerText = "Incorrecto. Mira la retroalimentación abajo.";
+        }
+        
+        fb.style.display = 'block';
+        document.getElementById('score').innerText = score;
+        document.getElementById('next-btn').style.display = 'block';
+        
+        if (qIdx === questions.length - 1) {
+            document.getElementById('next-btn').innerText = "Ver Resultados";
+        }
+    };
+
+    document.getElementById('next-btn').onclick = function() {
+        if (currentQuestionIdx < questions.length - 1) {
+            document.getElementById(`q-${currentQuestionIdx}`).classList.remove('active');
+            currentQuestionIdx++;
+            document.getElementById(`q-${currentQuestionIdx}`).classList.add('active');
+            document.getElementById('current-idx').innerText = currentQuestionIdx + 1;
+            document.getElementById('prev-btn').disabled = false;
+            
+            if (!answered[currentQuestionIdx]) {
+                this.style.display = 'none';
+            }
+        } else {
+            showResults();
+        }
+    };
+
+    document.getElementById('prev-btn').onclick = function() {
+        if (currentQuestionIdx > 0) {
+            document.getElementById(`q-${currentQuestionIdx}`).classList.remove('active');
+            currentQuestionIdx--;
+            document.getElementById(`q-${currentQuestionIdx}`).classList.add('active');
+            document.getElementById('current-idx').innerText = currentQuestionIdx + 1;
+            document.getElementById('next-btn').style.display = 'block';
+            if (currentQuestionIdx === 0) this.disabled = true;
+        }
+    };
+
+    function showResults() {
+        document.getElementById('quiz-ui').style.display = 'none';
+        document.getElementById('results-screen').style.display = 'block';
+        document.getElementById('final-score').innerText = score;
+    }
+
+    initQuiz();
+</script>
+
+</body>
+</html>

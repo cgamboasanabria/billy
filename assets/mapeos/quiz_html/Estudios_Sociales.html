@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura de Estudio: Estudios Sociales - Historia Antigua y Pueblos Originarios</title>
+    <style>
+        :root {
+            --bg-color: #fdf5e6; /* Old Lace - Crema */
+            --main-color: #8b4513; /* SaddleBrown - Café */
+            --secondary-color: #556b2f; /* DarkOliveGreen - Verde */
+            --accent-color: #d2691e; /* Chocolate - Naranja tierra */
+            --correct-color: #2e7d32;
+            --wrong-color: #c62828;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: #3e2723;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            color: var(--main-color);
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            border-top: 8px solid var(--main-color);
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            height: 25px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-color), var(--main-color));
+            text-align: center;
+            line-height: 25px;
+            color: white;
+            font-weight: bold;
+            transition: width 0.6s ease-in-out;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .tab-button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .tab-button:hover, .tab-button.active {
+            background-color: var(--main-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .content {
+            display: none;
+            text-align: left;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fafafa;
+        }
+        .content.active {
+            display: block;
+        }
+        #quiz-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .question {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            color: var(--main-color);
+            font-weight: bold;
+            line-height: 1.4;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 600px) {
+            .options { grid-template-columns: 1fr; }
+        }
+        .option {
+            background-color: #fff;
+            border: 2px solid #ddd;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .option:hover {
+            border-color: var(--accent-color);
+            background-color: #fffaf0;
+            transform: scale(1.02);
+        }
+        .feedback {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            text-align: left;
+            border-left: 6px solid;
+        }
+        .explanation {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        .citation {
+            background-color: rgba(255,255,255,0.7);
+            padding: 15px;
+            border-radius: 8px;
+            font-style: italic;
+            border: 1px dashed #999;
+            position: relative;
+            margin-top: 10px;
+        }
+        .citation::before {
+            content: "📖 Cita del libro:";
+            display: block;
+            font-weight: bold;
+            font-style: normal;
+            color: var(--main-color);
+            margin-bottom: 5px;
+        }
+        .page-num {
+            display: block;
+            text-align: right;
+            font-weight: bold;
+            color: var(--main-color);
+            margin-top: 10px;
+        }
+        #results-container {
+            display: none;
+            padding: 40px;
+        }
+        .btn-next {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn-next:hover {
+            background-color: var(--main-color);
+        }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🏺 Guía de Estudios Sociales 🌿</h1>
+        <p>Aprende sobre la Historia Antigua de Costa Rica y nuestros Pueblos Originarios.</p>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="showContent('estudio')">Material de Estudio</button>
+            <button class="tab-button" onclick="showContent('quiz')">¡A Jugar! (Prueba)</button>
+        </div>
+
+        <!-- Material de Estudio -->
+        <div id="estudio" class="content active">
+            <h2>Resúmenes de los Temas</h2>
+            <div class="tabs">
+                <button class="tab-button active" onclick="showTopic('historia')">Historia Antigua</button>
+                <button class="tab-button" onclick="showTopic('etnias')">Pueblos Originarios</button>
+            </div>
+            <div id="topic-content" style="text-align: left; padding: 10px;">
+                <!-- Content will be loaded by JS -->
+            </div>
+        </div>
+
+        <!-- Quiz -->
+        <div id="quiz" class="content">
+            <h2>Prueba de Conocimiento</h2>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar">0%</div>
+            </div>
+            <div id="quiz-container">
+                <p class="question" id="question"></p>
+                <div class="options" id="options"></div>
+                <div class="feedback" id="feedback">
+                    <div id="feedback-text" class="explanation"></div>
+                    <div id="citation-box" class="citation">
+                        <span id="citation-text"></span>
+                        <span id="page-num" class="page-num"></span>
+                    </div>
+                    <button id="btn-next" class="btn-next" onclick="nextQuestion()">Siguiente →</button>
+                </div>
+            </div>
+            <div id="results-container">
+                <h2>¡Excelente esfuerzo! 🎉</h2>
+                <p style="font-size: 1.5em;">Tu puntuación final es: <strong id="score"></strong></p>
+                <p id="final-message"></p>
+                <button class="tab-button" onclick="restartQuiz()">Estudiar de Nuevo</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const topicData = {
+            'historia': `
+                <h3>I Parte: De los Primeros Pobladores a los Cacicazgos</h3>
+                <ul>
+                    <li><b>Primeros Pobladores:</b> El continente empezó a ser ocupado hace 40,000 años por grupos de Asia. Costa Rica fue ocupada entre el 12,000 y 8,000 a.C.</li>
+                    <li><b>Cazadores Recolectores (12,000 - 2,000 a.C.):</b> Eran nómadas, vivían en grupos de 20-30 personas. Cazaban megafauna (animales gigantes como perezosos y armadillos gigantes).</li>
+                    <li><b>Agricultores Tempranos (2,000 - 300 a.C.):</b> Descubrieron la agricultura (maíz, yuca, camote), lo que permitió el <b>sedentarismo</b>. Usaban la técnica de "la roza" (quema selectiva).</li>
+                    <li><b>Cacicazgos Iniciales (300 a.C. - 800 d.C.):</b> Surgieron las jerarquías. Apareció la cerámica decorada y se consolidó el maíz.</li>
+                    <li><b>Sociedad Cacical (800 - 1502 d.C.):</b> Organización compleja con aldeas principales y secundarias. Aparece la figura del <b>Chamán</b> (líder espiritual) y el poder hereditario.</li>
+                </ul>
+            `,
+            'etnias': `
+                <h3>II Parte: Nuestros Pueblos Originarios</h3>
+                <ul>
+                    <li><b>Chorotegas:</b> Ubicados en Nicoya. Excelentes ceramistas (rojo y negro). Usaban el cacao como moneda y su base alimenticia era el maíz.</li>
+                    <li><b>Bribris:</b> Viven en Talamanca y Buenos Aires. Su sociedad se organiza en <b>clanes</b>. Su dios principal es <b>Sibö</b>. Viven en casas sobre pilotes.</li>
+                    <li><b>Cabécares:</b> Ubicados en Chirripó y Talamanca. Conservan la filiación materna (clanes por la madre). Sus viviendas tradicionales son redondas y cónicas.</li>
+                    <li><b>Borucas:</b> Famosos por la <b>Fiesta de los Diablitos</b> y sus máscaras de madera. Viven en Buenos Aires de Puntarenas.</li>
+                </ul>
+            `
+        };
+
+        const rawQuestions = [
+            // HISTORIA ANTIGUA
+            { topic: 'historia', q: '¿Hace cuánto tiempo aproximadamente empezó a ser ocupado el continente americano?', opts: ['Hace 10,000 años', 'Hace 40,000 años', 'Hace 100,000 años', 'Hace 5,000 años'], a: 'Hace 40,000 años', cite: 'El continente americano empezó a ser ocupado por diversos grupos de cazadores especializados hace aproximadamente unos 40 000 años atrás.', p: '9' },
+            { topic: 'historia', q: '¿De qué continente provenían los grupos que cruzaron el Estrecho de Bering?', opts: ['Europa', 'África', 'Asia', 'Oceanía'], a: 'Asia', cite: 'Según varias teorías, estos grupos de emigrantes eran provenientes de Asia, y cruzaron el Estrecho de Bering...', p: '9' },
+            { topic: 'historia', q: '¿En qué rango de años fue ocupado inicialmente el actual territorio costarricense?', opts: ['Entre 1,000 y 500 a.C.', 'Entre 12,000 y 8,000 a.C.', 'Entre 20,000 y 15,000 a.C.', 'Hace 2,000 años'], a: 'Entre 12,000 y 8,000 a.C.', cite: 'En el caso del actual territorio costarricense... fue inicialmente ocupado entre los años 12 000 y 8 000 antes de Cristo.', p: '9' },
+            { topic: 'historia', q: '¿Qué tipo de organización tenían las primeras bandas que llegaron a Costa Rica?', opts: ['Ciudades organizadas', 'Nómadas y de tipo familiar', 'Cacicazgos complejos', 'Imperios'], a: 'Nómadas y de tipo familiar', cite: 'Al inicio estas bandas eran nómadas y de tipo familiar...', p: '9' },
+            { topic: 'historia', q: '¿Cuáles eran las tres actividades básicas de las primeras bandas nómadas?', opts: ['Comercio, guerra y minería', 'Agricultura, ganadería y tejido', 'Caza, pesca y recolección', 'Construcción, escritura y navegación'], a: 'Caza, pesca y recolección', cite: '...sus actividades eran básicamente la caza, la pesca y la recolección.', p: '9' },
+            { topic: 'historia', q: '¿A qué periodo pertenecen los cazadores recolectores?', opts: ['12,000 a.C. - 2,000 a.C.', '2,000 a.C. - 300 a.C.', '300 a.C. - 800 d.C.', '800 d.C. - 1502 d.C.'], a: '12,000 a.C. - 2,000 a.C.', cite: 'CAZADORES RECOLECTORES (APROXIMADAMENTE ENTRE EL 12 000 A.C – 2000 A.C)', p: '10' },
+            { topic: 'historia', q: '¿De cuántos miembros estaban constituidos aproximadamente los grupos nómadas?', opts: ['Más de 500', 'De 20 a 30 miembros', 'Solo 5 personas', 'Exactamente 100'], a: 'De 20 a 30 miembros', cite: '...pertenecían a pequeños grupos nómadas constituidos por aproximadamente 20 a 30 miembros...', p: '10' },
+            { topic: 'historia', q: '¿Qué vínculo mantenía unidos a los miembros de los grupos nómadas?', opts: ['El dinero', 'El parentesco', 'La religión', 'Las leyes escritas'], a: 'El parentesco', cite: '...los cuales estaban ligados por parentesco, y se desplazaban continuamente...', p: '10' },
+            { topic: 'historia', q: '¿De qué materiales elaboraban sus herramientas los cazadores recolectores?', opts: ['Hierro y bronce', 'Piedra, hueso y madera', 'Plástico y vidrio', 'Oro y plata'], a: 'Piedra, hueso y madera', cite: '...fabricaban herramientas como lanzas y cuchillos, que eran elaborados con piedra, hueso y madera.', p: '10' },
+            { topic: 'historia', q: '¿Qué factor favoreció el desarrollo de cazadores recolectores en Costa Rica?', opts: ['La falta de agua', 'La geografía y el clima (abundante flora y fauna)', 'La nieve constante', 'La ausencia de animales'], a: 'La geografía y el clima (abundante flora y fauna)', cite: 'La geografía y el clima de Costa Rica favorecieron el desarrollo de estas poblaciones, debido a la abundante variedad de flora y fauna...', p: '10' },
+            { topic: 'historia', q: 'Mencione un animal de la "mega fauna" que cazaban los primeros pobladores.', opts: ['Venados pequeños', 'Perezosos gigantes', 'Canguros', 'Tigres de Bengala'], a: 'Perezosos gigantes', cite: '...cazaban animales de la mega fauna como por ejemplo los armadillos y perezosos gigantes...', p: '10' },
+            { topic: 'historia', q: '¿Por qué se vieron obligados a cazar especies más pequeñas?', opts: ['Porque les gustaba más el sabor', 'Debido a la extinción de la mega fauna', 'Porque no tenían lanzas largas', 'Por orden del jefe'], a: 'Debido a la extinción de la mega fauna', cite: '...los cuales se extinguieron, debido a esto se vieron en la obligación de buscar formas de adaptación para la caza de especies más pequeñas...', p: '10' },
+            { topic: 'historia', q: '¿Cómo era la división del trabajo en los cazadores recolectores?', opts: ['Todos hacían lo mismo', 'Hombres: pesca/caza; Mujeres: recolección', 'Niños: caza; Adultos: descanso', 'Mujeres: guerra; Hombres: cocina'], a: 'Hombres: pesca/caza; Mujeres: recolección', cite: '...donde los hombres se dedicaban a la pesca y la cacería y las mujeres a la recolección de frutos silvestres...', p: '10' },
+            { topic: 'historia', q: '¿En qué periodo se sitúa la época de los agricultores tempranos?', opts: ['12,000 - 2,000 a.C.', '2,000 a.C. - 300 a.C.', '300 a.C. - 800 d.C.', '1502 - hoy'], a: '2,000 a.C. - 300 a.C.', cite: 'AGRICULTORES TEMPRANOS (APROXIMADAMENTE ENTRE EL 2000 A.C-300 A.C)', p: '10' },
+            { topic: 'historia', q: '¿Cuál es la característica más importante de los agricultores tempranos?', opts: ['La invención de la rueda', 'El descubrimiento de la agricultura', 'La escritura', 'El uso del internet'], a: 'El descubrimiento de la agricultura', cite: 'La característica más importante de esta época es el descubrimiento de la agricultura, la cual generó que los seres humanos decidieran asentarse en un solo lugar.', p: '10' },
+            { topic: 'historia', q: '¿Qué cambio provocó la agricultura en el estilo de vida?', opts: ['Viajar más rápido', 'Asentarse en un solo lugar (sedentarismo)', 'Dejar de comer carne', 'Vivir en cuevas'], a: 'Asentarse en un solo lugar (sedentarismo)', cite: '...el descubrimiento de la agricultura, la cual generó que los seres humanos decidieran asentarse en un solo lugar.', p: '10' },
+            { topic: 'historia', q: 'Mencione un tubérculo cultivado por los agricultores tempranos.', opts: ['Manzana', 'Tiquizque', 'Arroz', 'Trigo'], a: 'Tiquizque', cite: 'Esta labor inició con el cultivo de tubérculos como el camote, tiquizque y la yuca.', p: '10' },
+            { topic: 'historia', q: 'Además de tubérculos, ¿qué otro cultivo importante iniciaron?', opts: ['Uvas', 'Maíz', 'Café', 'Caña de azúcar'], a: 'Maíz', cite: 'De igual manera, se cultivaron las semillas de maíz.', p: '10' },
+            { topic: 'historia', q: '¿En qué consistía la técnica de la roza?', opts: ['Quemar árboles y usar cenizas como fertilizante', 'Regar con agua de río', 'Plantar en macetas', 'No usar fuego'], a: 'Quemar árboles y usar cenizas como fertilizante', cite: '...esta práctica consistía en quemar árboles y usar las cenizas como fertilizante.', p: '11' },
+            { topic: 'historia', q: '¿Qué sistema social cambió con la agricultura?', opts: ['El sistema de castas', 'El sistema igualitario dio paso a uno más complejo', 'La esclavitud desapareció', 'No hubo cambios'], a: 'El sistema igualitario dio paso a uno más complejo', cite: 'Con la agricultura el sistema igualitario que había prevalecido da paso a una sociedad más compleja...', p: '11' },
+            { topic: 'historia', q: '¿Qué factor estimuló la división del trabajo?', opts: ['El frío extremo', 'El excedente agrícola y el alza demográfica', 'La falta de comida', 'Las guerras constantes'], a: 'El excedente agrícola y el alza demográfica', cite: '...el excedente agrícola supuso una complejidad, además el alza demográfica, estimuló una división del trabajo con diversas especializaciones...', p: '11' },
+            { topic: 'historia', q: '¿Qué función especializada surgió en los agricultores tempranos?', opts: ['Programación', 'Culto a los muertos y funciones religiosas', 'Astronáutica', 'Bancos'], a: 'Culto a los muertos y funciones religiosas', cite: '...la defensa del territorio, las funciones dedicadas con el culto a los muertos y las actividades de tipo religiosas.', p: '11' },
+            { topic: 'historia', q: '¿En qué periodo se ubican los Cacicazgos iniciales?', opts: ['12,000 - 8,000 a.C.', '300 a.C. - 800 d.C.', '800 d.C. - 1502 d.C.', 'Siglo XX'], a: '300 a.C. - 800 d.C.', cite: 'CACICAZGOS INICIALES (APROXIMADAMENTE ENTRE EL 300 A.C- 800D.C)', p: '11' },
+            { topic: 'historia', q: '¿En qué se organizaron las poblaciones sedentarias tras la agricultura a gran escala?', opts: ['Imperios', 'Cacicazgos', 'Países modernos', 'Ciudades-Estado'], a: 'Cacicazgos', cite: '...las poblaciones sedentarias pasaron a ser sociedades tribales organizándose en cacicazgos.', p: '11' },
+            { topic: 'historia', q: '¿Qué actividad artesanal ayudó a crear nuevos utensilios?', opts: ['Tejido de seda', 'Desarrollo de la cerámica', 'Soplado de vidrio', 'Talla de diamantes'], a: 'Desarrollo de la cerámica', cite: '...así como el desarrollo de la cerámica, lo que solucionaría la necesidad de nuevos utensilios.', p: '11' },
+            { topic: 'historia', q: 'Mencione una forma que caracteriza a la cerámica temprana.', opts: ['Botellas de plástico', 'Platones y hornos', 'Espejos', 'Cuadros'], a: 'Platones y hornos', cite: 'La cerámica temprana se caracteriza por sus formas (ollas, platones, hornos, entre otros)...', p: '11' },
+            { topic: 'historia', q: '¿Qué técnica de decoración se usaba en la cerámica?', opts: ['Pintura al óleo', 'Incisos, estampados o modelados', 'Fotografía', 'Pegatinas'], a: 'Incisos, estampados o modelados', cite: '...decoradas con técnicas como incisos, estampados o modelados.', p: '11' },
+            { topic: 'historia', q: '¿Qué cultivo se consolidó como principal en los cacicazgos iniciales?', opts: ['Banano', 'Maíz', 'Café', 'Piña'], a: 'Maíz', cite: 'El maíz se consolida en esta época como el cultivo principal de algunas regiones...', p: '11' },
+            { topic: 'historia', q: '¿Qué surge con las confederaciones de cacicazgos?', opts: ['Repúblicas', 'Señoríos', 'Monarquías absolutas', 'Sindicatos'], a: 'Señoríos', cite: 'La organización de tipo cacical se fortalece, aparecen los señoríos... y se establecieron confederaciones de cacicazgos al mando de un cacique principal.', p: '11' },
+            { topic: 'historia', q: '¿En qué periodo se desarrolla la Sociedad Cacical?', opts: ['300 a.C. - 800 d.C.', '800 d.C. - 1502 d.C.', '12,000 - 2,000 a.C.', 'Época colonial'], a: '800 d.C. - 1502 d.C.', cite: 'SOCIEDAD CACICAL (APROXIMADAMENTE ENTRE EL 800 D.C -1502 D.C)', p: '12' },
+            { topic: 'historia', q: '¿Cómo era el orden jerárquico de las aldeas en la sociedad cacical?', opts: ['Todas iguales', 'Aldeas principales y poblados secundarios', 'Solo una aldea grande', 'No había aldeas'], a: 'Aldeas principales y poblados secundarios', cite: '...se encontraban organizadas en un orden jerárquico con aldeas principales y poblados secundarios...', p: '12' },
+            { topic: 'historia', q: '¿Qué tipo de linajes de poder existían?', opts: ['Por votación popular', 'Hereditario', 'Por sorteo', 'No había líderes'], a: 'Hereditario', cite: '...con linajes de poder hereditario y especialización de labores...', p: '12' },
+            { topic: 'historia', q: '¿Quién era el líder mágico-religioso en las poblaciones cacicales?', opts: ['El Presidente', 'El Chamán', 'El Capitán', 'El Alcalde'], a: 'El Chamán', cite: '...con la figura del Chamán, las cuales aumentaron el rango para los individuos dominantes...', p: '12' },
+            { topic: 'historia', q: 'Mencione un producto que se intercambiaba entre territorios.', opts: ['Carros', 'Bienes suntuarios y herramientas especializadas', 'Electricidad', 'Computadoras'], a: 'Bienes suntuarios y herramientas especializadas', cite: 'La organización territorial establece relaciones de intercambio de productos tales como alimentos, herramientas especializadas, y bienes suntuarios.', p: '12' },
+            { topic: 'historia', q: '¿Qué consecuencia tenía la competencia por recursos entre cacicazgos?', opts: ['Amistad eterna', 'La guerra entre ellos', 'Intercambio de regalos', 'Ignorarse'], a: 'La guerra entre ellos', cite: '...pero también competencia por recursos, que conducirían a la guerra entre los mismos.', p: '12' },
+
+            // PUEBLOS ORIGINARIOS
+            { topic: 'etnias', q: '¿Dónde se ubican geográficamente los Chorotegas?', opts: ['Limón', 'Península de Nicoya', 'Pérez Zeledón', 'Cartago'], a: 'Península de Nicoya', cite: 'Se ubican en la Península de Nicoya y el margen oriental del Golfo de Nicoya.', p: '19' },
+            { topic: 'etnias', q: '¿Cómo eran las viviendas de los Chorotegas?', opts: ['De piedra', 'Chozas de madera y techos de paja', 'Edificios altos', 'Cuevas'], a: 'Chozas de madera y techos de paja', cite: 'Vivían en chozas construidas de madera y techos de paja.', p: '20' },
+            { topic: 'etnias', q: '¿Cuál era el idioma nativo de los Chorotegas?', opts: ['Español', 'Lengua Mangue', 'Bribri', 'Inglés'], a: 'Lengua Mangue', cite: 'Su idioma nativo fue la lengua Mangue, pero actualmente hablan el español.', p: '20' },
+            { topic: 'etnias', q: '¿Quiénes regían políticamente a los Chorotegas?', opts: ['Un Rey', 'Grupo de ancianos y un jefe', 'Solo los niños', 'Una asamblea democrática'], a: 'Grupo de ancianos y un jefe', cite: 'Los Chorotegas eran regidos por un grupo de ancianos y un jefe.', p: '20' },
+            { topic: 'etnias', q: '¿Qué producto utilizaban los Chorotegas como moneda?', opts: ['Oro', 'Cacao', 'Sal', 'Piedras preciosas'], a: 'Cacao', cite: '...una gran plaza que era el mercado donde utilizaban el cacao como moneda...', p: '20' },
+            { topic: 'etnias', q: '¿Cuál era la base de la alimentación de los Chorotegas?', opts: ['Carne de vaca', 'Maíz', 'Pescado frito', 'Frutas'], a: 'Maíz', cite: '...se podía encontrar maíz que era la base de su alimentación...', p: '20' },
+            { topic: 'etnias', q: '¿Qué colores predominaban en la cerámica Chorotega?', opts: ['Azul y verde', 'Rojo y negro', 'Amarillo y blanco', 'Morado'], a: 'Rojo y negro', cite: '...generalmente fabricadas por las mujeres, las pintaban de color rojo y negro...', p: '20' },
+            { topic: 'etnias', q: '¿Qué animales dibujaban los Chorotegas en su cerámica?', opts: ['Elefantes', 'Cocodrilos, monos y serpientes', 'Leones', 'Pingüinos'], a: 'Cocodrilos, monos y serpientes', cite: '...en ellas dibujaban imágenes de cocodrilo, monos, serpientes.', p: '20' },
+            { topic: 'etnias', q: '¿Qué conocimientos destacaban en la religión Chorotega?', opts: ['Química', 'Matemáticas y astronomía', 'Física nuclear', 'Geología'], a: 'Matemáticas y astronomía', cite: '...conocían mucho de matemáticas y astronomía.', p: '20' },
+            { topic: 'etnias', q: '¿En qué cantón de Limón habitan los Bribris?', opts: ['Pococí', 'Talamanca', 'Siquirres', 'Guácimo'], a: 'Talamanca', cite: 'Habitan en el cantón de Talamanca, en la provincia de Limón...', p: '22' },
+            { topic: 'etnias', q: '¿En qué cantón de Puntarenas habitan los Bribris?', opts: ['Golfito', 'Buenos Aires', 'Corredores', 'Esparza'], a: 'Buenos Aires', cite: '...y en el cantón de Buenos Aires en la provincia de Puntarenas.', p: '22' },
+            { topic: 'etnias', q: '¿Cómo son las viviendas de los Bribris?', opts: ['De cemento', 'De madera sobre pilotes con techo de hojas secas', 'Tiendas de campaña', 'Igloos'], a: 'De madera sobre pilotes con techo de hojas secas', cite: 'Sus viviendas son, en su mayoría, de madera sobre pilotes y con techo de hojas secas.', p: '22' },
+            { topic: 'etnias', q: '¿En qué está basada la estructura de la sociedad Bribri?', opts: ['En el dinero', 'En clanes o linajes', 'En el rango militar', 'En la profesión'], a: 'En clanes o linajes', cite: 'La estructura de la sociedad está basada en los clanes o linajes...', p: '23' },
+            { topic: 'etnias', q: '¿Cuál es la actividad económica más importante de los Bribris?', opts: ['Turismo', 'Agricultura', 'Minería', 'Pesca industrial'], a: 'Agricultura', cite: 'Su actividad económica más importante es la agricultura...', p: '23' },
+            { topic: 'etnias', q: 'Mencione un producto que cultivan los Bribris.', opts: ['Trigo', 'Maíz, cacao o plátano', 'Uvas', 'Papas'], a: 'Maíz, cacao o plátano', cite: '...con productos como maíz, cacao, plátano, frijoles y tubérculos...', p: '23' },
+            { topic: 'etnias', q: '¿A qué otra actividad artesanal se dedican los Bribris?', opts: ['Relojería', 'Cestería y cerámica', 'Mecánica', 'Electrónica'], a: 'Cestería y cerámica', cite: 'Se dedican a la cestería, la cerámica y fabrican instrumentos musicales.', p: '23' },
+            { topic: 'etnias', q: '¿Quién es la principal divinidad de los Bribris?', opts: ['Zeus', 'Sibö', 'Ra', 'Odin'], a: 'Sibö', cite: 'Dan culto a Sibö principal divinidad, creador de la Tierra y el hombre.', p: '23' },
+            { topic: 'etnias', q: '¿Dónde se ubican los Cabécares?', opts: ['San José centro', 'Chirripó, Talamanca y Ujarrás', 'Liberia', 'Puntarenas centro'], a: 'Chirripó, Talamanca y Ujarrás', cite: 'Se ubican en Chirripó, en el Valle del Pacuare y en la Reserva de Talamanca... y en la comunidad de Ujarrás en el cantón de Buenos Aires...', p: '26' },
+            { topic: 'etnias', q: '¿Qué forma tiene tradicionalmente la vivienda Cabécar?', opts: ['Cuadrada', 'Grande y redonda con techo cónico', 'Triangular', 'Rectangular'], a: 'Grande y redonda con techo cónico', cite: '...son tradicionalmente de forma grande y redonda con un techo alto y cónico...', p: '26' },
+            { topic: 'etnias', q: '¿De qué material está hecho el techo de la vivienda Cabécar?', opts: ['Tejas', 'Hojas de palma y varas de cañas', 'Láminas de zinc', 'Plástico'], a: 'Hojas de palma y varas de cañas', cite: '...formado por hojas de palma y varas de cañas silvestres que se amarran una a la par de la otra con bejucos.', p: '26' },
+            { topic: 'etnias', q: '¿Qué tipo de filiación conservan los Cabécares?', opts: ['Paterna', 'Materna de clanes', 'No tienen clanes', 'Solo por amistad'], a: 'Materna de clanes', cite: 'Conservan la filiación materna de clanes organizando socialmente el orden de las relaciones...', p: '27' },
+            { topic: 'etnias', q: 'Además de agricultura, ¿qué otra actividad hacen los Cabécares?', opts: ['Volar aviones', 'Pesca y ganadería', 'Cine', 'Fútbol'], a: 'Pesca y ganadería', cite: '...a la pesca y la ganadería, adicionalmente elaboran productos artesanales...', p: '27' },
+            { topic: 'etnias', q: '¿De qué material elaboran bolsos y hamacas los Cabécares?', opts: ['Lana', 'Cabuya', 'Seda', 'Nylon'], a: 'Cabuya', cite: '...elaboran productos artesanales como bolsos y hamacas de cabuya...', p: '27' },
+            { topic: 'etnias', q: '¿Con qué decoran sus artesanías los Cabécares?', opts: ['Acuarelas', 'Tintes naturales', 'Esmalte', 'Lápices de color'], a: 'Tintes naturales', cite: '...decorados con tintes naturales.', p: '27' },
+            { topic: 'etnias', q: '¿Quién es el dios creador para los Cabécares?', opts: ['El Sol', 'El Dios Sibú', 'La Luna', 'El Trueno'], a: 'El Dios Sibú', cite: 'La religión en esta población inicia con el Dios Sibú creador de todas las cosas y la función de ellas.', p: '27' },
+            { topic: 'etnias', q: '¿Dónde vive la mayoría del pueblo Boruca?', opts: ['En San José', 'En una reserva en Puntarenas', 'En Limón', 'En Guanacaste'], a: 'En una reserva en Puntarenas', cite: 'El pueblo indígena Boruca vive en su mayoría en una reserva en la provincia de Puntarenas...', p: '29' },
+            { topic: 'etnias', q: '¿Qué territorio gobernaron los Borucas en la antigüedad?', opts: ['El Valle Central', 'Península de Osa', 'Nicaragua', 'Panamá'], a: 'Península de Osa', cite: '...gobernaron en la antigüedad la mayor parte de la península de Osa.', p: '29' },
+            { topic: 'etnias', q: '¿Cómo eran las paredes de las casas Borucas?', opts: ['De cemento', 'De caña brava con techo de paja', 'De ladrillo', 'De madera'], a: 'De caña brava con techo de paja', cite: 'En la antigüedad usaban paredes de caña brava con techo de paja, zacate y palma.', p: '29' },
+            { topic: 'etnias', q: '¿Cuál es el idioma dominante actual de los Borucas?', opts: ['Boruca', 'Español', 'Inglés', 'Francés'], a: 'Español', cite: 'El español se convirtió en la lengua dominante.', p: '29' },
+            { topic: 'etnias', q: '¿Con qué está relacionada la religión de los Borucas?', opts: ['Con el dinero', 'Con espíritus y los muertos', 'Con los planetas', 'Con la tecnología'], a: 'Con espíritus y los muertos', cite: 'Su religión está relacionada con los espíritus y con los muertos.', p: '29' },
+            { topic: 'etnias', q: 'Mencione un producto de la alimentación Boruca.', opts: ['Hamburguesas', 'Maíz, arroz y frijoles', 'Sushi', 'Pizza'], a: 'Maíz, arroz y frijoles', cite: 'Los Borucas basan su alimentación de manera tradicional en el maíz, cultivan plátano, arroz, frijoles, cítricos, aguacate, cacao, ayote y tiquizque.', p: '30' },
+            { topic: 'etnias', q: '¿Qué artesanía es famosa de los Borucas?', opts: ['Pinturas al óleo', 'Máscaras de madera', 'Esculturas de mármol', 'Joyas de diamante'], a: 'Máscaras de madera', cite: 'Las máscaras de Boruca se encuentran en muchas variedades y estilos.', p: '30' },
+            { topic: 'etnias', q: 'Mencione una fuente natural para teñir hilos (Borucas).', opts: ['Tinte de pelo', 'Hojas de sangrilla o arcilla', 'Pintura de pared', 'Tinta de lapicero'], a: 'Hojas de sangrilla o arcilla', cite: '...tienen una larga tradición de teñir a mano hilos de colores que provienen de fuentes naturales tales como las hojas del árbol sangrilla, la corteza del árbol carbonero, arcilla, plantas de índigo y... la tinta de un molusco.', p: '30' },
+            { topic: 'etnias', q: 'Mencione una fiesta tradicional Boruca.', opts: ['Navidad', 'Fiesta de los Diablitos', 'Carnavales', 'Tope'], a: 'Fiesta de los Diablitos', cite: 'Las actividades más importantes para los Borucas son la Fiesta de los Diablitos y la Fiesta de los Negritos.', p: '30' },
+            { topic: 'etnias', q: '¿Qué representa la Fiesta de los Diablitos?', opts: ['Una fiesta de disfraces', 'La lucha contra la cultura colonizadora', 'El inicio del año', 'La cosecha de café'], a: 'La lucha contra la cultura colonizadora', cite: 'La Fiesta de los Diablitos representa la lucha hasta la muerte con la cultura colonizadora...', p: '30' }
+        ];
+
+        let shuffledQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let correctCount = 0;
+        let totalToAnswer = rawQuestions.length;
+
+        const progressBar = document.getElementById('progress-bar');
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const feedbackEl = document.getElementById('feedback');
+        const feedbackText = document.getElementById('feedback-text');
+        const citationText = document.getElementById('citation-text');
+        const pageNum = document.getElementById('page-num');
+        const quizContainer = document.getElementById('quiz-container');
+        const resultsContainer = document.getElementById('results-container');
+        const scoreEl = document.getElementById('score');
+        const finalMessage = document.getElementById('final-message');
+        const topicContentEl = document.getElementById('topic-content');
+
+        function showContent(tabName) {
+            document.getElementById('estudio').style.display = 'none';
+            document.getElementById('quiz').style.display = 'none';
+            document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(tabName).style.display = 'block';
+            document.querySelector(`.tab-button[onclick="showContent('${tabName}')"]`).classList.add('active');
+            
+            if (tabName === 'quiz' && shuffledQuestions.length === 0) {
+                startQuiz();
+            }
+        }
+
+        function showTopic(topicName) {
+            topicContentEl.innerHTML = topicData[topicName];
+            document.querySelectorAll('#estudio .tab-button').forEach(b => b.classList.remove('active'));
+            document.querySelector(`#estudio .tab-button[onclick="showTopic('${topicName}')"]`).classList.add('active');
+        }
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function startQuiz() {
+            shuffledQuestions = shuffle([...rawQuestions]);
+            currentQuestionIndex = 0;
+            score = 0;
+            correctCount = 0;
+            totalToAnswer = rawQuestions.length;
+            resultsContainer.style.display = 'none';
+            quizContainer.style.display = 'block';
+            updateProgressBar();
+            displayQuestion();
+        }
+
+        function restartQuiz() {
+            shuffledQuestions = [];
+            startQuiz();
+        }
+
+        function displayQuestion() {
+            feedbackEl.style.display = 'none';
+            const currentQuestion = shuffledQuestions[currentQuestionIndex];
+            questionEl.textContent = `${currentQuestionIndex + 1}. ${currentQuestion.q}`;
+            optionsEl.innerHTML = '';
+            
+            const currentOpts = shuffle([...currentQuestion.opts]);
+            currentOpts.forEach(option => {
+                const button = document.createElement('div');
+                button.textContent = option;
+                button.classList.add('option');
+                button.onclick = () => checkAnswer(option, button);
+                optionsEl.appendChild(button);
+            });
+        }
+
+        function checkAnswer(selected, button) {
+            const currentQuestion = shuffledQuestions[currentQuestionIndex];
+            const allOptions = document.querySelectorAll('.option');
+            allOptions.forEach(opt => opt.onclick = null);
+
+            feedbackEl.style.display = 'block';
+            citationText.textContent = currentQuestion.cite;
+            pageNum.textContent = `Página ${currentQuestion.p}`;
+
+            if (selected === currentQuestion.a) {
+                score += 10;
+                correctCount++;
+                feedbackText.innerHTML = "✅ ¡Excelente! Respuesta correcta.";
+                feedbackEl.style.borderColor = 'var(--correct-color)';
+                feedbackEl.style.backgroundColor = '#e8f5e9';
+                button.style.backgroundColor = 'var(--correct-color)';
+                button.style.color = 'white';
+                button.style.borderColor = 'var(--correct-color)';
+            } else {
+                feedbackText.innerHTML = `❌ Oops, la respuesta correcta era: <strong>${currentQuestion.a}</strong>.`;
+                feedbackEl.style.borderColor = 'var(--wrong-color)';
+                feedbackEl.style.backgroundColor = '#ffebee';
+                button.style.backgroundColor = 'var(--wrong-color)';
+                button.style.color = 'white';
+                button.style.borderColor = 'var(--wrong-color)';
+                
+                allOptions.forEach(opt => {
+                    if (opt.textContent === currentQuestion.a) {
+                        opt.style.border = '3px solid var(--correct-color)';
+                    }
+                });
+
+                // Reinforcement logic: find another question of same topic and push it
+                const sameTopicQuestions = rawQuestions.filter(q => q.topic === currentQuestion.topic && q.q !== currentQuestion.q);
+                if (sameTopicQuestions.length > 0) {
+                    const extraQ = sameTopicQuestions[Math.floor(Math.random() * sameTopicQuestions.length)];
+                    shuffledQuestions.push({...extraQ});
+                    totalToAnswer++;
+                }
+            }
+            updateProgressBar();
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < shuffledQuestions.length) {
+                displayQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function updateProgressBar() {
+            const progress = (correctCount / totalToAnswer) * 100;
+            progressBar.style.width = progress + '%';
+            progressBar.textContent = Math.round(progress) + '%';
+        }
+
+        function showResults() {
+            quizContainer.style.display = 'none';
+            resultsContainer.style.display = 'block';
+            const finalScore = (correctCount / totalToAnswer) * 100;
+            scoreEl.textContent = `${Math.round(finalScore)}%`;
+            
+            if (finalScore >= 90) finalMessage.textContent = "¡Eres un experto en Historia de Costa Rica! 🌟";
+            else if (finalScore >= 70) finalMessage.textContent = "¡Muy bien! Has aprendido mucho. 👍";
+            else finalMessage.textContent = "Sigue practicando, ¡tú puedes lograrlo! 💪";
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showTopic('historia');
+        });
+    </script>
+</body>
+</html>

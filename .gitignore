@@ -1,0 +1,35 @@
+# Entorno virtual y cache
+.venv/
+__pycache__/
+*.py[cod]
+
+# Cobertura y cache de pytest
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Archivos de tu construccion se pueden regenerar (salvo que quieras versionarlos)
+Output/
+Deliverables/
+
+# Material fuente pesado y con copyright: no se versiona. Los PDFs de libros
+# exceden el limite de GitHub (100 MB) y Billy no los usa en runtime.
+assets/libros/
+
+# Herramientas y notas del padre, no de Billy
+.opencode/
+memory.md
+progress.md
+Billy.code-workspace
+
+# Configuracion local de secretos (la key real va en el almacen del SO)
+.env
+*.local
+
+# Playwright MCP
+.playwright-mcp/
+
+# Sistema
+.DS_Store
+Thumbs.db

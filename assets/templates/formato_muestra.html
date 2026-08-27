@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura de Estudio: Ciencias - La Biodiversidad</title>
+    <style>
+        :root {
+            --bg-color: #f0fff0;
+            --main-color: #006400;
+            --accent-color: #ffdf00;
+            --correct-color: #28a745;
+            --wrong-color: #dc3545;
+            --font-family: 'Arial', sans-serif;
+        }
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            color: var(--main-color);
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .progress-bar {
+            width: 0%;
+            height: 20px;
+            background-color: var(--accent-color);
+            border-radius: 5px;
+            text-align: center;
+            line-height: 20px;
+            color: #333;
+            transition: width 0.5s;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .tab-button {
+            background-color: var(--main-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .tab-button:hover, .tab-button.active {
+            background-color: #004d00;
+        }
+        .content {
+            display: none;
+            text-align: left;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .content.active {
+            display: block;
+        }
+        #quiz-container {
+            margin-top: 20px;
+        }
+        .question {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+        }
+        .option {
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .option:hover {
+            background-color: #e0e0e0;
+        }
+        .feedback {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        .explanation {
+            font-size: 1em;
+            font-weight: normal;
+            margin-top: 5px;
+        }
+        #results-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>¡Aventura de Estudio de Ciencias! 🌿</h1>
+        <p>Aprende sobre los seres vivos, la biodiversidad y cómo la protegemos.</p>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="showContent('estudio')">Material de Estudio</button>
+            <button class="tab-button" onclick="showContent('quiz')">¡A Jugar! (Prueba)</button>
+        </div>
+
+        <!-- Material de Estudio -->
+        <div id="estudio" class="content active">
+            <h2>Resúmenes de los Temas</h2>
+            <div class="tabs">
+                <button class="tab-button active" onclick="showTopic('biodiversidad')">Biodiversidad</button>
+                <button class="tab-button" onclick="showTopic('adaptaciones')">Adaptaciones</button>
+                <button class="tab-button" onclick="showTopic('amenazas')">Amenazas y Conservación</button>
+            </div>
+            <div id="topic-content" style="text-align: left; padding: 10px;">
+                <!-- Content will be loaded by JS -->
+            </div>
+        </div>
+
+        <!-- Quiz -->
+        <div id="quiz" class="content">
+            <h2>Prueba de Conocimiento</h2>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar">0%</div>
+            </div>
+            <div id="quiz-container">
+                <p class="question" id="question"></p>
+                <div class="options" id="options"></div>
+                <div class="feedback" id="feedback"></div>
+            </div>
+            <div id="results-container">
+                <h2>¡Felicidades, has completado la prueba!</h2>
+                <p>Tu puntuación final es: <strong id="score"></strong></p>
+                <button class="tab-button" onclick="restartQuiz()">Jugar de Nuevo</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const topicData = {
+            'biodiversidad': `
+                <h3>¿Qué es la Biodiversidad?</h3>
+                <p>Es la gran variedad de vida que existe en el planeta. Incluye todos los animales, plantas, hongos y microorganismos, así como los diferentes climas y lugares donde viven.</p>
+                <h4>Niveles de Organización</h4>
+                <ul>
+                    <li><b>Individuo:</b> Un solo ser vivo (ej: un coyote, un girasol).</li>
+                    <li><b>Población:</b> Un grupo de individuos de la misma especie que viven en el mismo lugar (ej: una manada de coyotes).</li>
+                    <li><b>Comunidad:</b> Conjunto de diferentes poblaciones que viven e interactúan en un mismo lugar (ej: los coyotes, conejos y plantas del desierto).</li>
+                    <li><b>Ecosistema:</b> La comunidad de seres vivos y el medio físico donde viven (factores abióticos como el agua, el sol, las rocas).</li>
+                    <li><b>Hábitat:</b> Es el "hogar" de un ser vivo, el lugar donde encuentra todo lo que necesita para vivir.</li>
+                    <li><b>Nicho Ecológico:</b> Es la "profesión" o función que un ser vivo desempeña en su ecosistema (ej: las abejas polinizan flores).</li>
+                </ul>
+                <h4>Funciones Vitales</h4>
+                <p>Todos los seres vivos realizan funciones para mantenerse con vida:</p>
+                <ul>
+                    <li><b>Nutrición:</b> Obtener energía. Los <b>Autótrofos</b> como las plantas producen su propio alimento (fotosíntesis). Los <b>Heterótrofos</b> como los animales se alimentan de otros seres.</li>
+                    <li><b>Relación:</b> Percibir lo que pasa alrededor y reaccionar.</li>
+                    <li><b>Reproducción:</b> Crear nuevos seres vivos. Puede ser <b>sexual</b> (se necesitan dos progenitores) o <b>asexual</b> (un solo progenitor).</li>
+                </ul>
+            `,
+            'adaptaciones': `
+                <h3>Adaptaciones de los Seres Vivos</h3>
+                <p>Son características especiales que ayudan a los seres vivos a sobrevivir en su ambiente.</p>
+                <h4>Adaptaciones para Alimentarse</h4>
+                <ul>
+                    <li><b>Picos:</b> Las aves tienen picos de diferentes formas para comer semillas, frutas, insectos o peces.</li>
+                    <li><b>Dientes:</b> Los carnívoros tienen dientes filosos para desgarrar, y los herbívoros tienen dientes planos para moler.</li>
+                    <li><b>Ecolocación:</b> Algunos animales como los murciélagos y delfines usan sonidos para "ver" en la oscuridad y encontrar su comida.</li>
+                </ul>
+                <h4>Adaptaciones para Defenderse</h4>
+                <ul>
+                    <li><b>Camuflaje:</b> Animales que se confunden con su entorno para no ser vistos (ej: insecto palo).</li>
+                    <li><b>Mimetismo:</b> Un animal inofensivo se parece a uno peligroso para asustar a los depredadores (ej: una mariposa con manchas que parecen ojos de búho).</li>
+                    <li><b>Olores fuertes:</b> El zorrillo lanza un líquido de mal olor para alejar a sus enemigos.</li>
+                    <li><b>Veneno:</b> Algunas serpientes o ranas tienen veneno para defenderse.</li>
+                    <li><b>Caparazones y espinas:</b> Las tortugas tienen un caparazón duro y los puercoespines tienen espinas.</li>
+                </ul>
+                <h4>Adaptaciones a los Estímulos del Ambiente</h4>
+                <ul>
+                    <li><b>Tropismo:</b> El movimiento de las plantas hacia un estímulo. Fototropismo es crecer hacia la luz, y geotropismo es que las raíces crezcan hacia la tierra.</li>
+                    <li><b>Migración:</b> Desplazamiento de animales a largas distancias buscando mejor clima o alimento (ej: las ballenas o las mariposas monarca).</li>
+                    <li><b>Hibernación:</b> Algunos animales duermen durante el invierno para ahorrar energía cuando hace mucho frío y hay poca comida (ej: los osos).</li>
+                </ul>
+            `,
+            'amenazas': `
+                <h3>Amenazas y Conservación de la Biodiversidad</h3>
+                <p>La biodiversidad de Costa Rica es increíble, pero enfrenta peligros por actividades humanas.</p>
+                <h4>Principales Amenazas</h4>
+                <ul>
+                    <li><b>Deforestación:</b> La tala de árboles destruye el hogar de miles de especies.</li>
+                    <li><b>Agricultura no sostenible:</b> Cuando se siembra un solo cultivo (monocultivo) se pierde variedad y se usan químicos que contaminan el suelo y el agua.</li>
+                    <li><b>Caza indiscriminada:</b> Cazar animales por deporte o para venderlos como mascotas puede hacer que desaparezcan.</li>
+                    <li><b>Contaminación:</b> La basura, los gases de los carros y las industrias dañan el aire, el agua y el suelo.</li>
+                </ul>
+                <h4>¿Cómo podemos proteger la Biodiversidad?</h4>
+                <p>¡Todos podemos ayudar!</p>
+                <ul>
+                    <li>Cuidar las fuentes de agua.</li>
+                    <li>Ahorrar agua y electricidad.</li>
+                    <li>No comprar plantas ni animales silvestres.</li>
+                    <li>Participar en campañas de reciclaje y reforestación.</li>
+                    <li>Reducir la basura que producimos.</li>
+                    <li>Respetar y cuidar las áreas protegidas como los parques nacionales.</li>
+                    <li>Usar productos que no contaminen.</li>
+                </ul>
+                <p>Aprovechar la biodiversidad de forma inteligente (turismo ecológico, medicinas naturales) también ayuda a conservarla.</p>
+            `
+        };
+
+        const questions = [
+            // Biodiversidad y Organización
+            { topic: 'biodiversidad', q: '¿Qué es la biodiversidad?', opts: ['Solo los animales de un lugar', 'La variedad de climas, flora y fauna en el planeta', 'Solo las plantas de un país'], a: 'La variedad de climas, flora y fauna en el planeta', exp: 'La biodiversidad lo incluye todo: desde los microbios más pequeños hasta la ballena más grande, y los lugares donde viven.' },
+            { topic: 'biodiversidad', q: 'Un grupo de lapas rojas que viven en un mismo bosque forman una...', opts: ['Comunidad', 'Población', 'Ecosistema'], a: 'Población', exp: 'Una población es un grupo de seres vivos de la MISMA especie.' },
+            { topic: 'biodiversidad', q: '¿Cuál es la diferencia entre hábitat y nicho ecológico?', opts: ['No hay diferencia', 'Hábitat es la casa, nicho es la profesión', 'Hábitat es la profesión, nicho es la casa'], a: 'Hábitat es la casa, nicho es la profesión', exp: 'El hábitat es dónde vive un organismo, y el nicho ecológico es la función o el "trabajo" que hace allí.' },
+            { topic: 'biodiversidad', q: 'Las plantas son organismos autótrofos porque...', opts: ['Se alimentan de otros seres vivos', 'Producen su propio alimento', 'No necesitan alimento'], a: 'Producen su propio alimento', exp: 'Lo hacen a través de la fotosíntesis, usando la luz del sol, agua y nutrientes de la tierra.' },
+            { topic: 'biodiversidad', q: 'Los seres humanos y los hongos somos ejemplos de organismos...', opts: ['Autótrofos', 'Heterótrofos', 'Quimiótrofos'], a: 'Heterótrofos', exp: 'Necesitamos consumir a otros organismos (plantas o animales) para obtener nuestra energía.' },
+            { topic: 'biodiversidad', q: '¿Qué son los factores abióticos de un ecosistema?', opts: ['Todos los seres vivos', 'Los componentes sin vida como el agua, el sol y las rocas', 'Solo las plantas y los animales'], a: 'Los componentes sin vida como el agua, el sol y las rocas', exp: 'Abiótico significa "sin vida". Son las partes físicas y químicas del ecosistema.' },
+            { topic: 'biodiversidad', q: 'La reproducción que necesita de un macho y una hembra se llama...', opts: ['Asexual', 'Sexual', 'Por esporas'], a: 'Sexual', exp: 'En la reproducción sexual, la descendencia tiene características de ambos progenitores.' },
+            { topic: 'biodiversidad', q: 'Una estrella de mar puede regenerar una parte perdida y crear un nuevo individuo. Esto es un ejemplo de reproducción...', opts: ['Sexual', 'Asexual', 'Ovovivípara'], a: 'Asexual', exp: 'En la reproducción asexual, un solo organismo puede dar origen a otro idéntico a él.' },
+            { topic: 'biodiversidad', q: 'El conjunto de un individuo, una población y una comunidad forman un...', opts: ['Ecosistema', 'Hábitat', 'Nicho Ecológico'], a: 'Ecosistema', exp: 'El ecosistema incluye a todos los seres vivos (comunidad) y su entorno físico (factores abióticos).' },
+            { topic: 'biodiversidad', q: '¿Cuál de estas es una de las funciones vitales de los seres vivos?', opts: ['Fotosíntesis', 'Respiración', 'Hibernación'], a: 'Respiración', exp: 'La respiración es vital para obtener energía de los nutrientes. La fotosíntesis es solo de autótrofos y la hibernación es una adaptación, no una función vital.' },
+            { topic: 'biodiversidad', q: '¿Qué es un individuo?', opts: ['Un conjunto de poblaciones', 'Todo ser vivo, por sí solo', 'Un conjunto de ecosistemas'], a: 'Todo ser vivo, por sí solo', exp: 'Un individuo es la unidad básica de la organización ecológica, como una sola mariposa o un solo árbol.'},
+            { topic: 'biodiversidad', q: '¿Qué es una comunidad?', opts: ['Un conjunto de individuos de la misma especie', 'Un conjunto de poblaciones de diferentes especies', 'El lugar donde vive un organismo'], a: 'Un conjunto de poblaciones de diferentes especies', exp: 'La comunidad la forman todas las especies que interactúan en un área, como los peces, corales y tortugas en un arrecife.'},
+            { topic: 'biodiversidad', q: '¿Verdadero o Falso? Los animales que comen plantas son heterótrofos.', opts: ['Verdadero', 'Falso'], a: 'Verdadero', exp: 'Correcto, porque se alimentan de otros seres vivos (las plantas) para obtener energía.'},
+            { topic: 'biodiversidad', q: 'La función de relación permite a los seres vivos...', opts: ['Tener hijos', 'Obtener nutrientes', 'Percibir cambios en el ambiente y responder a ellos'], a: 'Percibir cambios en el ambiente y responder a ellos', exp: 'Esta función es clave para encontrar comida, escapar de peligros y relacionarse con otros seres vivos.'},
+            { topic: 'biodiversidad', q: '¿Cuál de estos es un ejemplo de factor biótico?', opts: ['La luz del sol', 'Un hongo', 'La temperatura'], a: 'Un hongo', exp: 'Biótico significa "con vida". Los hongos, plantas, animales y bacterias son factores bióticos.'},
+
+            // Adaptaciones
+            { topic: 'adaptaciones', q: 'Un insecto que parece una hoja para no ser comido está usando una adaptación de...', opts: ['Mimetismo', 'Camuflaje', 'Hibernación'], a: 'Camuflaje', exp: 'El camuflaje es cuando un animal se confunde con su entorno para pasar desapercibido.' },
+            { topic: 'adaptaciones', q: '¿Para qué le sirve el pico a un tucán?', opts: ['Para cortar y tomar su alimento (frutas)', 'Para cazar ratones', 'Para filtrar agua'], a: 'Para cortar y tomar su alimento (frutas)', exp: 'La forma y tamaño del pico de las aves está adaptada al tipo de comida que consumen.' },
+            { topic: 'adaptaciones', q: 'La hibernación es una adaptación para...', opts: ['Sobrevivir al calor extremo', 'Defenderse de los depredadores', 'Sobrevivir al frío y la escasez de comida en invierno'], a: 'Sobrevivir al frío y la escasez de comida en invierno', exp: 'Durante la hibernación, los animales bajan su metabolismo para gastar muy poca energía.' },
+            { topic: 'adaptaciones', q: 'Una serpiente coral falsa, que no es venenosa pero tiene los colores de una que sí lo es, usa...', opts: ['Camuflaje', 'Mimetismo', 'Coloración de advertencia'], a: 'Mimetismo', exp: 'El mimetismo es imitar a otro ser vivo (generalmente uno peligroso) para engañar a los depredadores.' },
+            { topic: 'adaptaciones', q: '¿Qué es el fototropismo positivo en las plantas?', opts: ['Cuando las raíces crecen hacia abajo', 'Cuando el tallo crece en dirección a la luz', 'Cuando la planta busca agua'], a: 'Cuando el tallo crece en dirección a la luz', exp: 'Las plantas necesitan luz para la fotosíntesis, por eso sus tallos y hojas crecen buscándola.' },
+            { topic: 'adaptaciones', q: 'Los murciélagos usan la ecolocación para...', opts: ['Atraer pareja', 'Navegar y cazar en la oscuridad', 'Cantar'], a: 'Navegar y cazar en la oscuridad', exp: 'Emiten sonidos y escuchan el eco para crear un "mapa" de su entorno en total oscuridad.' },
+            { topic: 'adaptaciones', q: '¿Cuál de estas es una adaptación de defensa?', opts: ['La migración de las aves', 'Las espinas de un puercoespín', 'La fotosíntesis'], a: 'Las espinas de un puercoespín', exp: 'Las espinas son estructuras físicas que protegen al puercoespín de ser atacado por depredadores.' },
+            { topic: 'adaptaciones', q: '¿Por qué migran las mariposas monarca?', opts: ['Porque les gusta viajar', 'Para escapar del frío y poner sus huevos en un lugar más cálido', 'Para buscar flores de otros colores'], a: 'Para escapar del frío y poner sus huevos en un lugar más cálido', exp: 'La migración es un viaje increíble que hacen para asegurar la supervivencia de su especie.' },
+            { topic: 'adaptaciones', q: 'Los dientes filosos de un tiburón son una adaptación para...', opts: ['Moler plantas', 'Desgarrar la carne de sus presas', 'Construir su casa'], a: 'Desgarrar la carne de sus presas', exp: 'Los carnívoros tienen dientes puntiagudos y filosos, perfectos para cazar y comer carne.' },
+            { topic: 'adaptaciones', q: 'El cortejo, donde un macho realiza danzas o cantos para atraer a una hembra, es una adaptación para...', opts: ['La alimentación', 'La defensa', 'La reproducción'], a: 'La reproducción', exp: 'El cortejo es un comportamiento que ayuda a los animales a encontrar pareja y asegurar la reproducción.' },
+            { topic: 'adaptaciones', q: '¿Verdadero o Falso? El camaleón cambia de color solo para esconderse.', opts: ['Verdadero', 'Falso'], a: 'Falso', exp: 'Falso. También cambian de color para comunicarse con otros camaleones, regular su temperatura o según su estado de ánimo.'},
+            { topic: 'adaptaciones', q: 'Las garras de un águila son una adaptación que usa como...', opts: ['Órganos de los sentidos', 'Extremidades para atrapar presas', 'Pico'], a: 'Extremidades para atrapar presas', exp: 'Sus garras fuertes y afiladas son perfectas para sujetar a sus presas desde el aire.'},
+            { topic: 'adaptaciones', q: '¿Cómo respiran los peces?', opts: ['Por la piel', 'Por pulmones', 'Por branquias'], a: 'Por branquias', exp: 'Las branquias son órganos especiales que les permiten tomar el oxígeno disuelto en el agua.'},
+            { topic: 'adaptaciones', q: 'El mal olor que produce un zorrillo es una adaptación de...', opts: ['Defensa', 'Alimentación', 'Reproducción'], a: 'Defensa', exp: 'Es una defensa química muy efectiva para alejar a los depredadores.'},
+            { topic: 'adaptaciones', q: '¿Qué es el dimorfismo sexual?', opts: ['Cuando machos y hembras son idénticos', 'Las diferencias físicas entre machos y hembras de una misma especie', 'Un tipo de reproducción asexual'], a: 'Las diferencias físicas entre machos y hembras de una misma especie', exp: 'Por ejemplo, en los pavos reales, el macho tiene una cola muy grande y colorida y la hembra no.'},
+
+            // Amenazas y Conservación
+            { topic: 'amenazas', q: '¿Cuál es una de las principales causas de la destrucción de hábitats?', opts: ['El reciclaje', 'La deforestación', 'El turismo ecológico'], a: 'La deforestación', exp: 'La tala de bosques elimina el hogar y la fuente de alimento de incontables especies.' },
+            { topic: 'amenazas', q: '¿Por qué Costa Rica tiene tanta biodiversidad?', opts: ['Porque es un país muy grande', 'Porque es un puente biológico entre Norte y Suramérica', 'Porque no tiene montañas'], a: 'Porque es un puente biológico entre Norte y Suramérica', exp: 'Al ser un "puente", especies de ambas partes del continente se han encontrado y mezclado aquí.' },
+            { topic: 'amenazas', q: 'Una forma de aprovechar la biodiversidad de manera sostenible es...', opts: ['La caza deportiva', 'El turismo ecológico', 'La agricultura con muchos químicos'], a: 'El turismo ecológico', exp: 'El ecoturismo permite a la gente disfrutar de la naturaleza, generando ingresos para protegerla.' },
+            { topic: 'amenazas', q: '¿Qué podemos hacer para conservar la biodiversidad?', opts: ['Comprar animales silvestres como mascotas', 'Tirar la basura en los ríos', 'Ahorrar agua y electricidad'], a: 'Ahorrar agua y electricidad', exp: 'Ahorrar recursos disminuye la presión sobre los ecosistemas y ayuda a reducir la contaminación.' },
+            { topic: 'amenazas', q: 'La caza de animales para venderlos como mascotas o por sus pieles se llama...', opts: ['Caza indiscriminada', 'Pesca artesanal', 'Ganadería'], a: 'Caza indiscriminada', exp: 'Esta actividad es ilegal para muchas especies y es una grave amenaza para su supervivencia.' },
+            { topic: 'amenazas', q: '¿Verdadero o Falso? Usar menos plástico ayuda a proteger la biodiversidad.', opts: ['Verdadero', 'Falso'], a: 'Verdadero', exp: 'Verdadero, porque el plástico tarda cientos de años en descomponerse y contamina los ecosistemas, dañando a los animales.' },
+            { topic: 'amenazas', q: '¿De qué manera se pueden obtener medicamentos de la naturaleza?', opts: ['De las rocas y los ríos', 'Extrayendo sustancias químicas de plantas y hongos', 'Del plástico reciclado'], a: 'Extrayendo sustancias químicas de plantas y hongos', exp: 'Muchas medicinas modernas tienen su origen en compuestos descubiertos en la naturaleza.' },
+            { topic: 'amenazas', q: 'Plantar un solo tipo de cultivo en una gran extensión de tierra se llama...', opts: ['Reforestación', 'Monocultivo', 'Jardinería'], a: 'Monocultivo', exp: 'El monocultivo reduce la biodiversidad, empobrece el suelo y atrae más plagas.' },
+            { topic: 'amenazas', q: '¿Qué es un banco genético?', opts: ['Un lugar para guardar dinero', 'Un lugar donde se almacenan semillas para conservar la variedad de plantas', 'Un tipo de zoológico'], a: 'Un lugar donde se almacenan semillas para conservar la variedad de plantas', exp: 'Estos bancos son como una "copia de seguridad" para proteger a las plantas de la extinción.' },
+            { topic: 'amenazas', q: '¿Cuál de estas acciones daña la biodiversidad?', opts: ['Participar en campañas de reciclaje', 'Respetar las áreas protegidas', 'Evitar el uso de productos que emiten gases contaminantes'], a: 'Evitar el uso de productos que emiten gases contaminantes', exp: '¡Cuidado, esta era una pregunta con trampa! Las tres opciones son acciones para proteger la biodiversidad. La pregunta correcta sería "¿Cuál de estas acciones protege la biodiversidad?". La respuesta es que todas la protegen.' },
+            { topic: 'amenazas', q: '¿Por qué es importante la educación ambiental?', opts: ['Para aprender a dibujar animales', 'Para enseñar a las personas a proteger el ambiente', 'Para saber los nombres de todos los árboles'], a: 'Para enseñar a las personas a proteger el ambiente', exp: 'La educación ambiental nos da el conocimiento y la conciencia para tomar mejores decisiones y cuidar nuestro planeta.'},
+            { topic: 'amenazas', q: '¿Verdadero o Falso? La pesca artesanal, que usa métodos tradicionales, no daña tanto los ecosistemas marinos.', opts: ['Verdadero', 'Falso'], a: 'Verdadero', exp: 'Correcto. A diferencia de la pesca industrial de arrastre, la pesca artesanal es más selectiva y tiene un menor impacto en el ecosistema.'},
+            { topic: 'amenazas', q: '¿Qué es la reforestación?', opts: ['Cortar todos los árboles de un bosque', 'Plantar nuevos árboles donde antes había un bosque', 'Construir casas en el bosque'], a: 'Plantar nuevos árboles donde antes había un bosque', exp: 'La reforestación es una acción clave para recuperar los bosques y los hábitats que se han perdido.'},
+            { topic: 'amenazas', q: 'Los Parques Nacionales y las Reservas Biológicas son...', opts: ['Lugares para ir de compras', 'Áreas protegidas para la conservación', 'Zonas para construir industrias'], a: 'Áreas protegidas para la conservación', exp: 'Son áreas donde la naturaleza está protegida por ley para conservar la biodiversidad para el futuro.'},
+            { topic: 'amenazas', q: '¿Cómo afecta la contaminación del aire a la biodiversidad?', opts: ['No la afecta', 'Puede causar lluvia ácida y enfermedades a los seres vivos', 'Hace que las plantas crezcan más rápido'], a: 'Puede causar lluvia ácida y enfermedades a los seres vivos', exp: 'Los gases contaminantes alteran la química de la atmósfera y del agua, afectando a todos los ecosistemas.'}
+        ];
+
+        let shuffledQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let questionsAnsweredCorrectly = 0;
+        let totalQuestionsInQuiz = 0;
+
+        const progressBar = document.getElementById('progress-bar');
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const feedbackEl = document.getElementById('feedback');
+        const quizContainer = document.getElementById('quiz-container');
+        const resultsContainer = document.getElementById('results-container');
+        const scoreEl = document.getElementById('score');
+        const topicContentEl = document.getElementById('topic-content');
+
+        function showContent(tabName) {
+            document.getElementById('estudio').style.display = 'none';
+            document.getElementById('quiz').style.display = 'none';
+            document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(tabName).style.display = 'block';
+            document.querySelector(`.tab-button[onclick="showContent('${tabName}')"]`).classList.add('active');
+            
+            if (tabName === 'quiz' && totalQuestionsInQuiz === 0) {
+                startQuiz();
+            }
+        }
+
+        function showTopic(topicName) {
+            topicContentEl.innerHTML = topicData[topicName];
+            document.querySelectorAll('#estudio .tab-button').forEach(b => b.classList.remove('active'));
+            document.querySelector(`#estudio .tab-button[onclick="showTopic('${topicName}')"]`).classList.add('active');
+        }
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function startQuiz() {
+            shuffledQuestions = shuffle([...questions]);
+            totalQuestionsInQuiz = questions.length;
+            currentQuestionIndex = 0;
+            score = 0;
+            questionsAnsweredCorrectly = 0;
+            resultsContainer.style.display = 'none';
+            quizContainer.style.display = 'block';
+            updateProgressBar();
+            displayQuestion();
+        }
+        
+        function restartQuiz() {
+            totalQuestionsInQuiz = 0;
+            startQuiz();
+        }
+
+        function displayQuestion() {
+            feedbackEl.innerHTML = '';
+            feedbackEl.style.backgroundColor = 'transparent';
+            const currentQuestion = shuffledQuestions[currentQuestionIndex];
+            questionEl.textContent = currentQuestion.q;
+            optionsEl.innerHTML = '';
+            currentQuestion.opts.forEach(option => {
+                const button = document.createElement('div');
+                button.textContent = option;
+                button.classList.add('option');
+                button.onclick = () => checkAnswer(option, button);
+                optionsEl.appendChild(button);
+            });
+        }
+
+        function checkAnswer(selectedOption, button) {
+            const currentQuestion = shuffledQuestions[currentQuestionIndex];
+            const allOptions = document.querySelectorAll('.option');
+            allOptions.forEach(opt => opt.onclick = null);
+
+            const explanationDiv = `<div class="explanation">${currentQuestion.exp}</div>`;
+
+            if (selectedOption === currentQuestion.a) {
+                score++;
+                questionsAnsweredCorrectly++;
+                feedbackEl.innerHTML = `¡Correcto! 😄 ${explanationDiv}`;
+                feedbackEl.style.backgroundColor = '#e8f5e9';
+                button.style.backgroundColor = 'var(--correct-color)';
+                button.style.color = 'white';
+                currentQuestionIndex++;
+            } else {
+                feedbackEl.innerHTML = `¡Ups! La respuesta correcta era "${currentQuestion.a}". ${explanationDiv}`;
+                feedbackEl.style.backgroundColor = '#ffebee';
+                button.style.backgroundColor = 'var(--wrong-color)';
+                button.style.color = 'white';
+                
+                allOptions.forEach(opt => {
+                    if (opt.textContent === currentQuestion.a) {
+                        opt.style.backgroundColor = 'var(--correct-color)';
+                        opt.style.color = 'white';
+                    }
+                });
+
+                const failedTopic = currentQuestion.topic;
+                shuffledQuestions.splice(currentQuestionIndex, 1); 
+                
+                const retryQuestionIndex = shuffledQuestions.findIndex((q, i) => q.topic === failedTopic && i >= currentQuestionIndex);
+
+                if (retryQuestionIndex !== -1) {
+                    const [retryQuestion] = shuffledQuestions.splice(retryQuestionIndex, 1);
+                    shuffledQuestions.splice(currentQuestionIndex, 0, retryQuestion);
+                }
+            }
+            
+            updateProgressBar();
+
+            const nextButton = document.createElement('button');
+            nextButton.textContent = 'Siguiente →';
+            nextButton.classList.add('tab-button');
+            nextButton.style.marginTop = '15px';
+            nextButton.onclick = () => {
+                if (currentQuestionIndex < shuffledQuestions.length) {
+                    displayQuestion();
+                } else {
+                    showResults();
+                }
+            };
+            feedbackEl.appendChild(nextButton);
+        }
+
+        function updateProgressBar() {
+            const progress = (questionsAnsweredCorrectly / totalQuestionsInQuiz) * 100;
+            progressBar.style.width = progress + '%';
+            progressBar.textContent = Math.round(progress) + '%';
+        }
+
+        function showResults() {
+            quizContainer.style.display = 'none';
+            resultsContainer.style.display = 'block';
+            scoreEl.textContent = `${score} de ${totalQuestionsInQuiz}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showTopic('biodiversidad'); 
+        });
+    </script>
+
+</body>
+</html>

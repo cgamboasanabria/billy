@@ -1,0 +1,9 @@
+streamlit>=1.62
+openai
+pypdf
+keyring
+pillow
+pytest>=8
+pytest-cov
+ruff
+black

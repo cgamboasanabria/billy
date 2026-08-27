@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio de Matemáticas - Quinto Grado</title>
+    <style>
+        :root {
+            --bg-color: #f3e5f5;
+            --main-color: #6a1b9a;
+            --accent-color: #ffd54f;
+            --correct-color: #4caf50;
+            --wrong-color: #f44336;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            color: var(--main-color);
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            height: 25px;
+            position: relative;
+        }
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background-color: var(--accent-color);
+            border-radius: 10px;
+            text-align: center;
+            line-height: 25px;
+            color: #333;
+            font-weight: bold;
+            transition: width 0.5s ease-in-out;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tab-button {
+            background-color: var(--main-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .tab-button:hover, .tab-button.active {
+            background-color: #4a148c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .content {
+            display: none;
+            text-align: left;
+            padding: 20px;
+            border: 2px solid #f3e5f5;
+            border-radius: 10px;
+        }
+        .content.active {
+            display: block;
+        }
+        .topic-summary {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 5px solid var(--main-color);
+            border-radius: 5px;
+        }
+        #quiz-container {
+            margin-top: 20px;
+        }
+        .question-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .question {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+        .option {
+            background-color: #fff;
+            border: 2px solid #e0e0e0;
+            padding: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.2s;
+            text-align: left;
+        }
+        .option:hover {
+            border-color: var(--main-color);
+            background-color: #f3e5f5;
+        }
+        .feedback {
+            display: none;
+            margin-top: 20px;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: left;
+        }
+        .explanation-text {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        .citation {
+            font-style: italic;
+            background-color: rgba(255,255,255,0.7);
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 3px solid #333;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+        .reference-image {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            margin: 15px 0;
+            display: block;
+        }
+        .next-btn {
+            background-color: var(--main-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+            display: block;
+            margin: 20px auto 0;
+        }
+        #results-container {
+            display: none;
+            padding: 40px;
+        }
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: var(--main-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            margin: 20px auto;
+            border: 8px solid var(--accent-color);
+        }
+        @media (min-width: 600px) {
+            .options {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🎓 Mi Guía de Estudio: Matemáticas</h1>
+        <p>Prepárate para el examen de Quinto Grado con resúmenes y desafíos numéricos.</p>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="showContent('estudio')">📖 Repasar Temas</button>
+            <button class="tab-button" onclick="showContent('quiz')">🎮 ¡A Jugar! (Prueba)</button>
+        </div>
+
+        <!-- Material de Estudio -->
+        <div id="estudio" class="content active">
+            <h2>Resúmenes para estudiar</h2>
+            <div class="topic-summary">
+                <h3>1. Lectura, escritura y valores posicionales</h3>
+                <p><b>Números grandes:</b> Se separan en grupos de tres de derecha a izquierda. La lectura se realiza de izquierda a derecha.</p>
+                <ul>
+                    <li><b>Periodos:</b> Unidades, millones y billones.</li>
+                    <li><b>Posiciones:</b> Unidades (U), Decenas (D), Centenas (C), Unidades de millar (UM), Decenas de millar (DM), Centenas de millar (CM), etc.</li>
+                    <li><b>Ejemplo:</b> 263 041 789 564 147 se lee: Doscientos sesenta y tres billones, cuarenta y un mil setecientos ochenta y nueve millones quinientos sesenta y cuatro mil ciento cuarenta y siete.</li>
+                </ul>
+            </div>
+            <div class="topic-summary">
+                <h3>2. Suma y Resta de números grandes</h3>
+                <p><b>Suma (Adición):</b> Organización vertical de derecha a izquierda. Se reagrupan (llevan) unidades si la suma de una columna supera 9.</p>
+                <p><b>Resta (Sustracción):</b> Términos: Minuendo, Sustraendo y Diferencia. Se pide prestado a la columna de la izquierda si el dígito del minuendo es menor que el del sustraendo.</p>
+            </div>
+            <div class="topic-summary">
+                <h3>3. Multiplicación</h3>
+                <p><b>Componentes:</b> Primer factor, segundo factor y producto.</p>
+                <ul>
+                    <li><b>Productos parciales:</b> Se obtienen al multiplicar el primer factor por cada dígito del segundo factor.</li>
+                    <li><b>Espacios:</b> Se debe dejar un espacio (guion o cero) a la derecha por cada orden que se avanza en el segundo factor (decenas, centenas).</li>
+                </ul>
+            </div>
+            <div class="topic-summary">
+                <h3>4. Prioridad de Operaciones</h3>
+                <p><b>Reglas de oro:</b></p>
+                <ol>
+                    <li>Resolver primero lo que esté dentro de los <b>paréntesis</b>.</li>
+                    <li>Efectuar <b>multiplicaciones y divisiones</b> (de izquierda a derecha).</li>
+                    <li>Efectuar <b>sumas y restas</b> (de izquierda a derecha).</li>
+                </ol>
+            </div>
+            <div class="topic-summary">
+                <h3>5. Propiedad Distributiva</h3>
+                <p><b>Definición:</b> Multiplicar el factor exterior por cada uno de los sumandos dentro del paréntesis y luego sumar los resultados.</p>
+                <p><b>Ejemplo:</b> 6 x (3 + 5) = (6 x 3) + (6 x 5) = 18 + 30 = 48.</p>
+            </div>
+            <div class="topic-summary">
+                <h3>6. Números Pares, Impares y Múltiplos</h3>
+                <ul>
+                    <li><b>Pares:</b> Terminan en 0, 2, 4, 6 u 8.</li>
+                    <li><b>Impares:</b> Terminan en 1, 3, 5, 7 o 9.</li>
+                    <li><b>Múltiplos:</b> Resultados de multiplicar un número por los naturales (0, 1, 2, 3...). El 0 es múltiplo de todos.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Quiz -->
+        <div id="quiz" class="content">
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar">0%</div>
+            </div>
+            
+            <div id="quiz-container">
+                <div class="question-box">
+                    <p class="question" id="question-text"></p>
+                    <div class="options" id="options-container"></div>
+                </div>
+                
+                <div class="feedback" id="feedback-panel">
+                    <div id="feedback-status" style="font-size: 1.5em; font-weight: bold; margin-bottom: 10px;"></div>
+                    <div class="explanation-text" id="explanation-text"></div>
+                    <div class="citation" id="citation-text"></div>
+                    <p>Mira la información aquí:</p>
+                    <img id="ref-image" class="reference-image" src="" alt="Imagen de referencia">
+                    <button class="next-btn" id="next-button" onclick="handleNext()">Continuar →</button>
+                </div>
+            </div>
+
+            <div id="results-container">
+                <h2>¡Excelente trabajo matemático! 🧮</h2>
+                <p>Has completado todos los desafíos de esta aventura.</p>
+                <div class="score-circle" id="final-score">0</div>
+                <p>Preguntas correctas: <span id="correct-count">0</span> de <span id="total-count">0</span></p>
+                <button class="tab-button" onclick="restartQuiz()">Intentar de Nuevo</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const allQuestions = [
+  {
+    "tema": "Lectura, escritura y valores posicionales",
+    "pregunta": "¿Qué nombre recibe el orden que ocupa el dígito 2 en el número 263 041 789 564 147?",
+    "opciones": ["Centena de billón", "Decena de billón", "Unidad de billón"],
+    "respuesta_correcta": "Centena de billón",
+    "explicacion": "Según la tabla de lugar posicional, el primer dígito de izquierda a derecha en este número de 15 cifras corresponde a las centenas de billón.",
+    "cita_textual": "Centena de billón",
+    "imagen_referencia": "2.jpeg"
+  },
+  {
+    "tema": "Lectura, escritura y valores posicionales",
+    "pregunta": "¿Cuál es el valor posicional del dígito 6 en el número 263 041 789 564 147?",
+    "opciones": ["60 000 000 000 000", "6 000 000 000 000", "600 000 000 000"],
+    "respuesta_correcta": "60 000 000 000 000",
+    "explicacion": "El 6 se encuentra en la posición de las decenas de billón, por lo que su valor es 60 billones.",
+    "cita_textual": "60 000 000 000 000",
+    "imagen_referencia": "2.jpeg"
+  },
+  {
+    "tema": "Lectura, escritura y valores posicionales",
+    "pregunta": "¿Cómo se lee correctamente el número 263 041 789 564 147?",
+    "opciones": [
+      "Doscientos sesenta y tres billones, cuarenta y un mil setecientos ochenta y nueve millones quinientos sesenta y cuatro mil ciento cuarenta y siete.",
+      "Doscientos sesenta y tres millones, cuarenta y un mil setecientos ochenta y nueve mil quinientos sesenta y cuatro.",
+      "Doscientos sesenta y tres mil millones, cuarenta y un millones setecientos ochenta y nueve mil."
+    ],
+    "respuesta_correcta": "Doscientos sesenta y tres billones, cuarenta y un mil setecientos ochenta y nueve millones quinientos sesenta y cuatro mil ciento cuarenta y siete.",
+    "explicacion": "Para leer números grandes se separan en grupos de tres y se nombran según su periodo (billones, millones, unidades).",
+    "cita_textual": "Doscientos sesenta y tres billones, cuarenta y un mil setecientos ochenta y nueve millones quinientos sesenta y cuatro mil ciento cuarenta y siete.",
+    "imagen_referencia": "2.jpeg"
+  },
+  {
+    "tema": "Lectura, escritura y valores posicionales",
+    "pregunta": "En la caja de valores, ¿qué posición sigue después de la Decena de millar (DM) hacia la izquierda?",
+    "opciones": ["Centena de millar (CM)", "Unidad de millar (UM)", "Centena (C)"],
+    "respuesta_correcta": "Centena de millar (CM)",
+    "explicacion": "En el orden de las unidades de millar, después de las decenas siguen las centenas de millar.",
+    "cita_textual": "Centena de millar CM",
+    "imagen_referencia": "1.jpeg"
+  },
+  {
+    "tema": "Lectura, escritura y valores posicionales",
+    "pregunta": "¿A cuántas unidades equivale 1 unidad de millón (UM)?",
+    "opciones": ["1 000 000", "100 000", "10 000 000"],
+    "respuesta_correcta": "1 000 000",
+    "explicacion": "Una unidad de millón representa un millón de unidades simples.",
+    "cita_textual": "1 000 000",
+    "imagen_referencia": "1.jpeg"
+  },
+  {
+    "tema": "Lectura, escritura y valores posicionales",
+    "pregunta": "¿Qué valor representa el dígito 4 en la posición de las decenas de millar del número de ejemplo?",
+    "opciones": ["40 000", "4 000", "400 000"],
+    "respuesta_correcta": "40 000",
+    "explicacion": "El dígito 4 en la posición de decenas de millar equivale a 40 000 unidades.",
+    "cita_textual": "40 000",
+    "imagen_referencia": "2.jpeg"
+  },
+  {
+    "tema": "Lectura, escritura y valores posicionales",
+    "pregunta": "¿Cuál es el primer paso para realizar la lectura de un número grande?",
+    "opciones": [
+      "Separar grupos de tres dígitos de derecha a izquierda.",
+      "Sumar todos los dígitos.",
+      "Multiplicar por mil."
+    ],
+    "respuesta_correcta": "Separar grupos de tres dígitos de derecha a izquierda.",
+    "explicacion": "La separación por grupos facilita la identificación de los periodos de billones, millones y unidades.",
+    "cita_textual": "1. Separar grupos de tres dígitos de derecha a izquierda.",
+    "imagen_referencia": "2.jpeg"
+  },
+  {
+    "tema": "Lectura, escritura y valores posicionales",
+    "pregunta": "¿En qué orden se realizan las lecturas de los grupos de números?",
+    "opciones": ["De izquierda a derecha", "De derecha a izquierda", "Del centro hacia afuera"],
+    "respuesta_correcta": "De izquierda a derecha",
+    "explicacion": "Una vez separados los grupos, la lectura comienza por el valor más alto a la izquierda.",
+    "cita_textual": "2. Realizar la lectura de izquierda a derecha",
+    "imagen_referencia": "2.jpeg"
+  },
+  {
+    "tema": "Lectura, escritura y valores posicionales",
+    "pregunta": "¿A qué cantidad equivale una Centena de Billón (CM)?",
+    "opciones": ["100 000 000 000 000", "10 000 000 000 000", "1 000 000 000 000"],
+    "respuesta_correcta": "100 000 000 000 000",
+    "explicacion": "Cien billones se representa con un 1 seguido de catorce ceros en la caja de valores.",
+    "cita_textual": "100 000 000 000 000",
+    "imagen_referencia": "1.jpeg"
+  },
+  {
+    "tema": "Lectura, escritura y valores posicionales",
+    "pregunta": "¿Cuál es el lugar posicional del dígito 7 en la sección de las unidades del número de ejemplo?",
+    "opciones": ["Unidades", "Decenas", "Centenas"],
+    "respuesta_correcta": "Unidades",
+    "explicacion": "El último dígito a la derecha siempre corresponde a las unidades simples.",
+    "cita_textual": "unidades",
+    "imagen_referencia": "2.jpeg"
+  },
+  {
+    "tema": "Lectura, escritura y valores posicionales",
+    "pregunta": "Según el gráfico de deuda externa, ¿en qué año la deuda fue menor?",
+    "opciones": ["2013", "2018", "2015"],
+    "respuesta_correcta": "2013",
+    "explicacion": "Observando las barras del gráfico, la del año 2013 es la más baja.",
+    "cita_textual": "¿En qué año la deuda externa es menor?",
+    "imagen_referencia": "1.jpeg"
+  },
+  {
+    "tema": "Lectura, escritura y valores posicionales",
+    "pregunta": "¿Qué tendencia muestra el comportamiento de la deuda externa de Costa Rica entre 2013 y 2018?",
+    "opciones": ["Crece", "Decrece", "Se mantiene igual"],
+    "respuesta_correcta": "Crece",
+    "explicacion": "Las barras del gráfico muestran un aumento constante año tras año.",
+    "cita_textual": "¿Cuál es el comportamiento de la deuda en esos años, crece o decrece?",
+    "imagen_referencia": "1.jpeg"
+  },
+  {
+    "tema": "Suma y Resta de números grandes",
+    "pregunta": "¿Cuál es el total de la suma 257 592 531 + 360 012 478?",
+    "opciones": ["617 605 009", "617 505 009", "517 605 009"],
+    "respuesta_correcta": "617 605 009",
+    "explicacion": "Al realizar la suma vertical de los sumandos, el resultado obtenido es 617 605 009.",
+    "cita_textual": "Se anota el total 617 605 009.",
+    "imagen_referencia": "3.jpeg"
+  },
+  {
+    "tema": "Suma y Resta de números grandes",
+    "pregunta": "¿Cómo se lee el resultado de la suma 617 605 009?",
+    "opciones": [
+      "Seiscientos diecisiete millones seiscientos cinco mil nueve.",
+      "Seiscientos diecisiete mil seiscientos cinco.",
+      "Seis millones diecisiete mil seiscientos cinco."
+    ],
+    "respuesta_correcta": "Seiscientos diecisiete millones seiscientos cinco mil nueve.",
+    "explicacion": "El número tiene 9 cifras, por lo que llega hasta los cientos de millones.",
+    "cita_textual": "Lectura: seiscientos diecisiete millones seiscientos cinco mil nueve.",
+    "imagen_referencia": "3.jpeg"
+  },
+  {
+    "tema": "Suma y Resta de números grandes",
+    "pregunta": "Si los premios de lotería son 120 000 000, 1 620 000 000 y 400 000 000, ¿cuál es el monto total?",
+    "opciones": ["2 140 000 000", "1 620 000 000", "2 000 000 000"],
+    "respuesta_correcta": "2 140 000 000",
+    "explicacion": "Sumando los tres montos: 120M + 1620M + 400M = 2140M.",
+    "cita_textual": "¿Cuál es el monto total de los premios?",
+    "imagen_referencia": "3.jpeg"
+  },
+  {
+    "tema": "Suma y Resta de números grandes",
+    "pregunta": "En la dirección se deben organizar los órdenes al realizar una suma o adición?",
+    "opciones": [
+      "De forma vertical de derecha a izquierda",
+      "De forma horizontal de izquierda a derecha",
+      "De forma diagonal"
+    ],
+    "respuesta_correcta": "De forma vertical de derecha a izquierda",
+    "explicacion": "Para alinear correctamente las unidades, decenas, etc., se empieza desde la derecha.",
+    "cita_textual": "se organizan los órdenes de forma vertical de derecha a izquierda",
+    "imagen_referencia": "3.jpeg"
+  },
+  {
+    "tema": "Suma y Resta de números grandes",
+    "pregunta": "En la suma de ejemplo, ¿cuánto es la suma de las unidades de millar (UM)?",
+    "opciones": ["4 (2 + 2)", "5 (3 + 2)", "10"],
+    "respuesta_correcta": "4 (2 + 2)",
+    "explicacion": "En la tabla de valores de la suma, la columna UM tiene los dígitos 2 y 2.",
+    "cita_textual": "2 + 2 = 4 (en columna UM)",
+    "imagen_referencia": "3.jpeg"
+  },
+  {
+    "tema": "Suma y Resta de números grandes",
+    "pregunta": "Al sumar las decenas de millón (D) en el ejemplo, ¿qué sucede?",
+    "opciones": [
+      "Se suma 5 + 6 = 11, se anota 1 y se lleva 1 a las centenas.",
+      "Se suma 5 + 6 = 10.",
+      "No se lleva nada."
+    ],
+    "respuesta_correcta": "Se suma 5 + 6 = 11, se anota 1 y se lleva 1 a las centenas.",
+    "explicacion": "Como el resultado es mayor a 9, se reagrupa llevando 1 a la siguiente columna.",
+    "cita_textual": "5 + 6 = 11 (anota 1 y lleva 1)",
+    "imagen_referencia": "3.jpeg"
+  },
+  {
+    "tema": "Suma y Resta de números grandes",
+    "pregunta": "¿Cuál es la diferencia de la resta 501 658 741 - 374 162 258?",
+    "opciones": ["127 496 483", "127 596 483", "227 496 483"],
+    "respuesta_correcta": "127 496 483",
+    "explicacion": "Al realizar la resta con los debidos préstamos entre columnas, el resultado es 127 496 483.",
+    "cita_textual": "Se anota la diferencia 127 496 483.",
+    "imagen_referencia": "4.jpeg"
+  },
+  {
+    "tema": "Suma y Resta de números grandes",
+    "pregunta": "¿Cómo se lee el resultado de la resta 127 496 483?",
+    "opciones": [
+      "Ciento veintisiete millones cuatrocientos noventa y seis mil cuatrocientos ochenta y tres.",
+      "Ciento veintisiete mil cuatrocientos noventa y seis.",
+      "Ciento veintisiete millones cuatrocientos mil."
+    ],
+    "respuesta_correcta": "Ciento veintisiete millones cuatrocientos noventa y seis mil cuatrocientos ochenta y tres.",
+    "explicacion": "Se lee el periodo de millones, luego el de miles y finalmente las unidades.",
+    "cita_textual": "Lectura: ciento veintisiete millones cuatrocientos noventa y seis mil cuatrocientos ochenta y tres.",
+    "imagen_referencia": "4.jpeg"
+  },
+  {
+    "tema": "Suma y Resta de números grandes",
+    "pregunta": "¿Cuál fue el aumento de combustible del año 2015 al 2016 según la tabla?",
+    "opciones": ["240 100 000 litros", "3 263 100 000 litros", "3 023 000 000 litros"],
+    "respuesta_correcta": "240 100 000 litros",
+    "explicacion": "Restamos 3 263 100 000 - 3 023 000 000 = 240 100 000.",
+    "cita_textual": "¿Cuál es el aumento de combustible del año 2015 al 2016?",
+    "imagen_referencia": "4.jpeg"
+  },
+  {
+    "tema": "Suma y Resta de números grandes",
+    "pregunta": "¿Cómo se llaman los términos de una resta?",
+    "opciones": [
+      "Minuendo, Sustraendo y Diferencia",
+      "Sumando y Total",
+      "Factor y Producto"
+    ],
+    "respuesta_correcta": "Minuendo, Sustraendo y Diferencia",
+    "explicacion": "El minuendo es la cantidad mayor, el sustraendo lo que se quita y la diferencia el resultado.",
+    "cita_textual": "Minuendo, Sustraendo, Diferencia",
+    "imagen_referencia": "4.jpeg"
+  },
+  {
+    "tema": "Suma y Resta de números grandes",
+    "pregunta": "En la resta de ejemplo, al restar las unidades (1 - 8), ¿qué se debe hacer?",
+    "opciones": [
+      "Pedir prestado a la decena, convirtiendo el 1 en 11.",
+      "Restar 8 - 1.",
+      "Poner 0."
+    ],
+    "respuesta_correcta": "Pedir prestado a la decena, convirtiendo el 1 en 11.",
+    "explicacion": "Como 1 es menor que 8, se toma una decena prestada para poder restar.",
+    "cita_textual": "11 - 8 = 3",
+    "imagen_referencia": "4.jpeg"
+  },
+  {
+    "tema": "Suma y Resta de números grandes",
+    "pregunta": "Después de que la decena (4) prestó una unidad a la columna de las unidades, ¿en qué número se convirtió?",
+    "opciones": ["3", "5", "14"],
+    "respuesta_correcta": "3",
+    "explicacion": "Al prestar uno, el valor disminuye en una unidad del orden correspondiente.",
+    "cita_textual": "4 se convierte en 3",
+    "imagen_referencia": "4.jpeg"
+  },
+  {
+    "tema": "Multiplicación",
+    "pregunta": "Si Jimena tiene 823 dólares y el tipo de cambio es de 579 colones por dólar, ¿qué operación debe hacer?",
+    "opciones": ["Multiplicación", "Suma", "División"],
+    "respuesta_correcta": "Multiplicación",
+    "explicacion": "Para convertir de dólares a colones se multiplica la cantidad de dólares por el valor de cada uno.",
+    "cita_textual": "¿Cuál es el monto de dinero que tiene Jimena en colones?",
+    "imagen_referencia": "5.jpeg"
+  },
+  {
+    "tema": "Multiplicación",
+    "pregunta": "¿Cuál es el resultado de la multiplicación 6 589 x 258?",
+    "opciones": ["1 699 962", "1 599 962", "1 699 862"],
+    "respuesta_correcta": "1 699 962",
+    "explicacion": "El producto final de la operación mostrada en el ejemplo es un millón seiscientos noventa y nueve mil novecientos sesenta y dos.",
+    "cita_textual": "Se anota el producto 1 699 962.",
+    "imagen_referencia": "5.jpeg"
+  },
+  {
+    "tema": "Multiplicación",
+    "pregunta": "¿Cómo se lee el producto 1 699 962?",
+    "opciones": [
+      "Un millón seiscientos noventa y nueve mil novecientos sesenta y dos.",
+      "Dieciséis millones novecientos mil.",
+      "Un billón seiscientos mil."
+    ],
+    "respuesta_correcta": "Un millón seiscientos noventa y nueve mil novecientos sesenta y dos.",
+    "explicacion": "Se nombra primero el millón, luego los miles y finalmente el resto.",
+    "cita_textual": "Lectura: un millón seiscientos noventa y nueve mil novecientos sesenta y dos.",
+    "imagen_referencia": "5.jpeg"
+  },
+  {
+    "tema": "Multiplicación",
+    "pregunta": "En una multiplicación, ¿cómo se llaman los números que se multiplican?",
+    "opciones": ["Factores", "Sumandos", "Diferencias"],
+    "respuesta_correcta": "Factores",
+    "explicacion": "A los números que intervienen en la multiplicación se les denomina primer factor y segundo factor.",
+    "cita_textual": "Primer factor, Segundo factor",
+    "imagen_referencia": "5.jpeg"
+  },
+  {
+    "tema": "Multiplicación",
+    "pregunta": "¿Qué nombre reciben los resultados intermedios antes de sumarlos para obtener el producto total?",
+    "opciones": ["Productos parciales", "Residuos", "Cocientes"],
+    "respuesta_correcta": "Productos parciales",
+    "explicacion": "Son los resultados de multiplicar el primer factor por cada dígito del segundo factor.",
+    "cita_textual": "Productos parciales",
+    "imagen_referencia": "5.jpeg"
+  },
+  {
+    "tema": "Multiplicación",
+    "pregunta": "Al multiplicar por la decena del segundo factor (5), ¿qué espacio se debe dejar a la derecha?",
+    "opciones": ["Un espacio (un guion o cero)", "Dos espacios", "Ningún espacio"],
+    "respuesta_correcta": "Un espacio (un guion o cero)",
+    "explicacion": "Se debe empezar a escribir el resultado debajo de la columna de las decenas.",
+    "cita_textual": "3 2 9 4 5 -",
+    "imagen_referencia": "5.jpeg"
+  },
+  {
+    "tema": "Multiplicación",
+    "pregunta": "¿Cuál es el primer producto parcial al multiplicar 6 589 por 8?",
+    "opciones": ["52 712", "52 710", "45 000"],
+    "respuesta_correcta": "52 712",
+    "explicacion": "8 x 9 = 72, 8 x 8 = 64 (+7=71), etc. El resultado es 52 712.",
+    "cita_textual": "5 2 7 1 2",
+    "imagen_referencia": "5.jpeg"
+  },
+  {
+    "tema": "Multiplicación",
+    "pregunta": "¿Cuál es el segundo producto parcial al multiplicar 6 589 por 50?",
+    "opciones": ["329 450", "32 945", "300 000"],
+    "respuesta_correcta": "329 450",
+    "explicacion": "Corresponde a multiplicar por 5 y agregar el espacio de las decenas.",
+    "cita_textual": "3 2 9 4 5 -",
+    "imagen_referencia": "5.jpeg"
+  },
+  {
+    "tema": "Multiplicación",
+    "pregunta": "¿Cuál es el tercer producto parcial al multiplicar 6 589 por 200?",
+    "opciones": ["1 317 800", "131 780", "1 000 000"],
+    "respuesta_correcta": "1 317 800",
+    "explicacion": "Se multiplica por 2 y se dejan dos espacios a la derecha.",
+    "cita_textual": "1 3 1 7 8 - -",
+    "imagen_referencia": "5.jpeg"
+  },
+  {
+    "tema": "Multiplicación",
+    "pregunta": "Para realizar la multiplicación, ¿en qué orden se organizan los números?",
+    "opciones": [
+      "De forma vertical de derecha a izquierda",
+      "De forma horizontal",
+      "De mayor a menor"
+    ],
+    "respuesta_correcta": "De forma vertical de derecha a izquierda",
+    "explicacion": "Al igual que la suma, la alineación por órdenes es fundamental.",
+    "cita_textual": "se organizan los órdenes de forma vertical de derecha a izquierda",
+    "imagen_referencia": "5.jpeg"
+  },
+  {
+    "tema": "Multiplicación",
+    "pregunta": "¿Qué dígito se encuentra en las centenas del producto final 1 699 962?",
+    "opciones": ["9", "6", "2"],
+    "respuesta_correcta": "9",
+    "explicacion": "Contando desde la derecha: 2 unidades, 6 decenas, 9 centenas.",
+    "cita_textual": "9 (en la posición de centenas)",
+    "imagen_referencia": "5.jpeg"
+  },
+  {
+    "tema": "Prioridad de Operaciones",
+    "pregunta": "¿Cuál es el primer paso en el orden de prioridad de operaciones?",
+    "opciones": [
+      "Multiplicaciones y divisiones",
+      "Sumas y restas",
+      "Potencias"
+    ],
+    "respuesta_correcta": "Multiplicaciones y divisiones",
+    "explicacion": "Antes de sumar o restar, se deben resolver las multiplicaciones y divisiones de izquierda a derecha.",
+    "cita_textual": "1. Se efectúan las multiplicaciones y divisiones (en orden de izquierda a derecha).",
+    "imagen_referencia": "6.jpeg"
+  },
+  {
+    "tema": "Prioridad de Operaciones",
+    "pregunta": "Si aparecen paréntesis en una operación combinada, ¿qué se debe hacer?",
+    "opciones": [
+      "Dar prioridad a resolver lo que está dentro del paréntesis.",
+      "Resolver los paréntesis al final.",
+      "Ignorar los paréntesis."
+    ],
+    "respuesta_correcta": "Dar prioridad a resolver lo que está dentro del paréntesis.",
+    "explicacion": "Los paréntesis rompen el orden normal y exigen ser resueltos primero.",
+    "cita_textual": "se debe dar prioridad a resolver las operaciones que se ubiquen dentro del paréntesis.",
+    "imagen_referencia": "6.jpeg"
+  },
+  {
+    "tema": "Prioridad de Operaciones",
+    "pregunta": "¿Cuál es el resultado de 198 + 75 ÷ 5 x 2 - 48?",
+    "opciones": ["180", "200", "150"],
+    "respuesta_correcta": "180",
+    "explicacion": "Primero 75÷5=15, luego 15x2=30, después 198+30=228, y finalmente 228-48=180.",
+    "cita_textual": "Resultado final 180",
+    "imagen_referencia": "6.jpeg"
+  },
+  {
+    "tema": "Prioridad de Operaciones",
+    "pregunta": "¿Cuál es el primer paso para resolver (360 ÷ 9) + 5 x 2 - 19 + 148?",
+    "opciones": ["Resolver el paréntesis 360 ÷ 9", "Multiplicar 5 x 2", "Sumar 19 + 148"],
+    "respuesta_correcta": "Resolver el paréntesis 360 ÷ 9",
+    "explicacion": "Siempre se resuelve primero lo que está entre paréntesis.",
+    "cita_textual": "(360 ÷ 9) Realiza la división",
+    "imagen_referencia": "6.jpeg"
+  },
+  {
+    "tema": "Prioridad de Operaciones",
+    "pregunta": "En la operación (360 ÷ 9) + 5 x 2 - 19 + 148, ¿cuál es el resultado después de resolver el paréntesis y la multiplicación?",
+    "opciones": ["40 + 10 - 19 + 148", "40 + 5 - 19 + 148", "360 + 10 - 19 + 148"],
+    "respuesta_correcta": "40 + 10 - 19 + 148",
+    "explicacion": "360÷9=40 y 5x2=10.",
+    "cita_textual": "40 + 10 - 19 + 148",
+    "imagen_referencia": "6.jpeg"
+  },
+  {
+    "tema": "Prioridad de Operaciones",
+    "pregunta": "¿Cuál es el resultado final de la operación b) del ejemplo?",
+    "opciones": ["179", "180", "169"],
+    "respuesta_correcta": "179",
+    "explicacion": "Tras seguir todos los pasos de prioridad, el resultado final es 179.",
+    "cita_textual": "Resultado final 179",
+    "imagen_referencia": "6.jpeg"
+  },
+  {
+    "tema": "Prioridad de Operaciones",
+    "pregunta": "¿En qué orden se resuelven las sumas y restas?",
+    "opciones": ["De izquierda a derecha", "De derecha a izquierda", "Las sumas primero siempre"],
+    "respuesta_correcta": "De izquierda a derecha",
+    "explicacion": "Cuando solo quedan sumas y restas, se operan en el orden en que aparecen.",
+    "cita_textual": "2. Se efectúan las sumas y restas (en orden de izquierda a derecha).",
+    "imagen_referencia": "6.jpeg"
+  },
+  {
+    "tema": "Prioridad de Operaciones",
+    "pregunta": "Si Aura cocinó 100 pasteles, Cinthya 24 menos que Aura y Kenya el doble que Cinthya, ¿cuántos pasteles cocinó Cinthya?",
+    "opciones": ["76", "100", "52"],
+    "respuesta_correcta": "76",
+    "explicacion": "100 - 24 = 76.",
+    "cita_textual": "Cinthya elaboró 24 pasteles menos que Aura",
+    "imagen_referencia": "6.jpeg"
+  },
+  {
+    "tema": "Prioridad de Operaciones",
+    "pregunta": "Según el problema de los pasteles, ¿cuántos preparó Hazel si hizo la mitad de los de Aura?",
+    "opciones": ["50", "25", "75"],
+    "respuesta_correcta": "50",
+    "explicacion": "La mitad de 100 es 50.",
+    "cita_textual": "Hazel preparó la mitad de pasteles que preparó Aura",
+    "imagen_referencia": "6.jpeg"
+  },
+  {
+    "tema": "Prioridad de Operaciones",
+    "pregunta": "En la operación 198 + 15 x 2 - 48, ¿qué se hace antes, la suma o la multiplicación?",
+    "opciones": ["La multiplicación", "La suma", "Cualquiera de las dos"],
+    "respuesta_correcta": "La multiplicación",
+    "explicacion": "La multiplicación tiene mayor jerarquía que la suma.",
+    "cita_textual": "Realiza la multiplicación",
+    "imagen_referencia": "6.jpeg"
+  },
+  {
+    "tema": "Prioridad de Operaciones",
+    "pregunta": "¿Qué resultado da la resta 50 - 19 en el ejemplo b)?",
+    "opciones": ["31", "41", "21"],
+    "respuesta_correcta": "31",
+    "explicacion": "50 menos 19 es igual a 31.",
+    "cita_textual": "31 + 148",
+    "imagen_referencia": "6.jpeg"
+  },
+  {
+    "tema": "Propiedad Distributiva",
+    "pregunta": "¿En qué consiste la propiedad distributiva de la multiplicación respecto a la suma?",
+    "opciones": [
+      "Multiplicar el factor por cada uno de los sumandos y sumar los productos.",
+      "Sumar los sumandos y luego restar el factor.",
+      "Dividir el factor entre los sumandos."
+    ],
+    "respuesta_correcta": "Multiplicar el factor por cada uno de los sumandos y sumar los productos.",
+    "explicacion": "El factor de afuera 'se distribuye' multiplicando a cada número de adentro.",
+    "cita_textual": "consiste en multiplicar el factor por cada uno de los sumandos que aparecen dentro del paréntesis y sumar los productos obtenidos.",
+    "imagen_referencia": "7.jpeg"
+  },
+  {
+    "tema": "Propiedad Distributiva",
+    "pregunta": "¿Cuál es el resultado de aplicar la propiedad distributiva en 6 x (3 + 5)?",
+    "opciones": ["(6 x 3) + (6 x 5)", "6 + 3 + 5", "6 x 3 + 5"],
+    "respuesta_correcta": "(6 x 3) + (6 x 5)",
+    "explicacion": "El 6 multiplica tanto al 3 como al 5.",
+    "cita_textual": "(6 x 3) + (6 x 5)",
+    "imagen_referencia": "7.jpeg"
+  },
+  {
+    "tema": "Propiedad Distributiva",
+    "pregunta": "¿Cuál es el resultado final de 6 x (3 + 5)?",
+    "opciones": ["48", "24", "18"],
+    "respuesta_correcta": "48",
+    "explicacion": "6 x 8 = 48, o 18 + 30 = 48.",
+    "cita_textual": "Resultado final 48",
+    "imagen_referencia": "7.jpeg"
+  },
+  {
+    "tema": "Propiedad Distributiva",
+    "pregunta": "Al aplicar la propiedad distributiva en 7 x (4 + 8 + 2), ¿cuáles son los productos parciales?",
+    "opciones": ["28, 56 y 14", "28, 50 y 10", "7, 4 y 8"],
+    "respuesta_correcta": "28, 56 y 14",
+    "explicacion": "7x4=28, 7x8=56, 7x2=14.",
+    "cita_textual": "28 + 56 + 14",
+    "imagen_referencia": "7.jpeg"
+  },
+  {
+    "tema": "Propiedad Distributiva",
+    "pregunta": "¿Cuál es el resultado final de 7 x (4 + 8 + 2)?",
+    "opciones": ["98", "88", "108"],
+    "respuesta_correcta": "98",
+    "explicacion": "7 x 14 = 98.",
+    "cita_textual": "Resultado final 98",
+    "imagen_referencia": "7.jpeg"
+  },
+  {
+    "tema": "Propiedad Distributiva",
+    "pregunta": "Si Julián compró 3 tijeras a 230 colones cada una, ¿cuánto pagó solo por las tijeras?",
+    "opciones": ["690", "460", "230"],
+    "respuesta_correcta": "690",
+    "explicacion": "3 x 230 = 690.",
+    "cita_textual": "compró 3 tijeras... 230",
+    "imagen_referencia": "7.jpeg"
+  },
+  {
+    "tema": "Propiedad Distributiva",
+    "pregunta": "En la operación combinada para los útiles de Julián, ¿qué representa 18 x 230?",
+    "opciones": ["El costo de borradores y tijeras juntos", "El costo de pinceles", "El costo de lápices"],
+    "respuesta_correcta": "El costo de borradores y tijeras juntos",
+    "explicacion": "8 borradores + 3 tijeras = 11 artículos a 230 (según el planteo manual en la imagen).",
+    "cita_textual": "18 x 230",
+    "imagen_referencia": "7.jpeg"
+  },
+  {
+    "tema": "Propiedad Distributiva",
+    "pregunta": "¿Cuál es otra forma de resolver 6 x (3 + 5) sin usar la propiedad distributiva?",
+    "opciones": ["Sumar primero 3+5 y luego multiplicar por 6", "Multiplicar 6x3 y ya", "Sumar 6+3+5"],
+    "respuesta_correcta": "Sumar primero 3+5 y luego multiplicar por 6",
+    "explicacion": "Es la forma directa: 6 x 8 = 48.",
+    "cita_textual": "Realiza la suma... Multiplica",
+    "imagen_referencia": "7.jpeg"
+  },
+  {
+    "tema": "Propiedad Distributiva",
+    "pregunta": "¿Qué resultado se obtiene al sumar 28 + 56 + 14?",
+    "opciones": ["98", "90", "100"],
+    "respuesta_correcta": "98",
+    "explicacion": "La suma de los tres productos distributivos da 98.",
+    "cita_textual": "Realiza la suma... 98",
+    "imagen_referencia": "7.jpeg"
+  },
+  {
+    "tema": "Propiedad Distributiva",
+    "pregunta": "Si tengo 7 x 14, ¿es lo mismo que 7 x (4 + 8 + 2)?",
+    "opciones": ["Sí", "No", "Solo si se resta"],
+    "respuesta_correcta": "Sí",
+    "explicacion": "Porque 4 + 8 + 2 es igual a 14.",
+    "cita_textual": "7 x (4 + 8 + 2) ... 7 x 14",
+    "imagen_referencia": "7.jpeg"
+  },
+  {
+    "tema": "Propiedad Distributiva",
+    "pregunta": "¿Qué operación se realiza después de multiplicar en la propiedad distributiva?",
+    "opciones": ["Suma", "Resta", "División"],
+    "respuesta_correcta": "Suma",
+    "explicacion": "Se suman los productos obtenidos de cada multiplicación.",
+    "cita_textual": "y sumar los productos obtenidos.",
+    "imagen_referencia": "7.jpeg"
+  },
+  {
+    "tema": "Propiedad Distributiva",
+    "pregunta": "¿Cuántos pinceles compró Julián y a qué precio?",
+    "opciones": ["4 pinceles a 150 colones", "7 pinceles a 230 colones", "3 pinceles a 150 colones"],
+    "respuesta_correcta": "4 pinceles a 150 colones",
+    "explicacion": "En el texto dice 4 pinceles y el dibujo muestra el precio de 150.",
+    "cita_textual": "4 pinceles... 150",
+    "imagen_referencia": "7.jpeg"
+  },
+  {
+    "tema": "Números Pares, Impares y Múltiplos",
+    "pregunta": "¿Cuándo un número es par?",
+    "opciones": [
+      "Si termina en 0, 2, 4, 6 u 8",
+      "Si termina en 1, 3, 5, 7 o 9",
+      "Si es mayor que 100"
+    ],
+    "respuesta_correcta": "Si termina en 0, 2, 4, 6 u 8",
+    "explicacion": "La paridad depende únicamente del último dígito (unidades).",
+    "cita_textual": "Un número es par si el dígito que corresponde a las unidades es 0, 2, 4, 6, 8.",
+    "imagen_referencia": "8.jpeg"
+  },
+  {
+    "tema": "Números Pares, Impares y Múltiplos",
+    "pregunta": "¿Cuál de estos números es impar?",
+    "opciones": ["351", "958", "126004"],
+    "respuesta_correcta": "351",
+    "explicacion": "351 termina en 1, lo cual lo clasifica como impar.",
+    "cita_textual": "Números impares... 351",
+    "imagen_referencia": "8.jpeg"
+  },
+  {
+    "tema": "Números Pares, Impares y Múltiplos",
+    "pregunta": "¿Cómo se obtienen los múltiplos de un número?",
+    "opciones": [
+      "Multiplicando dicho número por los números naturales (0, 1, 2, 3...)",
+      "Sumando 10 a cada número",
+      "Dividiendo el número entre 2"
+    ],
+    "respuesta_correcta": "Multiplicando dicho número por los números naturales (0, 1, 2, 3...)",
+    "explicacion": "Los múltiplos son los resultados de las tablas de multiplicar de ese número.",
+    "cita_textual": "Los múltiplos de un número se obtienen multiplicando dicho número por los números: 0, 1, 2, 3, 4, 5, ...",
+    "imagen_referencia": "8.jpeg"
+  },
+  {
+    "tema": "Números Pares, Impares y Múltiplos",
+    "pregunta": "¿Cuál es el múltiplo de 6 que resulta de 6 x 4?",
+    "opciones": ["24", "18", "30"],
+    "respuesta_correcta": "24",
+    "explicacion": "Seis veces cuatro es igual a veinticuatro.",
+    "cita_textual": "6 x 4 = 24",
+    "imagen_referencia": "8.jpeg"
+  },
+  {
+    "tema": "Números Pares, Impares y Múltiplos",
+    "pregunta": "Si Francisco quiere comprar un balón de 2 000 colones con billetes de 1 000, ¿cuántos necesita?",
+    "opciones": ["2", "1", "4"],
+    "respuesta_correcta": "2",
+    "explicacion": "2 x 1 000 = 2 000.",
+    "cita_textual": "Billetes 1 000 ... Cantidad 2",
+    "imagen_referencia": "8.jpeg"
+  },
+  {
+    "tema": "Números Pares, Impares y Múltiplos",
+    "pregunta": "¿Cuántas monedas de 100 colones equivalen a 2 000 colones?",
+    "opciones": ["20", "10", "200"],
+    "respuesta_correcta": "20",
+    "explicacion": "20 x 100 = 2 000.",
+    "cita_textual": "Monedas 100 ... Cantidad 20",
+    "imagen_referencia": "8.jpeg"
+  },
+  {
+    "tema": "Números Pares, Impares y Múltiplos",
+    "pregunta": "¿Es el número 179 116 par o impar?",
+    "opciones": ["Par", "Impar", "Ninguno"],
+    "respuesta_correcta": "Par",
+    "explicacion": "Termina en 6, por lo tanto es par.",
+    "cita_textual": "Números pares... 179 116",
+    "imagen_referencia": "8.jpeg"
+  },
+  {
+    "tema": "Números Pares, Impares y Múltiplos",
+    "pregunta": "¿Cuál es el múltiplo de 6 que resulta de 6 x 0?",
+    "opciones": ["0", "6", "1"],
+    "respuesta_correcta": "0",
+    "explicacion": "Cualquier número multiplicado por cero es cero.",
+    "cita_textual": "6 x 0 = 0",
+    "imagen_referencia": "8.jpeg"
+  },
+  {
+    "tema": "Números Pares, Impares y Múltiplos",
+    "pregunta": "¿Cuál es el último dígito del número 24 585 y qué indica?",
+    "opciones": ["5, indica que es impar", "4, indica que es par", "8, indica que es múltiplo de 2"],
+    "respuesta_correcta": "5, indica que es impar",
+    "explicacion": "Los números terminados en 5 son impares.",
+    "cita_textual": "Números impares... 24 585",
+    "imagen_referencia": "8.jpeg"
+  },
+  {
+    "tema": "Números Pares, Impares y Múltiplos",
+    "pregunta": "¿Cuántas monedas de 500 colones necesita Francisco para pagar los 2 000 colones?",
+    "opciones": ["4", "5", "2"],
+    "respuesta_correcta": "4",
+    "explicacion": "500 x 4 = 2 000.",
+    "cita_textual": "Monedas 500 ... Cantidad 4",
+    "imagen_referencia": "8.jpeg"
+  },
+  {
+    "tema": "Números Pares, Impares y Múltiplos",
+    "pregunta": "¿Qué dígito en las unidades tiene el número 72?",
+    "opciones": ["2", "7", "0"],
+    "respuesta_correcta": "2",
+    "explicacion": "El dígito de las unidades es el 2, por eso es un número par.",
+    "cita_textual": "Números pares... 72",
+    "imagen_referencia": "8.jpeg"
+  },
+  {
+    "tema": "Números Pares, Impares y Múltiplos",
+    "pregunta": "¿Cuál de estos números es un múltiplo de 6?",
+    "opciones": ["18", "15", "10"],
+    "respuesta_correcta": "18",
+    "explicacion": "18 es múltiplo de 6 porque 6 x 3 = 18.",
+    "cita_textual": "6 x 3 = 18",
+    "imagen_referencia": "8.jpeg"
+  }
+];
+
+        let quizQuestions = [];
+        let currentIdx = 0;
+        let correctCount = 0;
+        let totalCount = 0;
+        const IMAGE_PATH = "5 GRADO/Matemáticas/Examen 1/";
+
+        function showContent(tab) {
+            document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+            event.currentTarget.classList.add('active');
+            
+            if (tab === 'quiz' && quizQuestions.length === 0) {
+                startQuiz();
+            }
+        }
+
+        function shuffle(arr) {
+            return arr.sort(() => Math.random() - 0.5);
+        }
+
+        function startQuiz() {
+            quizQuestions = shuffle([...allQuestions]);
+            totalCount = allQuestions.length;
+            currentIdx = 0;
+            correctCount = 0;
+            document.getElementById('results-container').style.display = 'none';
+            document.getElementById('quiz-container').style.display = 'block';
+            updateProgress();
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = quizQuestions[currentIdx];
+            document.getElementById('question-text').textContent = q.pregunta;
+            document.getElementById('options-container').innerHTML = '';
+            document.getElementById('feedback-panel').style.display = 'none';
+            
+            q.opciones.forEach(opt => {
+                const btn = document.createElement('div');
+                btn.className = 'option';
+                btn.textContent = opt;
+                btn.onclick = () => checkAnswer(opt, btn);
+                document.getElementById('options-container').appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selected, btn) {
+            const q = quizQuestions[currentIdx];
+            const options = document.querySelectorAll('.option');
+            options.forEach(o => o.onclick = null);
+
+            const feedbackPanel = document.getElementById('feedback-panel');
+            const status = document.getElementById('feedback-status');
+            
+            feedbackPanel.style.display = 'block';
+            document.getElementById('explanation-text').textContent = q.explicacion;
+            document.getElementById('citation-text').innerHTML = `<b>Cita del libro:</b> "${q.cita_textual}"`;
+            document.getElementById('ref-image').src = IMAGE_PATH + q.imagen_referencia;
+
+            if (selected === q.respuesta_correcta) {
+                status.textContent = "¡Correcto! 🎯";
+                status.style.color = "var(--correct-color)";
+                btn.style.borderColor = "var(--correct-color)";
+                btn.style.backgroundColor = "#e8f5e9";
+                correctCount++;
+                currentIdx++;
+            } else {
+                status.textContent = "¡Casi lo logras! Mira el procedimiento abajo.";
+                status.style.color = "var(--wrong-color)";
+                btn.style.borderColor = "var(--wrong-color)";
+                btn.style.backgroundColor = "#ffebee";
+                
+                // Si falla, insertamos una pregunta del mismo tema más adelante para reforzar
+                const sameTopicQ = allQuestions.find((item, idx) => item.tema === q.tema && !quizQuestions.slice(0, currentIdx + 1).includes(item));
+                if (sameTopicQ) {
+                    quizQuestions.splice(currentIdx + 2, 0, sameTopicQ);
+                    totalCount = quizQuestions.length;
+                }
+                
+                // Mostrar la correcta
+                options.forEach(o => {
+                    if (o.textContent === q.respuesta_correcta) {
+                        o.style.borderColor = "var(--correct-color)";
+                        o.style.borderWidth = "3px";
+                    }
+                });
+            }
+            updateProgress();
+        }
+
+        function handleNext() {
+            if (currentIdx < quizQuestions.length) {
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function updateProgress() {
+            const progress = (currentIdx / totalCount) * 100;
+            const bar = document.getElementById('progress-bar');
+            bar.style.width = progress + '%';
+            bar.textContent = Math.round(progress) + '%';
+        }
+
+        function showResults() {
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('results-container').style.display = 'block';
+            document.getElementById('final-score').textContent = Math.round((correctCount / totalCount) * 100);
+            document.getElementById('correct-count').textContent = correctCount;
+            document.getElementById('total-count').textContent = totalCount;
+        }
+
+        function restartQuiz() {
+            startQuiz();
+        }
+    </script>
+</body>
+</html>

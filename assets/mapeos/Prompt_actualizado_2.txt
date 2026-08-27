@@ -1,0 +1,43 @@
+Tengo una serie de imágenes en formato .jpeg  y libros completos en formato PDF (esto formato puede variar en el futuro) que quiero que analices detalladamente y me ayudes a generar documentos estáticos y en HTML para que un niño de cuarto grado de Costa Rica pueda estudiar. Para el HTML se debe incluir una guía de progreso, donde cada vez que  y además, en caso de que falle una pregunta, se le genere otra pregunta sobre el mismo tema, espero al menos 60 o 70 preguntas que sirvan para estudiar.
+
+Para que la experiencia sea didáctica y efectiva, considera lo siguiente al enviarme las imágenes y la información adicional:
+
+**Proceso Sugerido (Actualizado)**
+
+**1. Análisis y Verificación Detallada de las Imágenes**
+Cuando me envíes las imágenes, las procesaré para identificar el contenido principal. Para asegurar la máxima precisión, seguiré este proceso de verificación imagen por imagen:
+    a.  **Descripción de la Imagen:** Te proporcionaré una descripción detallada del contenido de cada imagen.
+    b.  **Confirmación del Usuario:** Deberás confirmar si mi descripción es correcta. Si no lo es, me proporcionarás la corrección necesaria.
+    c.  **Repetición:** Repetiremos este paso para cada imagen hasta que todas las descripciones sean validadas por ti.
+Es importante que las imágenes sean claras y representen conceptos que un niño de cuarto grado de Costa Rica pueda entender fácilmente. 
+Si el insumo es un libro en PDF, te indicaré en donde están los temas a tratar para desarrollar el contenido. En su lugar, busca capturar fragmentos o resúmenes directamente del libro PDF para las explicaciones, pero asegúrate de mantener la estructura de mostrar la respuesta correcta hasta que se marque alguna de las opciones de respuesta.
+
+**2. Generación del Contenido Escrito**
+Con base en el análisis y la **descripción verificada** de las imágenes, crearé resúmenes y explicaciones en un lenguaje sencillo y adecuado para niños de cuarto grado.
+
+**3. Creación de Preguntas**
+Una vez que el contenido de todas las imágenes haya sido **verificado y confirmado**, generaré al menos 60 o 70 preguntas variadas (selección múltiple, verdadero/falso, completar, etc.) que cubran los temas de las imágenes. Estas preguntas estarán diseñadas para reforzar el aprendizaje y serán específicas para el currículo de cuarto grado en Costa Rica. Las preguntas deben ser de dificultad baja, media y alta, verifica muy bien que las respuestas sean correctas. No pongas respuestas muy obvias entre las opciones, como que si en Costa Rica habitan osos polares o canguros, esas son demasiado fáciles. Incluye una breve explicación de por qué la respuesta seleccionada es correcta o incorrecta; cuando la explicación se despliegue, incorpora un botón para que el niño pueda avanzar cuando haya terminado de leer la explicación.
+
+**Mejora Implementada:** Es muy importante que cuando aparezca la explicación, se muestre la imagen completa de donde sacaste la pregunta para así verificar la información. **Adicionalmente, junto a la explicación y la imagen, debes incluir una cita textual del fragmento específico del documento de donde se extrajo la respuesta.** Esto es clave para la verificación. Asegúrate de que las imágenes se muestren en un tamaño adecuado.
+
+**¡Atención!** Es CRUCIAL que verifiques que cada pregunta, su explicación, su cita textual y su imagen de referencia correspondan exactamente entre sí, haz esto al menos 4 veces y asegúrate que cada iteración sea correcta. Un error en esta asociación confunde al estudiante y daña la experiencia de aprendizaje.
+
+Crea las preguntas ÚNICAMENTE con la información que aparece en las imágenes, puedes usar tu conocimiento solo para generar las opciones incorrectas, pero deben tener coherencia con el contexto de la información.
+
+No inicies las preguntas como "la imagen muestra", o "de acuerdo con el diagrama de la imagen", el niño no va a ver la imagen de donde sacaste la información hasta que dé su respuesta, entonces las preguntas deben entenderse por si solas.
+
+**4. Estructura del HTML Interactivo**
+El documento HTML incluirá:
+
+*   Contenido estático: Las explicaciones y resúmenes de los temas.
+*   Guía de progreso: Un indicador visual que mostrará al niño cuánto ha avanzado en el estudio.
+*   Sección de preguntas:
+    *   Si el niño falla una pregunta, se le presentará otra pregunta relacionada con el mismo tema para reforzar el conocimiento.
+    *   Las preguntas se presentarán de forma amigable y clara.
+
+EL nombre del HTML generado deberá ser el de la carpeta que madre que contiene las imágenes, por ejemplo, si las imágenes están en ~/DOcumentos/Clases de Billy/5 GRADO/Ciencias/EXAMEN 1/, entonces el HTML debe llamarse "Ciencias".
+
+Quiero que utilices el estilo del archivo "Formato de muestra.html" que está en este mismo directorio de trabajo. Aseúrate de que todo el documento sea compatible de forma tal que pueda compartir el archivo y en cualquier computadora pueda visualizarse todo correctamente, incluso las imágenes; anteriormente le compartí el HTML e incluso las carpetas que conteían las imágenes, pero éstas no se veían en el HTML, esta compatibilidad debe ser para cualquier sistema operativo, incluidos Linux Mint y Windows.
+
+**5. Documento de Apoyo (Estático)**
+Además del HTML interactivo, generaré un documento estático (por ejemplo, en formato Markdown .md) con el contenido resumido y la lista de preguntas y respuestas, para que el niño pueda repasar sin necesidad de una conexión a internet si así lo desea.

@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio de Ciencias - Quinto Grado</title>
+    <style>
+        :root {
+            --bg-color: #e3f2fd;
+            --main-color: #1565c0;
+            --accent-color: #ffb300;
+            --correct-color: #4caf50;
+            --wrong-color: #f44336;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            color: var(--main-color);
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            height: 25px;
+            position: relative;
+        }
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background-color: var(--accent-color);
+            border-radius: 10px;
+            text-align: center;
+            line-height: 25px;
+            color: #333;
+            font-weight: bold;
+            transition: width 0.5s ease-in-out;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tab-button {
+            background-color: var(--main-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .tab-button:hover, .tab-button.active {
+            background-color: #0d47a1;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .content {
+            display: none;
+            text-align: left;
+            padding: 20px;
+            border: 2px solid #e3f2fd;
+            border-radius: 10px;
+        }
+        .content.active {
+            display: block;
+        }
+        .topic-summary {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 5px solid var(--main-color);
+            border-radius: 5px;
+        }
+        #quiz-container {
+            margin-top: 20px;
+        }
+        .question-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .question {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+        .option {
+            background-color: #fff;
+            border: 2px solid #e0e0e0;
+            padding: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.2s;
+            text-align: left;
+        }
+        .option:hover {
+            border-color: var(--main-color);
+            background-color: #f0f7ff;
+        }
+        .feedback {
+            display: none;
+            margin-top: 20px;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: left;
+        }
+        .explanation-text {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        .citation {
+            font-style: italic;
+            background-color: rgba(255,255,255,0.7);
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 3px solid #333;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+        .reference-image {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            margin: 15px 0;
+            display: block;
+        }
+        .next-btn {
+            background-color: var(--main-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+            display: block;
+            margin: 20px auto 0;
+        }
+        #results-container {
+            display: none;
+            padding: 40px;
+        }
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: var(--main-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            margin: 20px auto;
+            border: 8px solid var(--accent-color);
+        }
+        @media (min-width: 600px) {
+            .options {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🎓 Mi Guía de Estudio: Ciencias</h1>
+        <p>Prepárate para el examen de Quinto Grado con resúmenes y juegos divertidos.</p>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="showContent('estudio')">📖 Repasar Temas</button>
+            <button class="tab-button" onclick="showContent('quiz')">🎮 ¡A Jugar! (Prueba)</button>
+        </div>
+
+        <!-- Material de Estudio -->
+        <div id="estudio" class="content active">
+            <h2>Resúmenes para estudiar</h2>
+            <div class="topic-summary">
+                <h3>1. Madurez Sexual y Sexualidad</h3>
+                <p><b>Madurez sexual:</b> Es la capacidad física y psicológica de concebir un nuevo ser. Ocurre generalmente entre los 10 y 16 años.</p>
+                <ul>
+                    <li><b>Caracteres primarios:</b> Órganos sexuales con los que nacemos (Mujer: XX, Hombre: XY).</li>
+                    <li><b>Caracteres secundarios:</b> Cambios que aparecen en la pubertad (voz, vello, menstruación, eyaculación).</li>
+                    <li><b>Sexualidad:</b> Incluye nuestras emociones, valores y cómo nos sentimos, además de lo biológico.</li>
+                </ul>
+            </div>
+            <div class="topic-summary">
+                <h3>2. Sistemas Reproductores</h3>
+                <p><b>Femenino:</b> Ovarios (producen óvulos), Trompas de Falopio, Útero (donde crece el bebé) y Vagina.</p>
+                <p><b>Masculino:</b> Testículos (producen espermatozoides y testosterona), Escroto, Conductos deferentes, Próstata y Pene.</p>
+            </div>
+            <div class="topic-summary">
+                <h3>3. Sistema Urinario y Excreción</h3>
+                <p><b>Función:</b> Limpiar la sangre y eliminar desechos líquidos (orina).</p>
+                <ul>
+                    <li><b>Riñones:</b> Filtran la sangre. Tienen forma de frijol.</li>
+                    <li><b>Uréteres:</b> Tubos que llevan la orina a la vejiga.</li>
+                    <li><b>Vejiga:</b> Almacena la orina como un globo.</li>
+                    <li><b>Uretra:</b> El conducto por donde sale la orina al exterior.</li>
+                </ul>
+                <p><b>Otros órganos de excreción:</b> Pulmones (eliminan aire sucio), Piel (sudor) e Hígado.</p>
+            </div>
+            <div class="topic-summary">
+                <h3>4. Salud y Prevención</h3>
+                <ul>
+                    <li><b>Hábitos sanos:</b> Tomar 6-8 vasos de agua, no aguantar las ganas de orinar, comer poca sal y cambiarse la ropa interior a diario.</li>
+                    <li><b>ETS:</b> Enfermedades que se pasan por contacto sexual. Es importante la comunicación con adultos de confianza.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Quiz -->
+        <div id="quiz" class="content">
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar">0%</div>
+            </div>
+            
+            <div id="quiz-container">
+                <div class="question-box">
+                    <p class="question" id="question-text"></p>
+                    <div class="options" id="options-container"></div>
+                </div>
+                
+                <div class="feedback" id="feedback-panel">
+                    <div id="feedback-status" style="font-size: 1.5em; font-weight: bold; margin-bottom: 10px;"></div>
+                    <div class="explanation-text" id="explanation-text"></div>
+                    <div class="citation" id="citation-text"></div>
+                    <p>Mira la información aquí:</p>
+                    <img id="ref-image" class="reference-image" src="" alt="Imagen de referencia">
+                    <button class="next-btn" id="next-button" onclick="handleNext()">Continuar →</button>
+                </div>
+            </div>
+
+            <div id="results-container">
+                <h2>¡Excelente trabajo! 🎉</h2>
+                <p>Has completado toda la aventura de estudio.</p>
+                <div class="score-circle" id="final-score">0</div>
+                <p>Preguntas correctas: <span id="correct-count">0</span> de <span id="total-count">0</span></p>
+                <button class="tab-button" onclick="restartQuiz()">Intentar de Nuevo</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const allQuestions = [
+  {
+    "tema": "Madurez sexual",
+    "pregunta": "¿Qué es la madurez sexual según el texto?",
+    "opciones": ["La capacidad de los seres humanos de concebir un nuevo ser", "El inicio de la educación primaria", "El proceso de crecimiento de los huesos"],
+    "respuesta_correcta": "La capacidad de los seres humanos de concebir un nuevo ser",
+    "explicacion": "El texto define la madurez sexual como la capacidad de concebir cuando se está preparado física y psicológicamente.",
+    "cita_textual": "La madurez sexual es la capacidad que tienen los hombres y las mujeres de concebir a un nuevo ser",
+    "imagen_referencia": "1.jpeg"
+  },
+  {
+    "tema": "Madurez sexual",
+    "pregunta": "¿A qué edad se manifiesta generalmente la madurez sexual en los niños?",
+    "opciones": ["Entre los 5 y 10 años", "Entre los 11 y los 16 años", "A partir de los 20 años"],
+    "respuesta_correcta": "Entre los 11 y los 16 años",
+    "explicacion": "El texto indica que en los niños se manifiesta entre los 11 y 16 años con las primeras eyaculaciones.",
+    "cita_textual": "En los niños se manifiesta entre los 11 y los 16 años con las primeras eyaculaciones.",
+    "imagen_referencia": "1.jpeg"
+  },
+  {
+    "tema": "Madurez sexual",
+    "pregunta": "¿Qué es la eyaculación?",
+    "opciones": ["El flujo sanguíneo del útero", "La expulsión del semen por medio del pene", "La producción de orina"],
+    "respuesta_correcta": "La expulsión del semen por medio del pene",
+    "explicacion": "La eyaculación se define específicamente como la expulsión de semen a través del pene.",
+    "cita_textual": "La eyaculación es la expulsión del semen por medio del pene.",
+    "imagen_referencia": "1.jpeg"
+  },
+  {
+    "tema": "Madurez sexual",
+    "pregunta": "¿En qué rango de edad aparece aproximadamente la menstruación en las niñas?",
+    "opciones": ["Entre los 10 y los 15 años", "Entre los 15 y los 20 años", "Entre los 8 y los 12 años"],
+    "respuesta_correcta": "Entre los 10 y los 15 años",
+    "explicacion": "El texto señala que la menstruación aparece aproximadamente entre los 10 y los 15 años.",
+    "cita_textual": "En las niñas se presenta aproximadamente entre los 10 y los 15 años cuando aparece la menstruación.",
+    "imagen_referencia": "1.jpeg"
+  },
+  {
+    "tema": "Caracteres sexuales",
+    "pregunta": "¿Qué son los caracteres sexuales primarios?",
+    "opciones": ["Cambios antes de alcanzar la edad adulta", "Órganos sexuales que diferencian a hombres y mujeres desde el nacimiento", "Rasgos como el cambio de voz"],
+    "respuesta_correcta": "Órganos sexuales que diferencian a hombres y mujeres desde el nacimiento",
+    "explicacion": "Los caracteres primarios son los órganos sexuales presentes desde que se nace.",
+    "cita_textual": "Incluyen las características que diferencian a los hombres y mujeres desde el nacimiento, es decir los órganos sexuales.",
+    "imagen_referencia": "1.jpeg"
+  },
+  {
+    "tema": "Caracteres sexuales",
+    "pregunta": "¿Cuáles son los cromosomas que determinan que una persona sea mujer?",
+    "opciones": ["Cromosomas XY", "Cromosomas XX", "Cromosomas YY"],
+    "respuesta_correcta": "Cromosomas XX",
+    "explicacion": "El texto menciona que las mujeres tienen un par de cromosomas XX.",
+    "cita_textual": "Las mujeres tienen un par de cromosomas (XX).",
+    "imagen_referencia": "1.jpeg"
+  },
+  {
+    "tema": "Sistema Reproductor Femenino",
+    "pregunta": "¿Cuál es la función de los ovarios?",
+    "opciones": ["Proteger al bebé durante el embarazo", "Producir los óvulos", "Llevar los óvulos al útero"],
+    "respuesta_correcta": "Producir los óvulos",
+    "explicacion": "Los ovarios son órganos de forma ovalada encargados de la producción de óvulos.",
+    "cita_textual": "Son dos órganos de forma ovalada, que producen los óvulos.",
+    "imagen_referencia": "2.jpeg"
+  },
+  {
+    "tema": "Sistema Reproductor Femenino",
+    "pregunta": "¿Qué conductos llevan los óvulos desde el ovario hasta el útero?",
+    "opciones": ["La uretra", "Las trompas de Falopio", "Los conductos deferentes"],
+    "respuesta_correcta": "Las trompas de Falopio",
+    "explicacion": "Las trompas de Falopio tienen la función de conducir los óvulos hacia el útero.",
+    "cita_textual": "Son conductos que llevan óvulos del ovario al útero.",
+    "imagen_referencia": "2.jpeg"
+  },
+  {
+    "tema": "Sistema Reproductor Femenino",
+    "pregunta": "¿Cómo se describe al útero en el texto?",
+    "opciones": ["Lugar por donde entran los espermatozoides", "Órgano musculoso que protege al bebé", "Glándulas que producen leche"],
+    "respuesta_correcta": "Órgano musculoso que protege al bebé",
+    "explicacion": "El útero es un órgano muscular cuya función principal es la protección del feto.",
+    "cita_textual": "Órgano musculoso, que protege al bebé hasta el momento de nacer.",
+    "imagen_referencia": "2.jpeg"
+  },
+  {
+    "tema": "Sistema Reproductor Femenino",
+    "pregunta": "¿Cuál es la función de las mamas?",
+    "opciones": ["Producir óvulos", "Producir leche para alimentar al bebé", "Permitir la entrada de espermatozoides"],
+    "respuesta_correcta": "Producir leche para alimentar al bebé",
+    "explicacion": "Las mamas producen leche materna para la nutrición del recién nacido.",
+    "cita_textual": "Glándulas que producen leche durante el embarazo para alimentar al bebé.",
+    "imagen_referencia": "2.jpeg"
+  },
+  {
+    "tema": "Sistema Reproductor Femenino",
+    "pregunta": "¿Qué parte externa del sistema reproductor femenino está dividida en labios mayores y menores?",
+    "opciones": ["La vagina", "La vulva", "El útero"],
+    "respuesta_correcta": "La vulva",
+    "explicacion": "La vulva es la parte externa y se caracteriza por tener labios mayores y menores.",
+    "cita_textual": "Parte externa del sistema reproductor femenino, está dividida en labios mayores y labios menores.",
+    "imagen_referencia": "2.jpeg"
+  },
+  {
+    "tema": "Sistema Reproductor Femenino",
+    "pregunta": "¿Cuál es el lugar por donde salen los bebés al nacer?",
+    "opciones": ["Las trompas de Falopio", "La vagina", "La uretra"],
+    "respuesta_correcta": "La vagina",
+    "explicacion": "La vagina funciona como el canal de parto por donde sale el bebé.",
+    "cita_textual": "Lugar por donde entran los espermatozoides y por donde sale el bebé al nacer.",
+    "imagen_referencia": "2.jpeg"
+  },
+  {
+    "tema": "Sistema Reproductor Masculino",
+    "pregunta": "¿Qué órgano masculino se encarga de producir los espermatozoides?",
+    "opciones": ["La próstata", "Los testículos", "La vesícula seminal"],
+    "respuesta_correcta": "Los testículos",
+    "explicacion": "Los testículos son los órganos internos encargados de la espermatogénesis.",
+    "cita_textual": "Producen los espermatozoides.",
+    "imagen_referencia": "3.jpeg"
+  },
+  {
+    "tema": "Sistema Reproductor Masculino",
+    "pregunta": "¿Qué función cumple el escroto?",
+    "opciones": ["Producir un líquido lubricante", "Bolsa que cubre y protege los testículos", "Transportar espermatozoides"],
+    "respuesta_correcta": "Bolsa que cubre y protege los testículos",
+    "explicacion": "El escroto es la estructura externa que resguarda los testículos.",
+    "cita_textual": "Bolsa que cubre y protege los testículos.",
+    "imagen_referencia": "3.jpeg"
+  },
+  {
+    "tema": "Sistema Reproductor Masculino",
+    "pregunta": "¿Qué conducto transporta los espermatozoides hacia el exterior?",
+    "opciones": ["Los conductos deferentes", "La uretra", "Los uréteres"],
+    "respuesta_correcta": "La uretra",
+    "explicacion": "La uretra es el conducto final para la salida del semen y la orina.",
+    "cita_textual": "Transporta los espermatozoides al exterior.",
+    "imagen_referencia": "3.jpeg"
+  },
+  {
+    "tema": "Sistema Reproductor Masculino",
+    "pregunta": "¿Cuál es la función de la vesícula seminal?",
+    "opciones": ["Proteger los testículos", "Producir un líquido que mantiene vivos a los espermatozoides", "Fabricar testosterona"],
+    "respuesta_correcta": "Producir un líquido que mantiene vivos a los espermatozoides",
+    "explicacion": "La vesícula seminal aporta fluidos vitales para la supervivencia de los espermatozoides.",
+    "cita_textual": "Producen un líquido que mantiene vivos a los espermatozoides.",
+    "imagen_referencia": "3.jpeg"
+  },
+  {
+    "tema": "Sistema Reproductor Masculino",
+    "pregunta": "¿Qué órgano masculino fabrica una sustancia que permite movilizar a los espermatozoides?",
+    "opciones": ["La próstata", "El pene", "El escroto"],
+    "respuesta_correcta": "La próstata",
+    "explicacion": "La próstata secreta sustancias que facilitan la movilidad espermática.",
+    "cita_textual": "Fabrica una sustancia que permite movilizar a los espermatozoides.",
+    "imagen_referencia": "3.jpeg"
+  },
+  {
+    "tema": "Sistema Reproductor Masculino",
+    "pregunta": "¿Qué tubos llevan los espermatozoides desde los testículos a la uretra?",
+    "opciones": ["Uréteres", "Conductos deferentes", "Trompas de Falopio"],
+    "respuesta_correcta": "Conductos deferentes",
+    "explicacion": "Los conductos deferentes son la vía de transporte interno desde los testículos.",
+    "cita_textual": "Tubos que llevan los espermatozoides de los testículos a la uretra.",
+    "imagen_referencia": "3.jpeg"
+  },
+  {
+    "tema": "Órganos reproductivos",
+    "pregunta": "¿Cómo se llama el gameto femenino?",
+    "opciones": ["Espermatozoide", "Óvulo", "Hormona"],
+    "respuesta_correcta": "Óvulo",
+    "explicacion": "El óvulo es la célula sexual producida por el sistema reproductor femenino.",
+    "cita_textual": "El gameto femenino se llama óvulo",
+    "imagen_referencia": "4.jpeg"
+  },
+  {
+    "tema": "Órganos reproductivos",
+    "pregunta": "¿Qué hormona sexual masculina se menciona en el texto?",
+    "opciones": ["Estrógeno", "Testosterona", "Progesterona"],
+    "respuesta_correcta": "Testosterona",
+    "explicacion": "La testosterona es la principal hormona sexual producida por los hombres.",
+    "cita_textual": "La hormona sexual masculina se llama testosterona.",
+    "imagen_referencia": "4.jpeg"
+  },
+  {
+    "tema": "Cambios físicos",
+    "pregunta": "¿Cuál de estos es un cambio físico que experimentan las mujeres?",
+    "opciones": ["Cambio de voz", "Ensanchamiento de caderas", "Aparición de vello facial"],
+    "respuesta_correcta": "Ensanchamiento de caderas",
+    "explicacion": "El ensanchamiento de las caderas es un signo característico del desarrollo femenino.",
+    "cita_textual": "Ensanchamiento de caderas.",
+    "imagen_referencia": "4.jpeg"
+  },
+  {
+    "tema": "Cambios físicos",
+    "pregunta": "¿Qué nombre recibe la primera menstruación?",
+    "opciones": ["Menarquía", "Ovulación", "Eyaculación"],
+    "respuesta_correcta": "Menarquía",
+    "explicacion": "El término técnico para el primer episodio menstrual es menarquía.",
+    "cita_textual": "Primera menstruación, que recibe el nombre de menarquía.",
+    "imagen_referencia": "4.jpeg"
+  },
+  {
+    "tema": "Cambios físicos",
+    "pregunta": "¿Cuál es un cambio físico común en los hombres durante la madurez?",
+    "opciones": ["Desarrollo de glándulas mamarias", "Cambio de voz", "Ensanchamiento de caderas"],
+    "respuesta_correcta": "Cambio de voz",
+    "explicacion": "La voz de los varones se vuelve más grave debido al crecimiento de la laringe.",
+    "cita_textual": "Cambio de voz.",
+    "imagen_referencia": "4.jpeg"
+  },
+  {
+    "tema": "Órganos reproductivos",
+    "pregunta": "¿Dónde se producen los espermatozoides?",
+    "opciones": ["En la próstata", "En los testículos", "En la uretra"],
+    "respuesta_correcta": "En los testículos",
+    "explicacion": "Los testículos son la fábrica de células sexuales masculinas.",
+    "cita_textual": "Los testículos producen los espermatozoides.",
+    "imagen_referencia": "4.jpeg"
+  },
+  {
+    "tema": "Sexo y Sexualidad",
+    "pregunta": "¿A qué se refiere el término 'sexo' según la imagen?",
+    "opciones": ["A las costumbres de la sociedad", "Al conjunto de características biológicas y fisiológicas", "A las emociones de cada persona"],
+    "respuesta_correcta": "Al conjunto de características biológicas y fisiológicas",
+    "explicacion": "El sexo se define por las diferencias biológicas innatas entre machos y hembras.",
+    "cita_textual": "El sexo se refiere al sexo biológico de la persona, es el conjunto de características biológicas y fisiológicas que diferencian a los hombres de las mujeres desde el nacimiento",
+    "imagen_referencia": "5.jpeg"
+  },
+  {
+    "tema": "Genética",
+    "pregunta": "¿Qué molécula es la encargada de la información genética de los seres vivos?",
+    "opciones": ["El citoplasma", "El cromosoma", "La membrana"],
+    "respuesta_correcta": "El cromosoma",
+    "explicacion": "Los cromosomas contienen el ADN que porta la información genética.",
+    "cita_textual": "el cromosoma es la molécula encargada de la información genética de los seres vivos",
+    "imagen_referencia": "5.jpeg"
+  },
+  {
+    "tema": "Genética",
+    "pregunta": "¿Qué aspectos del sexo se relacionan con la forma física?",
+    "opciones": ["Genéticos", "Anatómicos", "Emocionales"],
+    "respuesta_correcta": "Anatómicos",
+    "explicacion": "La anatomía se encarga de la estructura física del cuerpo.",
+    "cita_textual": "ANATÓMICOS Se relacionan con la forma física que tienen los hombres y las mujeres.",
+    "imagen_referencia": "5.jpeg"
+  },
+  {
+    "tema": "Sexualidad",
+    "pregunta": "¿Con qué se relaciona principalmente la sexualidad?",
+    "opciones": ["Solo con los genitales", "Con emociones, valores y formas de sentir", "Solo con la reproducción"],
+    "respuesta_correcta": "Con emociones, valores y formas de sentir",
+    "explicacion": "La sexualidad es un concepto integral que incluye el mundo emocional.",
+    "cita_textual": "Se relaciona con las emociones, valores y formas de sentir de cada persona.",
+    "imagen_referencia": "5.jpeg"
+  },
+  {
+    "tema": "Sociedad",
+    "pregunta": "¿Qué abarca el concepto de sexualidad además de lo psicológico?",
+    "opciones": ["Aspectos sociales y religiosos", "Solo aspectos físicos", "Solo la alimentación"],
+    "respuesta_correcta": "Aspectos sociales y religiosos",
+    "explicacion": "La sexualidad también está influenciada por el contexto social y las creencias.",
+    "cita_textual": "Abarca aspectos psicológicos, sociales y religiosos de cada persona.",
+    "imagen_referencia": "5.jpeg"
+  },
+  {
+    "tema": "Sociedad",
+    "pregunta": "¿Qué es un 'mito' en el contexto de la sexualidad según el texto?",
+    "opciones": ["Una verdad científica", "La manera en que hombres y mujeres deben comportarse en un lugar", "Un tipo de cromosoma"],
+    "respuesta_correcta": "La manera en que hombres y mujeres deben comportarse en un lugar",
+    "explicacion": "Los mitos suelen ser construcciones sociales sobre roles de género.",
+    "cita_textual": "Mito: se refiere a la manera en que las mujeres y los hombres deben comportarse en un determinado lugar.",
+    "imagen_referencia": "5.jpeg"
+  },
+  {
+    "tema": "Cuidados del sistema reproductor",
+    "pregunta": "¿Con qué frecuencia se debe cambiar la toalla sanitaria según el texto?",
+    "opciones": ["Una vez al día", "Mínimo tres veces al día", "Cada dos días"],
+    "respuesta_correcta": "Mínimo tres veces al día",
+    "explicacion": "La higiene menstrual requiere cambios frecuentes para evitar infecciones.",
+    "cita_textual": "Cambiarse la toalla sanitaria mínimo tres veces al día.",
+    "imagen_referencia": "6.jpeg"
+  },
+  {
+    "tema": "Cuidados del sistema reproductor",
+    "pregunta": "¿Cuál es una recomendación para el cuidado del sistema reproductor masculino?",
+    "opciones": ["Evitar el ejercicio", "Evitar los juegos bruscos que produzcan golpes en los genitales", "Usar ropa muy ajustada"],
+    "respuesta_correcta": "Evitar los juegos bruscos que produzcan golpes en los genitales",
+    "explicacion": "Los golpes en los testículos pueden causar daños serios.",
+    "cita_textual": "Evitar los juegos bruscos que puedan producir golpes en los genitales.",
+    "imagen_referencia": "6.jpeg"
+  },
+  {
+    "tema": "ETS",
+    "pregunta": "¿Qué significan las siglas ETS?",
+    "opciones": ["Enfermedades de Transmisión Sexual", "Elementos de Transporte Sanguíneo", "Energía de Transformación Solar"],
+    "respuesta_correcta": "Enfermedades de Transmisión Sexual",
+    "explicacion": "Son infecciones que se propagan por contacto sexual.",
+    "cita_textual": "enfermedades de transmisión sexual (ETS)",
+    "imagen_referencia": "6.jpeg"
+  },
+  {
+    "tema": "ETS",
+    "pregunta": "¿Qué tipo de microorganismos pueden causar las ETS?",
+    "opciones": ["Solo plantas", "Bacterias, virus u otros organismos", "Solo polvo"],
+    "respuesta_correcta": "Bacterias, virus u otros organismos",
+    "explicacion": "Diversos agentes patógenos son responsables de estas enfermedades.",
+    "cita_textual": "Las ETS son causadas por bacterias, virus u otros organismos que pueden infectar los genitales",
+    "imagen_referencia": "6.jpeg"
+  },
+  {
+    "tema": "ETS",
+    "pregunta": "¿Cuál de estas es una ETS mencionada en el texto?",
+    "opciones": ["Gripe", "Gonorrea", "Anemia"],
+    "respuesta_correcta": "Gonorrea",
+    "explicacion": "La gonorrea es una infección bacteriana común transmitida sexualmente.",
+    "cita_textual": "Algunas de las ETS más comunes incluyen la clamidia, la gonorrea, el herpes genital...",
+    "imagen_referencia": "6.jpeg"
+  },
+  {
+    "tema": "ETS",
+    "pregunta": "¿Además de las relaciones sexuales, de qué otra forma pueden transmitirse las ETS?",
+    "opciones": ["Por el aire", "De madre a hijo durante el embarazo o parto", "Por mirar a otra persona"],
+    "respuesta_correcta": "De madre a hijo durante el embarazo o parto",
+    "explicacion": "Existe la transmisión vertical de madre a hijo.",
+    "cita_textual": "También pueden transmitirse de madre a hijo durante el embarazo, el parto o la lactancia.",
+    "imagen_referencia": "6.jpeg"
+  },
+  {
+    "tema": "Sistema Urinario",
+    "pregunta": "¿De qué se encarga el sistema urinario?",
+    "opciones": ["De la digestión de grasas", "De producir, transportar y eliminar la orina del cuerpo", "De la respiración"],
+    "respuesta_correcta": "De producir, transportar y eliminar la orina del cuerpo",
+    "explicacion": "Su función es la excreción de desechos líquidos.",
+    "cita_textual": "El sistema urinario está compuesto por varios órganos que trabajan en conjunto para producir, transportar y eliminar la orina del cuerpo.",
+    "imagen_referencia": "7.jpeg"
+  },
+  {
+    "tema": "Sistema Urinario",
+    "pregunta": "¿Cuál es la función principal de los riñones?",
+    "opciones": ["Almacenar la orina", "Filtrar la sangre y producir la orina", "Transportar la orina al exterior"],
+    "respuesta_correcta": "Filtrar la sangre y producir la orina",
+    "explicacion": "Los riñones actúan como filtros de la sangre.",
+    "cita_textual": "Los riñones filtran la sangre, eliminan los desechos y el exceso de líquidos del cuerpo y producen la orina.",
+    "imagen_referencia": "7.jpeg"
+  },
+  {
+    "tema": "Sistema Urinario",
+    "pregunta": "¿Qué son los uréteres?",
+    "opciones": ["Órganos con forma de globo", "Tubos delgados que conectan cada riñón con la vejiga", "Filtros de sangre"],
+    "respuesta_correcta": "Tubos delgados que conectan cada riñón con la vejiga",
+    "explicacion": "Son los conductos que llevan la orina desde los riñones.",
+    "cita_textual": "son dos tubos delgados y musculares que conectan cada riñón con la vejiga urinaria.",
+    "imagen_referencia": "7.jpeg"
+  },
+  {
+    "tema": "Sistema Urinario",
+    "pregunta": "¿Cuál es la función de la vejiga urinaria?",
+    "opciones": ["Filtrar la sangre", "Almacenar la orina hasta que se produce la micción", "Producir hormonas"],
+    "respuesta_correcta": "Almacenar la orina hasta que se produce la micción",
+    "explicacion": "La vejiga es el reservorio temporal de la orina.",
+    "cita_textual": "La vejiga almacena la orina hasta que se produce la micción (el acto de eliminar la orina).",
+    "imagen_referencia": "7.jpeg"
+  },
+  {
+    "tema": "Sistema Urinario",
+    "pregunta": "¿Cuáles son los compuestos de la orina mencionados?",
+    "opciones": ["Agua, sales, desechos y minerales", "Oxígeno y glucosa", "Sangre y moco"],
+    "respuesta_correcta": "Agua, sales, desechos y minerales",
+    "explicacion": "La orina es una solución de desechos metabólicos.",
+    "cita_textual": "Agua, sales, desechos y minerales.",
+    "imagen_referencia": "7.jpeg"
+  },
+  {
+    "tema": "Sistema Urinario",
+    "pregunta": "¿Por qué es importante que el ser humano orine?",
+    "opciones": ["Para hidratarse", "Porque necesita expulsar los desechos líquidos", "Para producir energía"],
+    "respuesta_correcta": "Porque necesita expulsar los desechos líquidos",
+    "explicacion": "La micción elimina toxinas del organismo.",
+    "cita_textual": "Porque necesita expulsar los desechos líquidos",
+    "imagen_referencia": "7.jpeg"
+  },
+  {
+    "tema": "Sistema Urinario",
+    "pregunta": "¿Qué conducto conecta la vejiga urinaria con el exterior del cuerpo?",
+    "opciones": ["El uréter", "La uretra", "La arteria"],
+    "respuesta_correcta": "La uretra",
+    "explicacion": "La uretra es la vía final de salida de la orina.",
+    "cita_textual": "Uretra: es un conducto que conecta la vejiga urinaria con el exterior del cuerpo.",
+    "imagen_referencia": "8.jpeg"
+  },
+  {
+    "tema": "Sistema Urinario",
+    "pregunta": "¿Qué diferencia hay en la uretra de los hombres con respecto a la de las mujeres?",
+    "opciones": ["Es más corta", "También pasa a través de la próstata y el pene", "No transporta orina"],
+    "respuesta_correcta": "También pasa a través de la próstata y el pene",
+    "explicacion": "En el varón, la uretra comparte funciones con el sistema reproductor.",
+    "cita_textual": "En los hombres, la uretra también pasa a través de la próstata y el pene.",
+    "imagen_referencia": "8.jpeg"
+  },
+  {
+    "tema": "Sistema Urinario",
+    "pregunta": "¿Qué forma tienen los riñones?",
+    "opciones": ["Forma de globo", "Forma de frijol", "Forma de tubo"],
+    "respuesta_correcta": "Forma de frijol",
+    "explicacion": "Su morfología externa se asemeja a una legumbre.",
+    "cita_textual": "Tienen forma de frijol.",
+    "imagen_referencia": "8.jpeg"
+  },
+  {
+    "tema": "Sistema Urinario",
+    "pregunta": "¿Cómo se describe la vejiga urinaria en la imagen 8?",
+    "opciones": ["Órgano rígido y sólido", "Órgano elástico, muscular y hueco", "Un par de tubos delgados"],
+    "respuesta_correcta": "Órgano elástico, muscular y hueco",
+    "explicacion": "Su elasticidad le permite expandirse al llenarse.",
+    "cita_textual": "Es un órgano elástico, muscular y hueco.",
+    "imagen_referencia": "8.jpeg"
+  },
+  {
+    "tema": "Sistema Urinario",
+    "pregunta": "¿De qué depende que la composición de la orina varíe?",
+    "opciones": ["Solo del clima", "De la hidratación, la dieta y la salud general", "Solo de la edad"],
+    "respuesta_correcta": "De la hidratación, la dieta y la salud general",
+    "explicacion": "Lo que consumimos y nuestra salud afectan los solutos de la orina.",
+    "cita_textual": "La composición de la orina puede variar dependiendo de varios factores, como la hidratación, la dieta y la salud general.",
+    "imagen_referencia": "8.jpeg"
+  },
+  {
+    "tema": "Sistema Urinario",
+    "pregunta": "¿Cuál es la función de los uréteres?",
+    "opciones": ["Expulsar la orina", "Comunicar los riñones con la vejiga", "Filtrar la sangre"],
+    "respuesta_correcta": "Comunicar los riñones con la vejiga",
+    "explicacion": "Son los tubos de transporte interno.",
+    "cita_textual": "Comunican los riñones con la vejiga.",
+    "imagen_referencia": "8.jpeg"
+  },
+  {
+    "tema": "Excreción",
+    "pregunta": "¿Qué es la excreción?",
+    "opciones": ["El proceso de comer", "Conjunto de procesos mediante los cuales el cuerpo elimina productos de desecho", "La circulación de la sangre"],
+    "respuesta_correcta": "Conjunto de procesos mediante los cuales el cuerpo elimina productos de desecho",
+    "explicacion": "Es la eliminación de sustancias tóxicas o innecesarias.",
+    "cita_textual": "La excreción es un conjunto de procesos, mediante los cuales el cuerpo humano elimina los productos de desecho y sustancias tóxicas",
+    "imagen_referencia": "9.jpeg"
+  },
+  {
+    "tema": "Excreción",
+    "pregunta": "¿Qué órgano elimina el dióxido de carbono?",
+    "opciones": ["El hígado", "Los pulmones", "La piel"],
+    "respuesta_correcta": "Los pulmones",
+    "explicacion": "El CO2 es un gas de desecho eliminado en la exhalación.",
+    "cita_textual": "Pulmones: eliminan el dióxido de carbono, un producto de desecho del metabolismo celular, a través de la respiración.",
+    "imagen_referencia": "9.jpeg"
+  },
+  {
+    "tema": "Excreción",
+    "pregunta": "¿Cómo contribuye la piel a la excreción?",
+    "opciones": ["A través de las heces", "A través de la sudoración", "Produciendo orina"],
+    "respuesta_correcta": "A través de la sudoración",
+    "explicacion": "El sudor elimina toxinas y regula el calor.",
+    "cita_textual": "Piel: a través de la sudoración, contribuye a eliminar toxinas y mantener el equilibrio de temperatura del cuerpo.",
+    "imagen_referencia": "9.jpeg"
+  },
+  {
+    "tema": "Excreción",
+    "pregunta": "¿Qué función cumple el hígado en la excreción?",
+    "opciones": ["Filtra la orina", "Metaboliza y descompone sustancias tóxicas", "Elimina CO2"],
+    "respuesta_correcta": "Metaboliza y descompone sustancias tóxicas",
+    "explicacion": "El hígado transforma toxinas en sustancias menos nocivas.",
+    "cita_textual": "Hígado: metaboliza y descompone sustancias tóxicas, convirtiéndolas en productos menos tóxicos o solubles en agua",
+    "imagen_referencia": "9.jpeg"
+  },
+  {
+    "tema": "Excreción",
+    "pregunta": "¿En qué consiste el proceso de 'filtración' en los riñones?",
+    "opciones": ["En devolver sustancias útiles a la sangre", "En que la sangre entra al riñón para filtrarse y transferir los desechos", "En la salida de orina por la uretra"],
+    "respuesta_correcta": "En que la sangre entra al riñón para filtrarse y transferir los desechos",
+    "explicacion": "Es la primera etapa donde se separan los desechos.",
+    "cita_textual": "La sangre entra al riñón por medio de la arteria para filtrarse y transferir los desechos.",
+    "imagen_referencia": "9.jpeg"
+  },
+  {
+    "tema": "Excreción",
+    "pregunta": "¿Qué es la 'absorción' en el proceso renal?",
+    "opciones": ["La eliminación de heces", "Se devuelve a la sangre las sustancias filtradas que tienen utilidad", "El paso de aire a los pulmones"],
+    "respuesta_correcta": "Se devuelve a la sangre las sustancias filtradas que tienen utilidad",
+    "explicacion": "El riñón recupera agua y nutrientes necesarios.",
+    "cita_textual": "Se devuelve a la sangre las sustancias filtradas que tiene utilidad para el organismo.",
+    "imagen_referencia": "9.jpeg"
+  },
+  {
+    "tema": "Orina",
+    "pregunta": "¿Cuál es el componente más abundante de la orina?",
+    "opciones": ["Urea", "Agua", "Sales minerales"],
+    "respuesta_correcta": "Agua",
+    "explicacion": "El agua constituye la gran mayoría del volumen urinario.",
+    "cita_textual": "Agua: es el componente más abundante de la orina y constituye aproximadamente el 95% de su volumen.",
+    "imagen_referencia": "10.jpeg"
+  },
+  {
+    "tema": "Orina",
+    "pregunta": "¿De dónde proviene la urea en la orina?",
+    "opciones": ["Del metabolismo de las proteínas", "Del metabolismo muscular", "De las carnes rojas"],
+    "respuesta_correcta": "Del metabolismo de las proteínas",
+    "explicacion": "La urea es el principal desecho nitrogenado de las proteínas.",
+    "cita_textual": "Urea: la urea es un producto de desecho del metabolismo de las proteínas.",
+    "imagen_referencia": "10.jpeg"
+  },
+  {
+    "tema": "Orina",
+    "pregunta": "¿Qué componente de la orina es un producto derivado del metabolismo muscular?",
+    "opciones": ["Ácido úrico", "Creatinina", "Amoníaco"],
+    "respuesta_correcta": "Creatinina",
+    "explicacion": "La creatinina se produce por el desgaste de las fibras musculares.",
+    "cita_textual": "Creatinina: es un producto de desecho derivado del metabolismo muscular.",
+    "imagen_referencia": "10.jpeg"
+  },
+  {
+    "tema": "Orina",
+    "pregunta": "¿Qué ocurre durante la reabsorción en el riñón?",
+    "opciones": ["Se expulsan sales", "Se recuperan sustancias útiles para el cuerpo", "Se secreta amoníaco"],
+    "respuesta_correcta": "Se recuperan sustancias útiles para el cuerpo",
+    "explicacion": "El cuerpo evita perder elementos valiosos.",
+    "cita_textual": "Reabsorción de sustancias útiles.",
+    "imagen_referencia": "10.jpeg"
+  },
+  {
+    "tema": "Medidas preventivas",
+    "pregunta": "¿Cuántos vasos de agua se recomienda tomar al día para cuidar el sistema urinario?",
+    "opciones": ["1 a 2 vasos", "6 a 8 vasos", "15 a 20 vasos"],
+    "respuesta_correcta": "6 a 8 vasos",
+    "explicacion": "Una hidratación adecuada facilita la filtración renal.",
+    "cita_textual": "Tomar de 6 a 8 ocho vasos de agua cada día.",
+    "imagen_referencia": "11.jpeg"
+  },
+  {
+    "tema": "Medidas preventivas",
+    "pregunta": "¿Por qué no se debe aguantar las ganas de orinar?",
+    "opciones": ["Para no mojar la ropa", "Para prevenir enfermedades en el sistema urinario", "Para no sentir sed"],
+    "respuesta_correcta": "Para prevenir enfermedades en el sistema urinario",
+    "explicacion": "Retener orina puede favorecer el crecimiento de bacterias.",
+    "cita_textual": "No aguantar las ganas de orinar.",
+    "imagen_referencia": "11.jpeg"
+  },
+  {
+    "tema": "Medidas preventivas",
+    "pregunta": "¿Qué tipo de alimentos y bebidas se deben evitar?",
+    "opciones": ["Alimentos picantes y bebidas alcohólicas", "Frutas y agua", "Carnes blancas y jugos naturales"],
+    "respuesta_correcta": "Alimentos picantes y bebidas alcohólicas",
+    "explicacion": "Estos irritan la vejiga y pueden afectar los riñones.",
+    "cita_textual": "Evitar el consumo de alimentos picantes y bebidas alcohólicas.",
+    "imagen_referencia": "11.jpeg"
+  },
+  {
+    "tema": "Medidas preventivas",
+    "pregunta": "¿Cuál es una recomendación sobre la ropa interior?",
+    "opciones": ["No usarla nunca", "Cambiarse la ropa interior todos los días", "Usarla durante una semana seguida"],
+    "respuesta_correcta": "Cambiarse la ropa interior todos los días",
+    "explicacion": "La higiene íntima previene infecciones urinarias.",
+    "cita_textual": "Cambiarse la ropa interior todos los días.",
+    "imagen_referencia": "11.jpeg"
+  },
+  {
+    "tema": "Enfermedades",
+    "pregunta": "¿Qué son los cálculos renales?",
+    "opciones": ["Bacterias en la vejiga", "Piedras en los riñones por desequilibrio de minerales", "Falta de orina"],
+    "respuesta_correcta": "Piedras en los riñones por desequilibrio de minerales",
+    "explicacion": "Son depósitos duros de minerales y sales.",
+    "cita_textual": "Cálculos renales: también conocidos como piedras en los riñones, se forman cuando hay un desequilibrio en los minerales",
+    "imagen_referencia": "12.jpeg"
+  },
+  {
+    "tema": "Enfermedades",
+    "pregunta": "¿Cuándo se produce la insuficiencia renal?",
+    "opciones": ["Cuando los riñones no pueden filtrar adecuadamente los desechos", "Cuando se toma mucha agua", "Cuando se hace mucho ejercicio"],
+    "respuesta_correcta": "Cuando los riñones no pueden filtrar adecuadamente los desechos",
+    "explicacion": "Es la pérdida de la función de filtrado del riñón.",
+    "cita_textual": "Insuficiencia renal: se produce cuando los riñones no pueden filtrar adecuadamente los desechos",
+    "imagen_referencia": "12.jpeg"
+  },
+  {
+    "tema": "Enfermedades",
+    "pregunta": "¿Qué microorganismos causan generalmente las Infecciones del tracto urinario (ITU)?",
+    "opciones": ["Virus solamente", "Bacterias u otros microorganismos", "Polen"],
+    "respuesta_correcta": "Bacterias u otros microorganismos",
+    "explicacion": "La mayoría de las ITUs son bacterianas.",
+    "cita_textual": "Infecciones del tracto urinario (ITU): son causadas por bacterias u otros microorganismos que ingresan al tracto urinario",
+    "imagen_referencia": "12.jpeg"
+  },
+  {
+    "tema": "Enfermedades",
+    "pregunta": "¿Qué es la incontinencia urinaria?",
+    "opciones": ["El exceso de producción de orina", "La incapacidad de controlar la liberación de orina de manera voluntaria", "Dolor al orinar"],
+    "respuesta_correcta": "La incapacidad de controlar la liberación de orina de manera voluntaria",
+    "explicacion": "Es la pérdida del control de la vejiga.",
+    "cita_textual": "Incontinencia urinaria: es la incapacidad de controlar la liberación de orina de manera voluntaria.",
+    "imagen_referencia": "12.jpeg"
+  }
+];
+
+        let quizQuestions = [];
+        let currentIdx = 0;
+        let correctCount = 0;
+        let totalCount = 0;
+        const IMAGE_PATH = "5 GRADO/Ciencias/Examen 1/";
+
+        function showContent(tab) {
+            document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+            event.currentTarget.classList.add('active');
+            
+            if (tab === 'quiz' && quizQuestions.length === 0) {
+                startQuiz();
+            }
+        }
+
+        function shuffle(arr) {
+            return arr.sort(() => Math.random() - 0.5);
+        }
+
+        function startQuiz() {
+            quizQuestions = shuffle([...allQuestions]);
+            totalCount = allQuestions.length;
+            currentIdx = 0;
+            correctCount = 0;
+            document.getElementById('results-container').style.display = 'none';
+            document.getElementById('quiz-container').style.display = 'block';
+            updateProgress();
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = quizQuestions[currentIdx];
+            document.getElementById('question-text').textContent = q.pregunta;
+            document.getElementById('options-container').innerHTML = '';
+            document.getElementById('feedback-panel').style.display = 'none';
+            
+            q.opciones.forEach(opt => {
+                const btn = document.createElement('div');
+                btn.className = 'option';
+                btn.textContent = opt;
+                btn.onclick = () => checkAnswer(opt, btn);
+                document.getElementById('options-container').appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selected, btn) {
+            const q = quizQuestions[currentIdx];
+            const options = document.querySelectorAll('.option');
+            options.forEach(o => o.onclick = null);
+
+            const feedbackPanel = document.getElementById('feedback-panel');
+            const status = document.getElementById('feedback-status');
+            
+            feedbackPanel.style.display = 'block';
+            document.getElementById('explanation-text').textContent = q.explicacion;
+            document.getElementById('citation-text').innerHTML = `<b>Cita del libro:</b> "${q.cita_textual}"`;
+            document.getElementById('ref-image').src = IMAGE_PATH + q.imagen_referencia;
+
+            if (selected === q.respuesta_correcta) {
+                status.textContent = "¡Correcto! ✨";
+                status.style.color = "var(--correct-color)";
+                btn.style.borderColor = "var(--correct-color)";
+                btn.style.backgroundColor = "#e8f5e9";
+                correctCount++;
+                currentIdx++;
+            } else {
+                status.textContent = "¡Casi lo logras! Mira la explicación abajo.";
+                status.style.color = "var(--wrong-color)";
+                btn.style.borderColor = "var(--wrong-color)";
+                btn.style.backgroundColor = "#ffebee";
+                
+                // Si falla, insertamos una pregunta del mismo tema más adelante para reforzar
+                const sameTopicQ = allQuestions.find((item, idx) => item.tema === q.tema && !quizQuestions.slice(0, currentIdx + 1).includes(item));
+                if (sameTopicQ) {
+                    quizQuestions.splice(currentIdx + 2, 0, sameTopicQ);
+                    totalCount = quizQuestions.length;
+                }
+                
+                // Mostrar la correcta
+                options.forEach(o => {
+                    if (o.textContent === q.respuesta_correcta) {
+                        o.style.borderColor = "var(--correct-color)";
+                        o.style.borderWidth = "3px";
+                    }
+                });
+            }
+            updateProgress();
+        }
+
+        function handleNext() {
+            if (currentIdx < quizQuestions.length) {
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function updateProgress() {
+            const progress = (currentIdx / totalCount) * 100;
+            const bar = document.getElementById('progress-bar');
+            bar.style.width = progress + '%';
+            bar.textContent = Math.round(progress) + '%';
+        }
+
+        function showResults() {
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('results-container').style.display = 'block';
+            document.getElementById('final-score').textContent = Math.round((correctCount / totalCount) * 100);
+            document.getElementById('correct-count').textContent = correctCount;
+            document.getElementById('total-count').textContent = totalCount;
+        }
+
+        function restartQuiz() {
+            startQuiz();
+        }
+    </script>
+</body>
+</html>
