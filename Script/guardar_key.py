@@ -4,6 +4,10 @@ Uso interactivo (enmascara la entrada):
 
     python Script/guardar_key.py
 
+Uso directo (la key viaja como argumento):
+
+    python Script/guardar_key.py "SK-..."
+
 La key nunca se escribe en un archivo; queda en el keyring del sistema
 (servicio 'billy', usuario 'llm_key'). Si se deja vacia, no se guarda nada.
 """
@@ -20,9 +24,12 @@ from Script.functions.llm_client import store_api_key
 
 
 def main() -> None:
-    key = getpass.getpass(
-        "Pegue la API key del tutor (no se mostrara, Enter para saltar): "
-    ).strip()
+    if len(sys.argv) > 1:
+        key = sys.argv[1].strip()
+    else:
+        key = getpass.getpass(
+            "Pegue la API key del tutor (no se mostrara, Enter para saltar): "
+        ).strip()
     if not key:
         print("No se guardo ninguna key.")
         return
