@@ -58,6 +58,14 @@ def test_html_renders_study_and_quiz_panels(tmp_path):
     assert "Mostrar opciones" in text or "mostrar opciones" in text.lower()
 
 
+def test_html_shuffles_quiz_options(tmp_path):
+    """The quiz and study panels shuffle option order client-side."""
+    out = generate_subject_html(_sample_matter(), tmp_path / "C.html")
+    text = out.read_text(encoding="utf-8")
+    assert "shuffle([...c.opts.keys()])" in text
+    assert "shuffle([...(q.opts||[]).keys()])" in text
+
+
 def test_html_image_data_uri_dedup(tmp_path):
     """Images are still embedded as base64 data URIs (offline guarantee)."""
     img = tmp_path / "ciencias" / "m1" / "1.jpeg"

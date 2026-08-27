@@ -1,8 +1,15 @@
 """Tests for the LLM client, RAG tutor and extract helpers (mocked)."""
 
+import pytest
+
 from Script.functions.data_model import Bundle, Matter, Module, Question
 from Script.functions.extract import extract_pdf_text, ocr_image
-from Script.functions.llm_client import get_api_key, get_llm_client, store_api_key
+from Script.functions.llm_client import (
+    describe_llm_error,
+    get_api_key,
+    get_llm_client,
+    store_api_key,
+)
 from Script.functions.rag import (
     build_corpus,
     grounded_answer,
@@ -48,11 +55,43 @@ def test_store_api_key_round_trip(monkeypatch):
 
 
 def test_get_llm_client_raises_without_key(monkeypatch):
-    import pytest
-
     monkeypatch.setattr("Script.functions.llm_client.get_api_key", lambda: "")
     with pytest.raises(ValueError):
         get_llm_client()
+
+
+def test_store_api_key_raises_when_keyring_fails(monkeypatch):
+    def boom(s, u, v):
+        raise OSError("no backend")
+
+    monkeypatch.setattr("keyring.set_password", boom, raising=False)
+    monkeypatch.delenv("BILLY_LLM_API_KEY", raising=False)
+    with pytest.raises(RuntimeError):
+        store_api_key("k789")
+
+
+def test_store_api_key_raises_when_round_trip_fails(monkeypatch):
+    monkeypatch.setattr("keyring.set_password", lambda s, u, v: None, raising=False)
+    monkeypatch.setattr("keyring.get_password", lambda s, u: "otra-cosa", raising=False)
+    monkeypatch.delenv("BILLY_LLM_API_KEY", raising=False)
+    with pytest.raises(RuntimeError):
+        store_api_key("k789")
+
+
+def test_describe_llm_error_maps_401():
+    assert "401" in describe_llm_error(Exception("Error code: 401 - invalid api key"))
+
+
+def test_describe_llm_error_maps_404():
+    assert "404" in describe_llm_error(Exception("Error code: 404 - model not found"))
+
+
+def test_describe_llm_error_maps_auth():
+    assert "autenticacion" in describe_llm_error(Exception("authentication failed"))
+
+
+def test_describe_llm_error_fallback():
+    assert "Ocurrio un error" in describe_llm_error(Exception("boom"))
 
 
 def test_build_corpus_and_retrieve():

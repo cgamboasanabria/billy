@@ -23,7 +23,7 @@ from Script.functions.config import DEFAULT_EXAM_ROUND, DELIVERABLES_DIR, EXAM_R
 from Script.functions.data_model import Bundle, load_bundle
 from Script.functions.html_generator import render_subject_html
 from Script.functions.import_existing import import_material
-from Script.functions.llm_client import get_api_key
+from Script.functions.llm_client import describe_llm_error, get_api_key
 from Script.functions.rag import grounded_answer
 
 st.set_page_config(page_title="Billy - Aventura de Estudio", layout="wide")
@@ -101,7 +101,7 @@ def _render_tutor_panel(subject: str, exam_round: str) -> None:
                 prompt, filtered_bundle, asked=st.session_state.asked_questions
             )
         except Exception as exc:  # noqa: BLE001
-            answer = f"Ocurrio un error al contactar al tutor: {exc}"
+            answer = describe_llm_error(exc)
         st.session_state.messages.append({"role": "assistant", "content": answer})
         with st.chat_message("assistant"):
             st.markdown(answer)
@@ -117,7 +117,7 @@ def _render_tutor_panel(subject: str, exam_round: str) -> None:
                 prompt, filtered_bundle, asked=st.session_state.asked_questions
             )
         except Exception as exc:  # noqa: BLE001
-            answer = f"Ocurrio un error al contactar al tutor: {exc}"
+            answer = describe_llm_error(exc)
         st.session_state.messages.append({"role": "assistant", "content": answer})
         with st.chat_message("assistant"):
             st.markdown(answer)

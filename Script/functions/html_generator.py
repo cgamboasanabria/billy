@@ -255,13 +255,15 @@ function renderStudy(){
       const card=document.createElement('div');card.className='study-card';
       const qEl2=document.createElement('p');qEl2.className='study-q';qEl2.textContent=q.q;card.appendChild(qEl2);
       const optsBox=document.createElement('div');optsBox.className='options hidden';optsBox.id='opts-'+i+'-'+qi;
-      (q.opts||[]).forEach((o,oi)=>{
+      shuffle([...(q.opts||[]).keys()]).forEach((oi)=>{
+        const o=q.opts[oi];
         const d=document.createElement('div');d.className='option';d.textContent=o;
         d.dataset.idx=oi;
         d.onclick=()=>{
           optsBox.querySelectorAll('.option').forEach(x=>{x.onclick=null;});
           if(q.a>=0){
-            optsBox.querySelectorAll('.option').forEach((x,xi)=>{
+            optsBox.querySelectorAll('.option').forEach((x)=>{
+              const xi=Number(x.dataset.idx);
               if(xi===q.a){x.style.background='var(--correct)';x.style.color='#fff';}
               if(xi===oi&&oi!==q.a){x.style.background='var(--wrong)';x.style.color='#fff';}
             });
@@ -294,11 +296,11 @@ function renderStudy(){
 }
 function startQuiz(){queue=shuffle([...allQuestions]);total=queue.length;idx=0;score=0;correct=0;results.style.display='none';quizBox.style.display='block';updateBar();showQuestion();}
 function restartQuiz(){total=0;startQuiz();}
-function showQuestion(){fbEl.innerHTML='';fbEl.style.background='transparent';const c=queue[idx];currentQuestion=c;qEl.textContent=c.q;optsEl.innerHTML='';c.opts.forEach((o,oi)=>{const b=document.createElement('div');b.textContent=o;b.className='option';b.onclick=()=>check(oi,b);optsEl.appendChild(b);});}
+function showQuestion(){fbEl.innerHTML='';fbEl.style.background='transparent';const c=queue[idx];currentQuestion=c;qEl.textContent=c.q;optsEl.innerHTML='';shuffle([...c.opts.keys()]).forEach((oi)=>{const b=document.createElement('div');b.textContent=c.opts[oi];b.className='option';b.dataset.idx=oi;b.onclick=()=>check(oi,b);optsEl.appendChild(b);});}
 function next(){if(idx<queue.length){showQuestion();}else{quizBox.style.display='none';results.style.display='block';scoreEl.textContent=score+' de '+total;}}
 function check(sel,btn){const c=queue[idx];optsEl.querySelectorAll('.option').forEach(o=>o.onclick=null);let html='';
 if(sel===c.a){score++;correct++;btn.style.background='var(--correct)';btn.style.color='#fff';html='<div class="feedback" style="background:#e8f5e9">Correcto<br>'+c.exp+'</div>';idx++;}
-else{btn.style.background='var(--wrong)';btn.style.color='#fff';optsEl.querySelectorAll('.option').forEach((o,oi)=>{if(oi===c.a){o.style.background='var(--correct)';o.style.color='#fff';}});html='<div class="feedback" style="background:#ffebee">Incorrecto. La opcion correcta era: <b>'+c.opts[c.a]+'</b><br>'+c.exp+'</div>';
+else{btn.style.background='var(--wrong)';btn.style.color='#fff';optsEl.querySelectorAll('.option').forEach((o)=>{if(o.dataset.idx===String(c.a)){o.style.background='var(--correct)';o.style.color='#fff';}});html='<div class="feedback" style="background:#ffebee">Incorrecto. La opcion correcta era: <b>'+c.opts[c.a]+'</b><br>'+c.exp+'</div>';
 const topic=c.topic;queue.splice(idx,1);const r=queue.findIndex(q=>q.topic===topic);if(r!==-1){const [m]=queue.splice(r,1);queue.splice(idx,0,m);}}
 if(c.img){html+='<img class="ref-image" src="'+IMGS[c.img]+'" alt="Imagen de referencia">';}
 if(c.cita){html+='<p class="cita">Cita: <i>'+c.cita+'</i>'+(c.p?' (pagina '+c.p+')':'')+'</p>';}

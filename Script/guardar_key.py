@@ -26,7 +26,11 @@ def main() -> None:
     if not key:
         print("No se guardo ninguna key.")
         return
-    store_api_key(key)
+    try:
+        store_api_key(key)
+    except RuntimeError as exc:
+        print(f"ADVERTENCIA: {exc}")
+        return
     print("Key guardada en el almacen seguro del sistema.")
 
 

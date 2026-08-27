@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import random
 import re
+import sys
 from dataclasses import dataclass
 
 from Script.functions.data_model import Bundle
@@ -149,6 +150,7 @@ def proactive_question(bundle: Bundle, asked: set[str] | None = None) -> str:
     asked.add(question.question)
     try:
         rephrased = tutor_answer(_REPHRASE_SYSTEM, question.question)
-    except Exception:  # noqa: BLE001
+    except Exception as exc:  # noqa: BLE001
+        print(f"[Billy tutor] error al reformular pregunta: {exc}", file=sys.stderr)
         rephrased = question.question
     return f"Eso no esta en tus apuntes todavia. Mejor te pregunto: {rephrased}"

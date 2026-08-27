@@ -53,6 +53,28 @@ def _check_question(q: Question, index: int, subject: str = "") -> list[Issue]:
     elif q.options.count(q.answer) > 1:
         issues.append(Issue("error", "respuesta duplicada en las opciones", label))
 
+    if len(q.options) >= 3 and q.answer and q.options.count(q.answer) == 1:
+        others = [len(o) for o in q.options if o != q.answer]
+        if others:
+            longest = max(others)
+            shortest = min(others)
+            if len(q.answer) > 1.5 * longest:
+                issues.append(
+                    Issue(
+                        "warn",
+                        "la respuesta correcta es notablemente mas larga que las demas opciones",
+                        label,
+                    )
+                )
+            elif len(q.answer) < 0.667 * shortest:
+                issues.append(
+                    Issue(
+                        "warn",
+                        "la respuesta correcta es notablemente mas corta que las demas opciones",
+                        label,
+                    )
+                )
+
     if not q.cita_textual.strip():
         issues.append(Issue("warn", "sin cita textual", label))
     if not q.topic.strip():

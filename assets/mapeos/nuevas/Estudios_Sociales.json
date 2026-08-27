@@ -3,11 +3,11 @@
     "pregunta": "¿Qué era un cabildo?",
     "opciones": [
       "Un tribunal de justicia del rey",
-      "Una institución de gobierno local que existía en cada ciudad y era elegida por los vecinos",
+      "Una institución de gobierno local de cada ciudad",
       "Un impuesto que se pagaba sobre los productos",
       "Una gran extensión de tierra dedicada a la ganadería"
     ],
-    "respuesta_correcta": "Una institución de gobierno local que existía en cada ciudad y era elegida por los vecinos",
+    "respuesta_correcta": "Una institución de gobierno local de cada ciudad",
     "explicacion": "El cabildo era el gobierno de cada ciudad y lo elegían sus propios vecinos.",
     "cita_textual": "Existía uno en cada ciudad. Institución elegida por los vecinos.",
     "tema": "Sociedad Colonial en Costa Rica",
@@ -62,12 +62,12 @@
   "sep_05": {
     "pregunta": "¿Qué eran los virreinatos?",
     "opciones": [
-      "Territorios gobernados por un virrey, representante del rey",
+      "Territorios gobernados por un virrey",
       "Tribunales de justicia",
       "Impuestos de la corona",
       "Pequeños poblados de indígenas"
     ],
-    "respuesta_correcta": "Territorios gobernados por un virrey, representante del rey",
+    "respuesta_correcta": "Territorios gobernados por un virrey",
     "explicacion": "Los virreinatos estaban dirigidos por un virrey, que era el representante del rey en tierras americanas.",
     "cita_textual": "Estaban dirigidos por un virrey. Son los representantes del rey en tierras americanas.",
     "tema": "Sociedad Colonial en Costa Rica",
@@ -77,12 +77,12 @@
   "sep_06": {
     "pregunta": "¿Qué eran las capitanías generales?",
     "opciones": [
-      "Territorios presididos por gobernadores, más pequeños que los virreinatos",
+      "Territorios presididos por gobernadores",
       "Ejércitos del rey en América",
       "Mercados de cacao",
       "Escuelas religiosas"
     ],
-    "respuesta_correcta": "Territorios presididos por gobernadores, más pequeños que los virreinatos",
+    "respuesta_correcta": "Territorios presididos por gobernadores",
     "explicacion": "Estaban presididas por los gobernadores y tenían a su cargo territorios más pequeños que los virreinatos.",
     "cita_textual": "Estaban presididas por los gobernadores. Tenían a su cargo territorios más pequeños que los virreinatos.",
     "tema": "Sociedad Colonial en Costa Rica",
@@ -137,12 +137,12 @@
   "sep_10": {
     "pregunta": "¿Qué era la chacra?",
     "opciones": [
-      "Una porción de tierra en el Valle Central donde se practicaba la agricultura de subsistencia",
+      "Tierra de cultivo de subsistencia",
       "Un mercado de esclavos",
       "Un impuesto a la iglesia",
       "Una embarcación española"
     ],
-    "respuesta_correcta": "Una porción de tierra en el Valle Central donde se practicaba la agricultura de subsistencia",
+    "respuesta_correcta": "Tierra de cultivo de subsistencia",
     "explicacion": "La chacra se ubicaba en el Valle Central y en ella la familia practicaba agricultura de subsistencia.",
     "cita_textual": "Porción de tierra donde se practicaba la agricultura de subsistencia.",
     "tema": "Sociedad Colonial en Costa Rica",
@@ -182,12 +182,12 @@
   "sep_13": {
     "pregunta": "¿Quién fue Juan de Cavallón?",
     "opciones": [
-      "El primer gobernador de Costa Rica, que fundó la ciudad de Garcimuñoz en 1561",
+      "El primer gobernador de Costa Rica",
       "Un cacique que resistió a los españoles",
       "El rey de España",
       "Un virrey del Perú"
     ],
-    "respuesta_correcta": "El primer gobernador de Costa Rica, que fundó la ciudad de Garcimuñoz en 1561",
+    "respuesta_correcta": "El primer gobernador de Costa Rica",
     "explicacion": "Se le considera el primer gobernador y fundó en el Valle Central la ciudad de Garcimuñoz en marzo de 1561.",
     "cita_textual": "Se le considera el primer gobernador de nuestro país.",
     "tema": "Conquista y resistencia indígena",
@@ -197,12 +197,12 @@
   "sep_14": {
     "pregunta": "¿Quién fue Juan Vásquez de Coronado?",
     "opciones": [
-      "El verdadero conquistador de Costa Rica, que trasladó Garcimuñoz y la llamó Cartago",
+      "El verdadero conquistador de Costa Rica",
       "El primer gobernador de Costa Rica",
       "Un líder indígena",
       "Un pirata inglés"
     ],
-    "respuesta_correcta": "El verdadero conquistador de Costa Rica, que trasladó Garcimuñoz y la llamó Cartago",
+    "respuesta_correcta": "El verdadero conquistador de Costa Rica",
     "explicacion": "Siguió la ruta de Cavallón, trasladó Garcimuñoz al Valle del Guarco y le cambió el nombre por Cartago.",
     "cita_textual": "A Juan Vázquez de Coronado, se le considera el verdadero conquistador de Costa Rica.",
     "tema": "Conquista y resistencia indígena",
@@ -242,12 +242,12 @@
   "sep_17": {
     "pregunta": "¿Qué enfermedades trajeron los europeos?",
     "opciones": [
-      "La viruela, el tifus, el resfriado común y la fiebre amarilla",
+      "La viruela, el tifus y la fiebre amarilla",
       "La gripe y el sarampión",
       "El dengue y el zika",
       "La malaria y la fiebre tifoidea"
     ],
-    "respuesta_correcta": "La viruela, el tifus, el resfriado común y la fiebre amarilla",
+    "respuesta_correcta": "La viruela, el tifus y la fiebre amarilla",
     "explicacion": "Los europeos trajeron enfermedades como la viruela, el tifus, el resfriado común y la fiebre amarilla.",
     "cita_textual": "El contagio de enfermedades que los europeos traían consigo como la viruela, tifus, resfriado común y la fiebre amarilla.",
     "tema": "Conquista y resistencia indígena",
@@ -257,12 +257,12 @@
   "sep_18": {
     "pregunta": "¿Qué consecuencias tuvieron estas enfermedades para las poblaciones indígenas?",
     "opciones": [
-      "Causaron la muerte y la disminución de la población indígena",
+      "La muerte y la disminución de la población",
       "Fortaleciron a los indígenas",
       "No tuvieron ningún efecto",
       "Aumentaron el comercio"
     ],
-    "respuesta_correcta": "Causaron la muerte y la disminución de la población indígena",
+    "respuesta_correcta": "La muerte y la disminución de la población",
     "explicacion": "Las enfermedades influyeron en la pérdida de vidas de los aborígenes, que estaban indefensos ante síntomas desconocidos.",
     "cita_textual": "También influyeron en la pérdida de vidas de los aborígenes al encontrarse indefensos ante síntomas desconocidos.",
     "tema": "Conquista y resistencia indígena",
@@ -302,12 +302,12 @@
   "sep_21": {
     "pregunta": "¿Quiénes eran los españoles peninsulares?",
     "opciones": [
-      "Los españoles nacidos en España que tenían todos los derechos del sistema colonial",
+      "Los españoles nacidos en España",
       "Los hijos de españoles nacidos en América",
       "Los indígenas convertidos al catolicismo",
       "Los esclavos africanos"
     ],
-    "respuesta_correcta": "Los españoles nacidos en España que tenían todos los derechos del sistema colonial",
+    "respuesta_correcta": "Los españoles nacidos en España",
     "explicacion": "Eran los españoles nacidos en España y tenían todos los derechos que brindaba el sistema de administración colonial.",
     "cita_textual": "Eran los españoles nacidos en España.",
     "tema": "Sociedad colonial",
@@ -332,12 +332,12 @@
   "sep_23": {
     "pregunta": "¿Quiénes eran los zambos?",
     "opciones": [
-      "Los hijos de una mezcla entre indígenas y negros o mulatos",
+      "La mezcla de indígenas con negros",
       "Los hijos de españoles e indígenas",
       "Los hijos de blancos y negros",
       "Los comerciantes españoles"
     ],
-    "respuesta_correcta": "Los hijos de una mezcla entre indígenas y negros o mulatos",
+    "respuesta_correcta": "La mezcla de indígenas con negros",
     "explicacion": "Los zambos eran hijos de una mezcla entre indígenas y negros o mulatos, llamados también 'zambos mosquitos'.",
     "cita_textual": "Los zambos eran hijos de una mezcla entre indígenas y negros o mulatos.",
     "tema": "Sociedad colonial",
@@ -347,12 +347,12 @@
   "sep_24": {
     "pregunta": "¿Qué diferencias existían entre los peninsulares y los criollos?",
     "opciones": [
-      "Los peninsulares ocupaban los altos puestos, mientras los criollos estaban excluidos del gobierno",
+      "Los peninsulares ocupaban los puestos altos",
       "Los criollos tenían más derechos que los peninsulares",
       "No existía ninguna diferencia entre ellos",
       "Los peninsulares vivían solo en las zonas rurales"
     ],
-    "respuesta_correcta": "Los peninsulares ocupaban los altos puestos, mientras los criollos estaban excluidos del gobierno",
+    "respuesta_correcta": "Los peninsulares ocupaban los puestos altos",
     "explicacion": "Los peninsulares tenían todos los puestos altos, mientras los criollos solo podían desempeñar cargos en los cabildos.",
     "cita_textual": "No podían desempeñar ningún cargo en el gobierno solamente en los cabildos.",
     "tema": "Sociedad colonial",
@@ -362,12 +362,12 @@
   "sep_25": {
     "pregunta": "¿Qué era la encomienda?",
     "opciones": [
-      "Asignar al español un grupo de indígenas o negros a cambio de protección y enseñanza religiosa",
+      "Indígenas y negros al servicio de un español",
       "Un impuesto sobre las casas",
       "Un mercado de cacao",
       "Una institución de gobierno local"
     ],
-    "respuesta_correcta": "Asignar al español un grupo de indígenas o negros a cambio de protección y enseñanza religiosa",
+    "respuesta_correcta": "Indígenas y negros al servicio de un español",
     "explicacion": "La encomienda consistía en asignar a un español un grupo de indígenas o negros para que trabajaran a cambio de protección y doctrina religiosa.",
     "cita_textual": "Asignar al español o encomendero, un grupo de indígenas o negros para que ellos trabajaran a cambio de protección y la enseñanza de la doctrina religiosa.",
     "tema": "Sociedad colonial",
@@ -377,12 +377,12 @@
   "sep_26": {
     "pregunta": "¿En qué consistía la encomienda?",
     "opciones": [
-      "En dos tipos: de servicios personales y de tributo",
+      "De servicios personales y de tributo",
       "En un solo tipo: de tributo",
       "En el pago de impuestos al rey",
       "En la venta de esclavos"
     ],
-    "respuesta_correcta": "En dos tipos: de servicios personales y de tributo",
+    "respuesta_correcta": "De servicios personales y de tributo",
     "explicacion": "Existían dos tipos de encomienda: de servicios personales y de tributo.",
     "cita_textual": "Existían dos tipos de encomienda: De servicios personales... De tributo.",
     "tema": "Sociedad colonial",
@@ -392,12 +392,12 @@
   "sep_27": {
     "pregunta": "¿Qué fue la Ilustración?",
     "opciones": [
-      "Un proceso que inició en Europa en el siglo XVIII con ideas sobre los derechos individuales",
+      "Un movimiento de ideas en el siglo XVIII",
       "Una guerra entre España y Portugal",
       "Un impuesto colonial",
       "Una fiesta religiosa"
     ],
-    "respuesta_correcta": "Un proceso que inició en Europa en el siglo XVIII con ideas sobre los derechos individuales",
+    "respuesta_correcta": "Un movimiento de ideas en el siglo XVIII",
     "explicacion": "La Ilustración inició en Europa en el siglo XVIII e impregnó a América Latina con ideas sobre los derechos individuales.",
     "cita_textual": "La Ilustración fue un proceso que inició en Europa en el siglo XVIII.",
     "tema": "Camino a la independencia",
@@ -407,12 +407,12 @@
   "sep_28": {
     "pregunta": "¿Qué ideas de la Ilustración influyeron en América?",
     "opciones": [
-      "El gobierno de tres poderes, la libertad de pensamiento y el respeto a las personas",
+      "Gobierno de tres poderes y libertad de pensamiento",
       "El monopolio comercial y los impuestos",
       "La esclavitud y la servidumbre",
       "El poder absoluto del rey"
     ],
-    "respuesta_correcta": "El gobierno de tres poderes, la libertad de pensamiento y el respeto a las personas",
+    "respuesta_correcta": "Gobierno de tres poderes y libertad de pensamiento",
     "explicacion": "Establecía un gobierno de tres poderes, libertad de pensamiento y respeto a todas las personas.",
     "cita_textual": "Un gobierno de tres poderes (Ejecutivo, Legislativo y Judicial), libertad de pensamiento y respeto a todas las personas.",
     "tema": "Camino a la independencia",
@@ -437,12 +437,12 @@
   "sep_30": {
     "pregunta": "¿Qué fue la Revolución francesa?",
     "opciones": [
-      "Una revolución iniciada el 14 de julio de 1789 con la toma de la Bastilla",
+      "Una revolución del 14 de julio de 1789",
       "Una fiesta tradicional de Francia",
       "Un tratado entre España y Francia",
       "Una guerra entre Francia e Inglaterra"
     ],
-    "respuesta_correcta": "Una revolución iniciada el 14 de julio de 1789 con la toma de la Bastilla",
+    "respuesta_correcta": "Una revolución del 14 de julio de 1789",
     "explicacion": "La Revolución francesa se inicia el 14 de julio de 1789, cuando el pueblo tomó la cárcel de la Bastilla.",
     "cita_textual": "Se toma como fecha de inicio de la revolución francesa el 14 de julio de 1789.",
     "tema": "Camino a la independencia",
@@ -452,12 +452,12 @@
   "sep_31": {
     "pregunta": "¿Por qué las ideas de la Revolución francesa fueron importantes para América?",
     "opciones": [
-      "Porque las ideas de libertad, igualdad y fraternidad despertaron el anhelo de independencia",
+      "Por las ideas de libertad, igualdad y fraternidad",
       "Porque impusieron nuevos impuestos",
       "Porque trajeron más esclavos",
       "Porque fortalecieron el dominio español"
     ],
-    "respuesta_correcta": "Porque las ideas de libertad, igualdad y fraternidad despertaron el anhelo de independencia",
+    "respuesta_correcta": "Por las ideas de libertad, igualdad y fraternidad",
     "explicacion": "Las ideas de libertad, igualdad y fraternidad despertaron el anhelo de tener esos derechos.",
     "cita_textual": "Las ideas de libertad, igualdad y fraternidad despiertan el anhelo de tener esos derechos.",
     "tema": "Camino a la independencia",
@@ -467,12 +467,12 @@
   "sep_32": {
     "pregunta": "¿Por qué los criollos estaban descontentos con el dominio español?",
     "opciones": [
-      "Porque eran excluidos de los altos puestos administrativos por la Corona",
+      "Porque eran excluidos de los altos puestos",
       "Porque pagaban muchos impuestos",
       "Porque querían volver a España",
       "Porque no tenían tierras"
     ],
-    "respuesta_correcta": "Porque eran excluidos de los altos puestos administrativos por la Corona",
+    "respuesta_correcta": "Porque eran excluidos de los altos puestos",
     "explicacion": "Los criollos, por haber nacido en América, eran excluidos de los altos puestos administrativos por la Corona.",
     "cita_textual": "Los criollos por haber nacido en América, eran excluidos de altos puestos administrativos por la Corona.",
     "tema": "Camino a la independencia",
@@ -512,12 +512,12 @@
   "sep_35": {
     "pregunta": "¿Qué fueron las Cortes de Cádiz?",
     "opciones": [
-      "La reunión de las cortes en Cádiz entre 1810 y 1814 que estableció una Constitución",
+      "La reunión que creó una Constitución",
       "Una guerra entre colonias",
       "Un mercado de esclavos",
       "Una fiesta religiosa"
     ],
-    "respuesta_correcta": "La reunión de las cortes en Cádiz entre 1810 y 1814 que estableció una Constitución",
+    "respuesta_correcta": "La reunión que creó una Constitución",
     "explicacion": "Entre 1810 y 1814 se reunieron las cortes en Cádiz y se estableció una Constitución.",
     "cita_textual": "En 1810-1814, se reúnen todas las cortes en un lugar llamado Cádiz, España, en la cual se establece una Constitución.",
     "tema": "Camino a la independencia",
@@ -557,12 +557,12 @@
   "sep_38": {
     "pregunta": "¿Qué consecuencias tuvieron las decisiones de las Cortes de Cádiz?",
     "opciones": [
-      "Fernando VII eliminó la Constitución e impuso el absolutismo, generando molestia y llamado a la independencia",
+      "Fernando VII eliminó la Constitución e impuso el absolutismo",
       "Se logró la independencia inmediata de toda América",
       "No tuvieron ninguna consecuencia",
       "Se fortaleció el poder de los criollos"
     ],
-    "respuesta_correcta": "Fernando VII eliminó la Constitución e impuso el absolutismo, generando molestia y llamado a la independencia",
+    "respuesta_correcta": "Fernando VII eliminó la Constitución e impuso el absolutismo",
     "explicacion": "Fernando VII eliminó la Constitución de 1812 e impuso el absolutismo, lo que generó una molestia enorme y un llamado a la independencia.",
     "cita_textual": "Fernando VII eliminó la Constitución de 1812 e impuso el absolutismo nuevamente. Esto generó una molestia enorme.",
     "tema": "Camino a la independencia",
@@ -572,12 +572,12 @@
   "sep_39": {
     "pregunta": "¿Qué significa independencia?",
     "opciones": [
-      "La ruptura del dominio español para ser libres",
+      "La ruptura del dominio español",
       "Seguir perteneciendo a España",
       "Pagar más impuestos al rey",
       "Unirse a otra colonia"
     ],
-    "respuesta_correcta": "La ruptura del dominio español para ser libres",
+    "respuesta_correcta": "La ruptura del dominio español",
     "explicacion": "La independencia implica la ruptura del dominio español para lograr una vida digna y con libertad.",
     "cita_textual": "Implica la ruptura del dominio español.",
     "tema": "Camino a la independencia",
@@ -587,12 +587,12 @@
   "sep_40": {
     "pregunta": "¿Por qué la independencia fue un proceso histórico importante para América?",
     "opciones": [
-      "Porque culminó con la separación del dominio de la monarquía española",
+      "Por la separación del dominio español",
       "Porque aumentó los impuestos",
       "Porque mantuvo el dominio colonial",
       "Porque terminó con el comercio"
     ],
-    "respuesta_correcta": "Porque culminó con la separación del dominio de la monarquía española",
+    "respuesta_correcta": "Por la separación del dominio español",
     "explicacion": "La independencia culminó con la separación administrativa del dominio colonial de la monarquía española.",
     "cita_textual": "Culminando con la separación administrativa de carácter colonial en la que se encontraban bajo el dominio de la monarquía española.",
     "tema": "Camino a la independencia",
@@ -617,12 +617,12 @@
   "sep_42": {
     "pregunta": "¿Qué fue la conquista?",
     "opciones": [
-      "La fase donde los españoles dominan a los aborígenes tras reconocer su geografía",
+      "La fase donde los españoles dominaron a los aborígenes",
       "Una etapa de comercio pacífico entre España y América",
       "Un acuerdo entre los reyes para repartir tierras",
       "La fundación de las ciudades coloniales"
     ],
-    "respuesta_correcta": "La fase donde los españoles dominan a los aborígenes tras reconocer su geografía",
+    "respuesta_correcta": "La fase donde los españoles dominaron a los aborígenes",
     "explicacion": "La conquista es la fase donde los españoles comienzan a dominar a los aborígenes, reconociendo primero su geografía.",
     "cita_textual": "La conquista es la fase donde los españoles comienzan a dominar a los aborígenes.",
     "tema": "Conquista y resistencia indígena",
@@ -647,12 +647,12 @@
   "sep_44": {
     "pregunta": "¿Qué fundó Francisco Fernández de Córdoba en 1524?",
     "opciones": [
-      "La Villa Bruselas, primera población de Costa Rica",
+      "La Villa Bruselas",
       "La ciudad de Cartago",
       "La ciudad de Garcimuñoz",
       "El puerto de Caldera"
     ],
-    "respuesta_correcta": "La Villa Bruselas, primera población de Costa Rica",
+    "respuesta_correcta": "La Villa Bruselas",
     "explicacion": "Francisco Fernández de Córdoba fundó la Villa Bruselas, cerca del río Grande de Tárcoles, en 1524.",
     "cita_textual": "Francisco Fernández de Córdoba, quien funda... la Villa Bruselas, que fue la primera población de Costa Rica.",
     "tema": "Conquista y resistencia indígena",
@@ -677,12 +677,12 @@
   "sep_46": {
     "pregunta": "¿Qué hizo Diego Gutiérrez en 1543?",
     "opciones": [
-      "Exploró las llanuras de Santa Clara por el río Reventazón",
+      "Exploró las llanuras de Santa Clara",
       "Fundó la ciudad de Cartago",
       "Recorrió la costa del Pacífico",
       "Firmó el Tratado de Tordesillas"
     ],
-    "respuesta_correcta": "Exploró las llanuras de Santa Clara por el río Reventazón",
+    "respuesta_correcta": "Exploró las llanuras de Santa Clara",
     "explicacion": "Diego Gutiérrez pasó en 1543 por el río Reventazón y exploró las llanuras de Santa Clara.",
     "cita_textual": "Diego Gutiérrez pasa en el año de 1543 por el río Reventazón, explora las llanuras de Santa Clara.",
     "tema": "Conquista y resistencia indígena",
@@ -707,12 +707,12 @@
   "sep_48": {
     "pregunta": "¿Qué fue el Tratado de Tordesillas?",
     "opciones": [
-      "El acuerdo por el que España y Portugal se repartieron las nuevas tierras",
+      "El reparto de tierras entre España y Portugal",
       "Un impuesto a los productos coloniales",
       "La fundación de la primera ciudad",
       "Un tratado de paz con los indígenas"
     ],
-    "respuesta_correcta": "El acuerdo por el que España y Portugal se repartieron las nuevas tierras",
+    "respuesta_correcta": "El reparto de tierras entre España y Portugal",
     "explicacion": "En 1494 España y Portugal se repartieron sus tierras a través del Tratado de Tordesillas.",
     "cita_textual": "España y Portugal se repartieron sus tierras a través del tratado de Tordesillas firmado en 1494.",
     "tema": "Conquista y resistencia indígena",
@@ -737,12 +737,12 @@
   "sep_50": {
     "pregunta": "¿Cómo cambió la población aborigen de América por la conquista?",
     "opciones": [
-      "Disminuyó de 70 millones a solo 4 millones",
+      "Disminuyó de 70 a 4 millones",
       "Aumentó de 4 a 70 millones",
       "Se mantuvo igual",
       "Se duplicó"
     ],
-    "respuesta_correcta": "Disminuyó de 70 millones a solo 4 millones",
+    "respuesta_correcta": "Disminuyó de 70 a 4 millones",
     "explicacion": "La población autóctona pasó de 70 millones a tan solo 4 millones por las guerras, enfermedades y explotación.",
     "cita_textual": "La población autóctona pasara de 70 millones a tan solo 4 millones.",
     "tema": "Conquista y resistencia indígena",
@@ -767,12 +767,12 @@
   "sep_52": {
     "pregunta": "¿Qué conocimientos se impusieron como consecuencia cultural de la conquista?",
     "opciones": [
-      "La cartografía, la geografía, la escritura y la navegación",
+      "La cartografía, la geografía y la escritura",
       "La agricultura de subsistencia",
       "La alfarería indígena",
       "La medicina tradicional"
     ],
-    "respuesta_correcta": "La cartografía, la geografía, la escritura y la navegación",
+    "respuesta_correcta": "La cartografía, la geografía y la escritura",
     "explicacion": "Se impuso el desarrollo y aprendizaje de la cartografía, la geografía, la escritura y la navegación.",
     "cita_textual": "El desarrollo y aprendizaje de la cartografía, la geografía, la escritura y la navegación.",
     "tema": "Conquista y resistencia indígena",
@@ -782,12 +782,12 @@
   "sep_53": {
     "pregunta": "¿Qué alimentos introdujeron los españoles en la alimentación americana?",
     "opciones": [
-      "El café, la cebolla, la caña de azúcar, la naranja, el arroz y la cebada",
+      "El café, la caña de azúcar y el arroz",
       "La papa, el maíz, el tomate y el cacao",
       "El camote, el tiquizque y la yuca",
       "El cacao y el plátano"
     ],
-    "respuesta_correcta": "El café, la cebolla, la caña de azúcar, la naranja, el arroz y la cebada",
+    "respuesta_correcta": "El café, la caña de azúcar y el arroz",
     "explicacion": "Los conquistadores incluyeron en la alimentación americana alimentos como el café, la cebolla, la caña de azúcar, la naranja, el arroz y la cebada.",
     "cita_textual": "Alimentos como: el café, la cebolla, la caña de azúcar, la naranja, el arroz y la cebada.",
     "tema": "Conquista y resistencia indígena",
@@ -842,12 +842,12 @@
   "sep_57": {
     "pregunta": "¿Qué función tenía el Consejo Real y Superior de las Indias?",
     "opciones": [
-      "Aconsejar al rey, proponer leyes y ser el máximo tribunal de justicia",
+      "Aconsejar al rey y proponer leyes",
       "Cobrar los impuestos del comercio",
       "Gobernar los virreinatos",
       "Elegir a los alcaldes"
     ],
-    "respuesta_correcta": "Aconsejar al rey, proponer leyes y ser el máximo tribunal de justicia",
+    "respuesta_correcta": "Aconsejar al rey y proponer leyes",
     "explicacion": "El Consejo Real y Superior de las Indias aconsejaba al rey, proponía leyes y era el máximo tribunal de justicia.",
     "cita_textual": "Organismo que aconsejada al rey. Proponía leyes para el nuevo mundo... Era el máximo tribunal de justicia.",
     "tema": "Sociedad Colonial en Costa Rica",
@@ -872,12 +872,12 @@
   "sep_59": {
     "pregunta": "¿En qué consistía el monopolio comercial durante la colonia?",
     "opciones": [
-      "Los habitantes solo podían comerciar con barcos españoles autorizados",
+      "Solo se podía comerciar con barcos autorizados",
       "El comercio era libre entre todos los países",
       "Solo se podía comerciar con los indígenas",
       "El comercio se hacía únicamente por tierra"
     ],
-    "respuesta_correcta": "Los habitantes solo podían comerciar con barcos españoles autorizados",
+    "respuesta_correcta": "Solo se podía comerciar con barcos autorizados",
     "explicacion": "El monopolio comercial consistía en que los habitantes solo podían comerciar con barcos españoles autorizados.",
     "cita_textual": "Solo podían comerciar con barcos españoles autorizados.",
     "tema": "Sociedad Colonial en Costa Rica",
@@ -887,12 +887,12 @@
   "sep_60": {
     "pregunta": "¿Qué productos sembraban en la chacra?",
     "opciones": [
-      "Maíz, frijoles, trigo, caña de azúcar y hortalizas",
+      "Maíz, frijoles y trigo",
       "Cacao y café",
       "Solo tubérculos",
       "Uvas y aceitunas"
     ],
-    "respuesta_correcta": "Maíz, frijoles, trigo, caña de azúcar y hortalizas",
+    "respuesta_correcta": "Maíz, frijoles y trigo",
     "explicacion": "En la chacra sembraban productos como maíz, frijoles, trigo, caña de azúcar y hortalizas.",
     "cita_textual": "Algunos de los productos que sembraban era: maíz, frijoles, trigo, caña de azúcar, hortalizas.",
     "tema": "Sociedad Colonial en Costa Rica",
@@ -902,12 +902,12 @@
   "sep_61": {
     "pregunta": "¿Quiénes atendían la plantación de cacao?",
     "opciones": [
-      "Los aborígenes, que sabían sembrar el cacao",
+      "Los aborígenes",
       "Los criollos",
       "Los peninsulares",
       "Los virreyes"
     ],
-    "respuesta_correcta": "Los aborígenes, que sabían sembrar el cacao",
+    "respuesta_correcta": "Los aborígenes",
     "explicacion": "La plantación era atendida por los aborígenes, ya que sabían cómo sembrar el cacao.",
     "cita_textual": "Era atendida por los aborígenes ya que sabían cómo sembrar el cacao.",
     "tema": "Sociedad Colonial en Costa Rica",
@@ -917,12 +917,12 @@
   "sep_62": {
     "pregunta": "¿Qué fueron las Ferias de Matina?",
     "opciones": [
-      "El intercambio de cacao con los ingleses, que era ilegal",
+      "El intercambio de cacao",
       "Un mercado de esclavos",
       "Una fiesta religiosa",
       "Un impuesto colonial"
     ],
-    "respuesta_correcta": "El intercambio de cacao con los ingleses, que era ilegal",
+    "respuesta_correcta": "El intercambio de cacao",
     "explicacion": "La cosecha se negociaba con los ingleses de forma ilegal (contrabando), originando las Ferias de Matina.",
     "cita_textual": "La mayoría de la cosecha era negociada con los ingleses en una forma ilegal (contrabando)... Se originan las Ferias de Matina.",
     "tema": "Sociedad Colonial en Costa Rica",
@@ -992,12 +992,12 @@
   "sep_67": {
     "pregunta": "¿Qué era el diezmo?",
     "opciones": [
-      "Un impuesto del 10% de lo producido, que se pagaba a la iglesia",
+      "Un impuesto del 10% a la iglesia",
       "Un impuesto de aduanas",
       "Un tributo al rey",
       "Un pago a los esclavos"
     ],
-    "respuesta_correcta": "Un impuesto del 10% de lo producido, que se pagaba a la iglesia",
+    "respuesta_correcta": "Un impuesto del 10% a la iglesia",
     "explicacion": "El diezmo era el impuesto del 10% de todo lo que se producía, y se pagaba a la iglesia.",
     "cita_textual": "El diezmo: impuesto del 10% de todo lo que producía, se pagaba a la iglesia.",
     "tema": "Sociedad Colonial en Costa Rica",
@@ -1022,12 +1022,12 @@
   "sep_69": {
     "pregunta": "¿Quiénes eran los ladinos?",
     "opciones": [
-      "Los aborígenes que adquirieron el idioma y las costumbres españolas",
+      "Los aborígenes con idioma y costumbres españolas",
       "Los hijos de españoles nacidos en América",
       "Los esclavos africanos",
       "Los comerciantes peninsulares"
     ],
-    "respuesta_correcta": "Los aborígenes que adquirieron el idioma y las costumbres españolas",
+    "respuesta_correcta": "Los aborígenes con idioma y costumbres españolas",
     "explicacion": "Los ladinos eran los aborígenes que habían logrado adquirir el idioma y las costumbres españolas.",
     "cita_textual": "Los ladinos eran los aborígenes que habían logrado adquirir el idioma y las costumbres españolas.",
     "tema": "Sociedad colonial",
@@ -1037,12 +1037,12 @@
   "sep_70": {
     "pregunta": "¿Quiénes eran los mulatos?",
     "opciones": [
-      "La mezcla de una persona blanca con una persona negra",
+      "La mezcla de una persona blanca con una negra",
       "La mezcla de indígenas con negros",
       "Los españoles peninsulares",
       "Los indígenas de Talamanca"
     ],
-    "respuesta_correcta": "La mezcla de una persona blanca con una persona negra",
+    "respuesta_correcta": "La mezcla de una persona blanca con una negra",
     "explicacion": "Los mulatos eran la mezcla de una persona blanca con una persona negra, y eran explotados en las plantaciones.",
     "cita_textual": "Mulatos: Mezcla de una persona blanca con una persona negra.",
     "tema": "Sociedad colonial",
@@ -1067,12 +1067,12 @@
   "sep_72": {
     "pregunta": "¿Por qué se creó la encomienda?",
     "opciones": [
-      "Porque la corona prohibió esclavizar a los indígenas",
+      "Porque se prohibió la esclavitud",
       "Para aumentar el comercio",
       "Para fundar ciudades",
       "Para cobrar más impuestos"
     ],
-    "respuesta_correcta": "Porque la corona prohibió esclavizar a los indígenas",
+    "respuesta_correcta": "Porque se prohibió la esclavitud",
     "explicacion": "La corona prohibió la esclavización de los indígenas, así que los españoles idearon el sistema de encomienda para someterlos.",
     "cita_textual": "La corona española prohibió la esclavización de los indígenas... ideando un sistema... llamado encomienda.",
     "tema": "Sociedad colonial",
@@ -1172,12 +1172,12 @@
   "sep_79": {
     "pregunta": "¿Qué proponía el Acta del 15 de setiembre?",
     "opciones": [
-      "Declarar la independencia de Guatemala e invitar a las demás provincias a hacer lo mismo",
+      "Declarar la independencia e invitar a las demás provincias",
       "Cobrar nuevos impuestos a los criollos",
       "Repartir las tierras entre los indígenas",
       "Abolir el comercio con Inglaterra"
     ],
-    "respuesta_correcta": "Declarar la independencia de Guatemala e invitar a las demás provincias a hacer lo mismo",
+    "respuesta_correcta": "Declarar la independencia e invitar a las demás provincias",
     "explicacion": "El Acta del 15 de setiembre declaraba la independencia de Guatemala del Imperio Español e invitaba a las demás provincias a hacer lo mismo.",
     "cita_textual": "Declaraba la independencia de Guatemala... Se invitaba a las demás provincias de Centroamérica a realizar lo mismo.",
     "tema": "Camino a la independencia",
@@ -1187,12 +1187,12 @@
   "sep_80": {
     "pregunta": "¿Qué importancia tuvo la independencia de Haití?",
     "opciones": [
-      "Fue el primer estado independiente de América Latina y la primera república negra del mundo",
+      "El primer estado independiente de América Latina",
       "Fue la primera colonia de España",
       "Fue una causa externa de la Ilustración",
       "Fue un acuerdo comercial con Francia"
     ],
-    "respuesta_correcta": "Fue el primer estado independiente de América Latina y la primera república negra del mundo",
+    "respuesta_correcta": "El primer estado independiente de América Latina",
     "explicacion": "Haití se independizó en 1804, convirtiéndose en el primer estado en América Latina independiente y la primera república negra del mundo.",
     "cita_textual": "Haití se independiza en 1804... la primera república negra del mundo.",
     "tema": "Camino a la independencia",

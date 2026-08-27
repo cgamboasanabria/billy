@@ -106,3 +106,50 @@ def test_verify_flags_image_from_wrong_subject(tmp_path):
     report = verify_bundle(Bundle(matter="x", subjects=[matter]))
     assert report.has_errors
     assert any("imagen de otra materia" in i.message for i in report.issues)
+
+
+def test_verify_flags_length_outlier_long():
+    """A correct answer that dwarfs the other options is flagged as a hint."""
+    q = Question(
+        question="Que es la hacienda?",
+        options=[
+            "Una respuesta correcta mucho mas larga que las demas opciones",
+            "a",
+            "b",
+            "c",
+        ],
+        answer="Una respuesta correcta mucho mas larga que las demas opciones",
+        cita_textual="cita",
+        topic="tema",
+    )
+    matter = Matter(name="Ciencias", modules=[Module(name="M1", questions=[q])])
+    report = verify_bundle(Bundle(matter="x", subjects=[matter]))
+    assert any("notablemente mas larga" in i.message for i in report.issues)
+
+
+def test_verify_flags_length_outlier_short():
+    """A correct answer that is far shorter than the rest is flagged."""
+    q = Question(
+        question="Quien manda?",
+        options=["X", "Una opcion bastante larga", "Otra opcion larga tambien", "Y una mas"],
+        answer="X",
+        cita_textual="cita",
+        topic="tema",
+    )
+    matter = Matter(name="Ciencias", modules=[Module(name="M1", questions=[q])])
+    report = verify_bundle(Bundle(matter="x", subjects=[matter]))
+    assert any("notablemente mas corta" in i.message for i in report.issues)
+
+
+def test_verify_does_not_flag_balanced_options():
+    """Options of similar length are not flagged."""
+    q = Question(
+        question="Que es X?",
+        options=["opcion uno", "opcion dos", "opcion tres"],
+        answer="opcion dos",
+        cita_textual="cita",
+        topic="tema",
+    )
+    matter = Matter(name="Ciencias", modules=[Module(name="M1", questions=[q])])
+    report = verify_bundle(Bundle(matter="x", subjects=[matter]))
+    assert not any("notablemente" in i.message for i in report.issues)

@@ -71,8 +71,11 @@ def propose_question_from_bytes(
         '"respuesta_correcta": str, "explicacion": str, "cita_textual": str, '
         '"tema": str}. La pregunta y la respuesta deben basarse solo en la '
         "imagen; la cita textual debe ser una frase corta tomada del texto "
-        "visible en la imagen. Si la imagen no contiene suficiente informacion, "
-        "responde con el mismo JSON pero con el campo pregunta vacio."
+        "visible en la imagen. Las cuatro opciones deben tener una longitud "
+        "similar entre si (ni mucho mas largas ni mucho mas cortas), para que "
+        "la respuesta correcta no se distinga por ser la mas extensa. Si la "
+        "imagen no contiene suficiente informacion, responde con el mismo JSON "
+        "pero con el campo pregunta vacio."
     )
     user_text = f"Materia: {subject}. Genera la pregunta en espanol."
     response = client.chat.completions.create(
