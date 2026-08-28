@@ -398,7 +398,8 @@ def _merge_curation(bundle: Bundle) -> None:
             respuesta = str(prop.get("respuesta_correcta", "")).strip()
             if not pregunta or len(opciones) < 2 or respuesta not in opciones:
                 continue
-            resolved_image = _find_image(image_name, subject_name)
+            ref = str(prop.get("imagen_referencia", image_name))
+            resolved_image = _find_image(ref, subject_name)
             module.questions.append(
                 Question(
                     question=pregunta,
@@ -408,7 +409,7 @@ def _merge_curation(bundle: Bundle) -> None:
                     cita_textual=str(prop.get("cita_textual", "")),
                     topic=str(prop.get("tema", "")),
                     difficulty="media",
-                    imagen_referencia=image_name if resolved_image else "",
+                    imagen_referencia=ref if resolved_image else "",
                     image_path=resolved_image,
                     page=str(prop.get("pagina", "")),
                     round=str(prop.get("ronda", "")),

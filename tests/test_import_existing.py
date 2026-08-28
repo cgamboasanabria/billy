@@ -267,3 +267,49 @@ def test_import_curation_skips_invalid_proposals(tmp_path, monkeypatch):
     bundle = import_material(quiz_html_dir=tmp_path / "vacio", mapeo_txt=tmp_path / "no.txt")
     mats = [s for s in bundle.subjects if s.name == "Matematicas"]
     assert mats == []
+
+
+def test_import_curation_explicit_imagen_referencia(tmp_path, monkeypatch):
+    """Multiple proposals can reference the same source image explicitly."""
+    import Script.functions.config as cfg
+    import Script.functions.curation as cur
+    import Script.functions.import_existing as ie
+
+    monkeypatch.setattr(cfg, "MAPEOS_DIR", tmp_path)
+    monkeypatch.setattr(cur, "MAPEOS_DIR", tmp_path)
+    ie.MAPEOS_DIR = tmp_path
+    ie.ORIGINALES_DIR = tmp_path
+    monkeypatch.setattr(cfg, "ORIGINALES_DIR", tmp_path)
+
+    nuevas = tmp_path / "nuevas"
+    nuevas.mkdir()
+    img_dir = tmp_path / "ciencias" / "setiembre_2026"
+    img_dir.mkdir(parents=True)
+    (img_dir / "ciencias_set_01.jpeg").write_bytes(b"IMG")
+
+    (nuevas / "Ciencias.json").write_text(
+        json.dumps(
+            {
+                "q1": {
+                    "pregunta": "P1?",
+                    "opciones": ["A", "B"],
+                    "respuesta_correcta": "A",
+                    "imagen_referencia": "ciencias_set_01.jpeg",
+                    "pagina": "76",
+                },
+                "q2": {
+                    "pregunta": "P2?",
+                    "opciones": ["A", "B"],
+                    "respuesta_correcta": "B",
+                    "imagen_referencia": "ciencias_set_01.jpeg",
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    bundle = import_material(quiz_html_dir=tmp_path / "vacio", mapeo_txt=tmp_path / "no.txt")
+    ciencias = [s for s in bundle.subjects if s.name == "Ciencias"]
+    questions = ciencias[0].all_questions()
+    assert len(questions) == 2
+    assert all(q.imagen_referencia == "ciencias_set_01.jpeg" for q in questions)
+    assert all(q.image_path.endswith("ciencias_set_01.jpeg") for q in questions)

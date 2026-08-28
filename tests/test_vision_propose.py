@@ -100,3 +100,38 @@ def test_answer_from_image_sends_image(monkeypatch, tmp_path):
         isinstance(item, dict) and item.get("type") == "image_url" for item in user_content
     )
     assert has_image
+
+
+def test_transcribe_parses_clean_json(monkeypatch, tmp_path):
+    payload = json.dumps({"pagina": "88", "titulo": "Adaptaciones", "texto": "Contenido."})
+    img = tmp_path / "p.jpeg"
+    img.write_bytes(b"\xff\xd8\xff\xe0jpeg")
+    from Script.functions import vision
+
+    monkeypatch.setattr(vision, "get_llm_client", lambda: _FakeClient(payload))
+    result = vision.transcribe_image(str(img))
+    assert result["pagina"] == "88"
+    assert result["titulo"] == "Adaptaciones"
+    assert result["texto"] == "Contenido."
+
+
+def test_transcribe_strips_markdown_fence(monkeypatch, tmp_path):
+    payload = "```json\n" + json.dumps({"pagina": "90", "titulo": "T", "texto": "texto"}) + "\n```"
+    img = tmp_path / "p.jpeg"
+    img.write_bytes(b"\xff\xd8\xff\xe0jpeg")
+    from Script.functions import vision
+
+    monkeypatch.setattr(vision, "get_llm_client", lambda: _FakeClient(payload))
+    result = vision.transcribe_image(str(img))
+    assert result["pagina"] == "90"
+
+
+def test_transcribe_handles_invalid_json(monkeypatch, tmp_path):
+    img = tmp_path / "p.jpeg"
+    img.write_bytes(b"\xff\xd8\xff\xe0jpeg")
+    from Script.functions import vision
+
+    monkeypatch.setattr(vision, "get_llm_client", lambda: _FakeClient("no json"))
+    result = vision.transcribe_image(str(img))
+    assert result["pagina"] == ""
+    assert "error" in result

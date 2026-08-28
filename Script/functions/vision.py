@@ -52,6 +52,65 @@ def answer_from_image(image_path: str, question: str) -> str:
     return (response.choices[0].message.content or "").strip()
 
 
+def _strip_json_fence(text: str) -> str:
+    """Remove a markdown code fence around a JSON payload, if present."""
+    text = text.strip()
+    if text.startswith("```"):
+        text = text.strip("`")
+        if text.startswith("json"):
+            text = text[4:]
+        text = text.strip()
+    return text
+
+
+def transcribe_image(image_path: str) -> dict[str, str]:
+    """Transcribe a printed page image for parent verification.
+
+    Returns a dict with keys: ``pagina`` (the printed page number, or empty),
+    ``titulo`` (the main heading) and ``texto`` (the full transcription,
+    including any handwritten notes). The parent reviews this before questions
+    are created from the page.
+    """
+    client = get_llm_client()
+    system = (
+        "Eres un transcriptor fiel de paginas de un libro de Ciencias para un "
+        "nino de cuarto grado de Costa Rica. Transcribe TODO el texto visible "
+        "en la imagen, incluyendo cualquier apunte escrito a mano. Si aparece "
+        "un numero de pagina impreso, indicalo. Responde EXCLUSIVAMENTE con "
+        "JSON valido (sin texto antes ni despues) con esta forma exacta: "
+        '{"pagina": str, "titulo": str, "texto": str}. El campo "pagina" es el '
+        'numero de pagina impreso (o "" si no se ve). El campo "titulo" es el '
+        'titulo o encabezado principal. El campo "texto" es la transcripcion '
+        "completa del contenido, preservando las definiciones y conceptos tal "
+        "cual aparecen."
+    )
+    response = client.chat.completions.create(
+        model=VISION_MODEL,
+        messages=[
+            {"role": "system", "content": system},
+            {
+                "role": "user",
+                "content": [
+                    {"type": "text", "text": "Transcribe el contenido de esta pagina."},
+                    {"type": "image_url", "image_url": {"url": _image_url(image_path)}},
+                ],
+            },
+        ],
+        temperature=0.0,
+        max_tokens=2000,
+    )
+    text = _strip_json_fence(response.choices[0].message.content or "")
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError:
+        return {"pagina": "", "titulo": "", "texto": text, "error": "JSON invalido"}
+    return {
+        "pagina": str(data.get("pagina", "")),
+        "titulo": str(data.get("titulo", "")),
+        "texto": str(data.get("texto", "")),
+    }
+
+
 def propose_question_from_bytes(
     image_bytes: bytes, subject: str = "", suffix: str = ".jpeg"
 ) -> dict[str, Any]:

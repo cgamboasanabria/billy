@@ -1,0 +1,1394 @@
+{
+  "sep_01": {
+    "pregunta": "¿Qué es la fotosíntesis?",
+    "opciones": [
+      "Un proceso que convierte la energía del sol en energía química",
+      "Un proceso que convierte el agua en dióxido de carbono",
+      "Un proceso que convierte la energía química en luz solar",
+      "Un proceso que convierte el oxígeno en glucosa"
+    ],
+    "respuesta_correcta": "Un proceso que convierte la energía del sol en energía química",
+    "explicacion": "La fotosíntesis convierte la energía del sol en energía química para alimentar a la planta.",
+    "cita_textual": "se convierte la energía del sol en energía química",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "76",
+    "imagen_referencia": "ciencias_set_01.jpeg"
+  },
+  "sep_02": {
+    "pregunta": "¿En qué seres ocurre la fotosíntesis?",
+    "opciones": [
+      "En las plantas, las algas y algunas bacterias",
+      "En los animales y los hongos",
+      "En los insectos y los mamíferos",
+      "En los peces y las aves"
+    ],
+    "respuesta_correcta": "En las plantas, las algas y algunas bacterias",
+    "explicacion": "La fotosíntesis ocurre en las plantas, las algas y algunas bacterias.",
+    "cita_textual": "ocurre en las plantas, las algas y algunas bacterias",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "76",
+    "imagen_referencia": "ciencias_set_01.jpeg"
+  },
+  "sep_03": {
+    "pregunta": "¿Qué producen las plantas gracias a la fotosíntesis?",
+    "opciones": [
+      "Su propio alimento y oxígeno",
+      "Dióxido de carbono y agua",
+      "Minerales y sales del suelo",
+      "Glucosa y dióxido de carbono"
+    ],
+    "respuesta_correcta": "Su propio alimento y oxígeno",
+    "explicacion": "Las plantas producen su propio alimento (glucosa) y oxígeno.",
+    "cita_textual": "producir su propio alimento (glucosa) y oxígeno",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "76",
+    "imagen_referencia": "ciencias_set_01.jpeg"
+  },
+  "sep_04": {
+    "pregunta": "¿En qué parte de la célula se realiza la fotosíntesis?",
+    "opciones": [
+      "En los cloroplastos",
+      "En las raíces",
+      "En el tallo",
+      "En la flor"
+    ],
+    "respuesta_correcta": "En los cloroplastos",
+    "explicacion": "La fotosíntesis se lleva a cabo en las células de los cloroplastos.",
+    "cita_textual": "se lleva a cabo en las células de los cloroplastos",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "76",
+    "imagen_referencia": "ciencias_set_01.jpeg"
+  },
+  "sep_05": {
+    "pregunta": "¿Qué sustancia da el color verde a las hojas?",
+    "opciones": [
+      "La clorofila",
+      "La glucosa",
+      "El oxígeno",
+      "La savia bruta"
+    ],
+    "respuesta_correcta": "La clorofila",
+    "explicacion": "La clorofila es la sustancia que permite que las hojas tengan el color verde.",
+    "cita_textual": "la clorofila que es una sustancia que permite que las hojas tengan el color verde",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "76",
+    "imagen_referencia": "ciencias_set_01.jpeg"
+  },
+  "sep_06": {
+    "pregunta": "¿Qué absorben las raíces en la fotosíntesis?",
+    "opciones": [
+      "El agua y los minerales",
+      "La luz solar y el oxígeno",
+      "El dióxido de carbono",
+      "La glucosa y la clorofila"
+    ],
+    "respuesta_correcta": "El agua y los minerales",
+    "explicacion": "Las raíces absorben el agua y los minerales del suelo.",
+    "cita_textual": "Las raíces de los árboles y plantas absorben el agua y los minerales",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "76",
+    "imagen_referencia": "ciencias_set_01.jpeg"
+  },
+  "sep_07": {
+    "pregunta": "¿Qué ocurre en el paso de la circulación?",
+    "opciones": [
+      "El agua y los minerales se dirigen hacia el tallo",
+      "Las raíces absorben el dióxido de carbono",
+      "La clorofila expulsa el oxígeno",
+      "La flor produce la glucosa"
+    ],
+    "respuesta_correcta": "El agua y los minerales se dirigen hacia el tallo",
+    "explicacion": "En la circulación, el agua y los minerales de la raíz se dirigen hacia el tallo.",
+    "cita_textual": "El agua y los minerales que fueron absorbidos desde la raíz se dirigen hacia el tallo",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "76",
+    "imagen_referencia": "ciencias_set_01.jpeg"
+  },
+  "sep_08": {
+    "pregunta": "¿Qué hace la planta durante la respiración?",
+    "opciones": [
+      "Toma oxígeno y expulsa dióxido de carbono",
+      "Toma dióxido de carbono y expulsa oxígeno",
+      "Toma glucosa y expulsa agua",
+      "Toma minerales y expulsa luz"
+    ],
+    "respuesta_correcta": "Toma oxígeno y expulsa dióxido de carbono",
+    "explicacion": "En la respiración, la planta toma el oxígeno y expulsa el dióxido de carbono.",
+    "cita_textual": "La planta toma el oxígeno y expulsa el dióxido de carbono",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "76",
+    "imagen_referencia": "ciencias_set_01.jpeg"
+  },
+  "sep_09": {
+    "pregunta": "¿Cuál es el orden correcto de los pasos de la fotosíntesis?",
+    "opciones": [
+      "Absorción, circulación, fotosíntesis y respiración",
+      "Circulación, absorción, respiración y fotosíntesis",
+      "Fotosíntesis, respiración, absorción y circulación",
+      "Respiración, fotosíntesis, circulación y absorción"
+    ],
+    "respuesta_correcta": "Absorción, circulación, fotosíntesis y respiración",
+    "explicacion": "Los cuatro pasos son: absorción, circulación, fotosíntesis y respiración.",
+    "cita_textual": "El proceso de fotosíntesis lo podemos resumir en los siguientes cuatro pasos",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "76",
+    "imagen_referencia": "ciencias_set_01.jpeg"
+  },
+  "sep_10": {
+    "pregunta": "¿Cuál NO es una parte básica de la planta?",
+    "opciones": [
+      "La semilla",
+      "La raíz",
+      "El tallo",
+      "La hoja"
+    ],
+    "respuesta_correcta": "La semilla",
+    "explicacion": "Las partes básicas de la planta son hoja, fruto, flor, tallo y raíz; la semilla no aparece en esa lista.",
+    "cita_textual": "PARTES BÁSICAS DE LAS PLANTAS: Hoja, Fruto, Flor, Tallo, Raíz",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "76",
+    "imagen_referencia": "ciencias_set_01.jpeg"
+  },
+  "sep_11": {
+    "pregunta": "¿Cómo protegen las plantas los suelos?",
+    "opciones": [
+      "Gracias a la descomposición de la materia orgánica",
+      "Gracias a la producción de dióxido de carbono",
+      "Gracias a la captura de la luz solar",
+      "Gracias a la liberación de minerales"
+    ],
+    "respuesta_correcta": "Gracias a la descomposición de la materia orgánica",
+    "explicacion": "Las plantas protegen los suelos gracias a la descomposición de la materia orgánica.",
+    "cita_textual": "Protegen los suelos, gracias a la descomposición de la materia orgánica",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "79",
+    "imagen_referencia": "ciencias_set_02.jpeg"
+  },
+  "sep_12": {
+    "pregunta": "¿Qué planta medicinal se menciona como aporte para la salud?",
+    "opciones": [
+      "La manzanilla",
+      "El ciprés",
+      "El helecho",
+      "El rosal"
+    ],
+    "respuesta_correcta": "La manzanilla",
+    "explicacion": "La manzanilla es una planta medicinal que aporta beneficios para la salud.",
+    "cita_textual": "gracias a las plantas medicinales, por ejemplo, la manzanilla",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "79",
+    "imagen_referencia": "ciencias_set_02.jpeg"
+  },
+  "sep_13": {
+    "pregunta": "¿Qué árbol se usa para elaborar pisos y muebles?",
+    "opciones": [
+      "El ciprés",
+      "La manzanilla",
+      "El guayacán",
+      "El cedro"
+    ],
+    "respuesta_correcta": "El ciprés",
+    "explicacion": "El ciprés permite elaborar pisos y muebles.",
+    "cita_textual": "el ciprés, permite elaborar pisos y muebles",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "79",
+    "imagen_referencia": "ciencias_set_02.jpeg"
+  },
+  "sep_14": {
+    "pregunta": "¿Qué gas liberan las plantas en la fotosíntesis?",
+    "opciones": [
+      "El oxígeno",
+      "El dióxido de carbono",
+      "El nitrógeno",
+      "El hidrógeno"
+    ],
+    "respuesta_correcta": "El oxígeno",
+    "explicacion": "Las plantas y otros organismos fotosintéticos liberan oxígeno como subproducto.",
+    "cita_textual": "liberan oxígeno como subproducto",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "79",
+    "imagen_referencia": "ciencias_set_02.jpeg"
+  },
+  "sep_15": {
+    "pregunta": "¿Para qué es esencial el oxígeno?",
+    "opciones": [
+      "Para la respiración aeróbica de los organismos",
+      "Para la fabricación de muebles",
+      "Para la producción de minerales",
+      "Para la descomposición de la materia"
+    ],
+    "respuesta_correcta": "Para la respiración aeróbica de los organismos",
+    "explicacion": "El oxígeno es esencial para la respiración aeróbica de los organismos.",
+    "cita_textual": "El oxígeno es esencial para la respiración aeróbica de los organismos",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "79",
+    "imagen_referencia": "ciencias_set_02.jpeg"
+  },
+  "sep_16": {
+    "pregunta": "¿Qué gas absorben las plantas de la atmósfera?",
+    "opciones": [
+      "El dióxido de carbono",
+      "El oxígeno",
+      "El vapor de agua",
+      "El nitrógeno"
+    ],
+    "respuesta_correcta": "El dióxido de carbono",
+    "explicacion": "Las plantas absorben dióxido de carbono de la atmósfera.",
+    "cita_textual": "las plantas absorben dióxido de carbono de la atmósfera",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "79",
+    "imagen_referencia": "ciencias_set_02.jpeg"
+  },
+  "sep_17": {
+    "pregunta": "¿Qué beneficio tiene capturar el dióxido de carbono?",
+    "opciones": [
+      "Ayuda a mitigar el cambio climático",
+      "Aumenta el efecto invernadero",
+      "Reduce la producción de oxígeno",
+      "Daña la respiración de los animales"
+    ],
+    "respuesta_correcta": "Ayuda a mitigar el cambio climático",
+    "explicacion": "Capturar dióxido de carbono ayuda a reducir un gas de efecto invernadero y mitiga el cambio climático.",
+    "cita_textual": "ayudando así a mitigar el cambio climático",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "79",
+    "imagen_referencia": "ciencias_set_02.jpeg"
+  },
+  "sep_18": {
+    "pregunta": "¿Qué hacen las plantas con el dióxido de carbono que absorben?",
+    "opciones": [
+      "Lo utilizan para sintetizar glucosa",
+      "Lo expulsan directamente al suelo",
+      "Lo convierten en agua",
+      "Lo guardan en las raíces"
+    ],
+    "respuesta_correcta": "Lo utilizan para sintetizar glucosa",
+    "explicacion": "Las plantas utilizan el dióxido de carbono para sintetizar glucosa y otros compuestos orgánicos.",
+    "cita_textual": "lo utilizan para sintetizar glucosa y otros compuestos orgánicos",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "79",
+    "imagen_referencia": "ciencias_set_02.jpeg"
+  },
+  "sep_19": {
+    "pregunta": "¿Cuál es la fuente principal de oxígeno en la atmósfera?",
+    "opciones": [
+      "El proceso de fotosíntesis",
+      "La respiración de los animales",
+      "La descomposición de la materia",
+      "La erupción de los volcanes"
+    ],
+    "respuesta_correcta": "El proceso de fotosíntesis",
+    "explicacion": "La fotosíntesis proporciona la fuente principal de oxígeno en la atmósfera.",
+    "cita_textual": "proporciona la fuente principal de oxígeno en la atmósfera",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "79",
+    "imagen_referencia": "ciencias_set_02.jpeg"
+  },
+  "sep_20": {
+    "pregunta": "¿Qué son las plantas para los animales según el texto?",
+    "opciones": [
+      "Fundamentales para la alimentación",
+      "Peligrosas para la salud",
+      "Innecesarias para vivir",
+      "Útiles solo para construir"
+    ],
+    "respuesta_correcta": "Fundamentales para la alimentación",
+    "explicacion": "Las plantas son fundamentales para la alimentación de muchos animales y seres humanos.",
+    "cita_textual": "Son fundamentales para la alimentación de muchos animales y ser humanos",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "79",
+    "imagen_referencia": "ciencias_set_02.jpeg"
+  },
+  "sep_21": {
+    "pregunta": "¿Qué es la fotosíntesis para la cadena alimentaria?",
+    "opciones": [
+      "La base de la cadena alimentaria",
+      "El final de la cadena alimentaria",
+      "Un proceso sin importancia",
+      "Una parte opcional de la cadena"
+    ],
+    "respuesta_correcta": "La base de la cadena alimentaria",
+    "explicacion": "La fotosíntesis es la base de la cadena alimentaria.",
+    "cita_textual": "La fotosíntesis es la base de la cadena alimentaria",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "80",
+    "imagen_referencia": "ciencias_set_03.jpeg"
+  },
+  "sep_22": {
+    "pregunta": "¿De qué dependen los animales para obtener su alimento?",
+    "opciones": [
+      "Directa o indirectamente de las plantas",
+      "Solo del agua y los minerales",
+      "Únicamente del dióxido de carbono",
+      "De la luz solar directamente"
+    ],
+    "respuesta_correcta": "Directa o indirectamente de las plantas",
+    "explicacion": "Los animales dependen directa o indirectamente de las plantas para obtener su alimento.",
+    "cita_textual": "dependen directa o indirectamente de las plantas para obtener su alimento",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "80",
+    "imagen_referencia": "ciencias_set_03.jpeg"
+  },
+  "sep_23": {
+    "pregunta": "¿Qué liberan las plantas que es importante para los seres vivos?",
+    "opciones": [
+      "El oxígeno que respiramos",
+      "El dióxido de carbono que respiramos",
+      "Los minerales del suelo",
+      "Las sales del agua"
+    ],
+    "respuesta_correcta": "El oxígeno que respiramos",
+    "explicacion": "Las plantas, en su proceso de fotosíntesis, liberan el oxígeno que respiramos.",
+    "cita_textual": "en su proceso de fotosíntesis liberan el oxígeno que respiramos",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "80",
+    "imagen_referencia": "ciencias_set_03.jpeg"
+  },
+  "sep_24": {
+    "pregunta": "¿Cómo se llama la mezcla que sube por el tallo hasta las hojas?",
+    "opciones": [
+      "La savia bruta",
+      "La savia elaborada",
+      "La clorofila",
+      "La glucosa"
+    ],
+    "respuesta_correcta": "La savia bruta",
+    "explicacion": "El agua y las sales minerales suben por el tallo hasta las hojas mediante la savia bruta.",
+    "cita_textual": "suben por el tallo hasta las hojas mediante la savia bruta",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "80",
+    "imagen_referencia": "ciencias_set_03.jpeg"
+  },
+  "sep_25": {
+    "pregunta": "¿Qué absorben primero las plantas del suelo?",
+    "opciones": [
+      "Agua y sales minerales",
+      "Luz solar y oxígeno",
+      "Dióxido de carbono",
+      "Glucosa y almidón"
+    ],
+    "respuesta_correcta": "Agua y sales minerales",
+    "explicacion": "Las plantas absorben agua y sales minerales del suelo.",
+    "cita_textual": "Las plantas absorben agua y sales minerales del suelo",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "80",
+    "imagen_referencia": "ciencias_set_03.jpeg"
+  },
+  "sep_26": {
+    "pregunta": "¿Con qué se mezcla la savia bruta para formar el alimento de la planta?",
+    "opciones": [
+      "Con la luz solar y la clorofila",
+      "Con el agua y los minerales",
+      "Con el oxígeno y el tallo",
+      "Con las raíces y las flores"
+    ],
+    "respuesta_correcta": "Con la luz solar y la clorofila",
+    "explicacion": "La savia bruta se mezcla con la luz solar y, con la ayuda de la clorofila, se forma el alimento.",
+    "cita_textual": "la savia bruta se mezcla con la luz solar y con la ayuda del clorofila se forma el alimento",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "80",
+    "imagen_referencia": "ciencias_set_03.jpeg"
+  },
+  "sep_27": {
+    "pregunta": "¿Quiénes utilizan el dióxido de carbono en la fotosíntesis?",
+    "opciones": [
+      "Las plantas",
+      "Los animales",
+      "Los minerales",
+      "Las raíces"
+    ],
+    "respuesta_correcta": "Las plantas",
+    "explicacion": "El dióxido de carbono lo utilizan las plantas en el proceso de fotosíntesis.",
+    "cita_textual": "El CO2 lo utilizan las plantas en el proceso de fotosíntesis",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "80",
+    "imagen_referencia": "ciencias_set_03.jpeg"
+  },
+  "sep_28": {
+    "pregunta": "¿Debe haber equilibrio entre el oxígeno y el dióxido de carbono?",
+    "opciones": [
+      "Sí, para que los seres vivos sobrevivan",
+      "No, los seres vivos no lo necesitan",
+      "Solo para las plantas, no para los animales",
+      "Solo durante el invierno"
+    ],
+    "respuesta_correcta": "Sí, para que los seres vivos sobrevivan",
+    "explicacion": "Debe haber un equilibrio entre el oxígeno y el dióxido de carbono para que los seres vivos puedan sobrevivir.",
+    "cita_textual": "Debe de haber un equilibrio entre el oxígeno y dióxido de carbono, para que los seres vivos puedan sobrevivir",
+    "tema": "Fotosíntesis",
+    "ronda": "septiembre 2026",
+    "pagina": "80",
+    "imagen_referencia": "ciencias_set_03.jpeg"
+  },
+  "sep_29": {
+    "pregunta": "¿Qué es la energía renovable?",
+    "opciones": [
+      "La que se obtiene de fuentes naturales y no se agota",
+      "La que se puede acabar y no se puede sustituir",
+      "La que solo sale del petróleo",
+      "La que más contamina el ambiente"
+    ],
+    "respuesta_correcta": "La que se obtiene de fuentes naturales y no se agota",
+    "explicacion": "La energía renovable se obtiene de fuentes naturales, se regenera y no se agota.",
+    "cita_textual": "Cuando las fuentes se obtienen de fuentes naturales recibe el nombre de renovable",
+    "tema": "Clases de energía",
+    "ronda": "septiembre 2026",
+    "pagina": "82",
+    "imagen_referencia": "ciencias_set_04.jpeg"
+  },
+  "sep_30": {
+    "pregunta": "¿Cuál es un ejemplo de energía no renovable?",
+    "opciones": [
+      "El carbón",
+      "La eólica",
+      "La geotérmica",
+      "La hidroeléctrica"
+    ],
+    "respuesta_correcta": "El carbón",
+    "explicacion": "El carbón, el petróleo y el gas natural son ejemplos de energía no renovable.",
+    "cita_textual": "el carbón, el petróleo o gas natural son ejemplos",
+    "tema": "Clases de energía",
+    "ronda": "septiembre 2026",
+    "pagina": "82",
+    "imagen_referencia": "ciencias_set_04.jpeg"
+  },
+  "sep_31": {
+    "pregunta": "¿De dónde se obtiene la energía solar?",
+    "opciones": [
+      "Del Sol, una fuente natural de luz",
+      "Del agua de las centrales",
+      "Del interior de la Tierra",
+      "Del viento en movimiento"
+    ],
+    "respuesta_correcta": "Del Sol, una fuente natural de luz",
+    "explicacion": "La energía solar se obtiene del Sol, que es una fuente natural de luz.",
+    "cita_textual": "Es la que se obtiene del Sol, que es una fuente natural de luz",
+    "tema": "Clases de energía",
+    "ronda": "septiembre 2026",
+    "pagina": "82",
+    "imagen_referencia": "ciencias_set_04.jpeg"
+  },
+  "sep_32": {
+    "pregunta": "¿Para qué se usa la energía solar?",
+    "opciones": [
+      "Para los paneles solares y secar la ropa",
+      "Para las centrales de agua",
+      "Para mover los barcos",
+      "Para calentar el interior de la Tierra"
+    ],
+    "respuesta_correcta": "Para los paneles solares y secar la ropa",
+    "explicacion": "La energía solar se usa en paneles solares, para secar la ropa, en los cultivos y en la fotosíntesis.",
+    "cita_textual": "En el uso de paneles solares. Para secar la ropa.",
+    "tema": "Clases de energía",
+    "ronda": "septiembre 2026",
+    "pagina": "82",
+    "imagen_referencia": "ciencias_set_04.jpeg"
+  },
+  "sep_33": {
+    "pregunta": "¿Cómo se obtiene la energía hidroeléctrica?",
+    "opciones": [
+      "Generando electricidad a través del agua",
+      "Generando electricidad a través del viento",
+      "Generando electricidad a través del Sol",
+      "Generando electricidad a través de imanes"
+    ],
+    "respuesta_correcta": "Generando electricidad a través del agua",
+    "explicacion": "La energía hidroeléctrica se obtiene al generar electricidad a través del agua en las centrales hidroeléctricas.",
+    "cita_textual": "Se obtiene al generar electricidad a través del agua en las centrales hidroeléctricas",
+    "tema": "Clases de energía",
+    "ronda": "septiembre 2026",
+    "pagina": "82",
+    "imagen_referencia": "ciencias_set_04.jpeg"
+  },
+  "sep_34": {
+    "pregunta": "¿Cómo se transmite la energía sonora?",
+    "opciones": [
+      "Por la vibración de las ondas sonoras",
+      "Por la fuerza del viento",
+      "Por la ruptura del núcleo del átomo",
+      "Por el movimiento del agua"
+    ],
+    "respuesta_correcta": "Por la vibración de las ondas sonoras",
+    "explicacion": "La energía sonora se transmite por la vibración de las ondas sonoras.",
+    "cita_textual": "Corresponde a la energía que se transmite por la vibración de las ondas sonoras",
+    "tema": "Clases de energía",
+    "ronda": "septiembre 2026",
+    "pagina": "82",
+    "imagen_referencia": "ciencias_set_04.jpeg"
+  },
+  "sep_35": {
+    "pregunta": "¿En qué se manifiesta la energía magnética?",
+    "opciones": [
+      "En la fuerza de atracción o repulsión",
+      "En la vibración de las ondas sonoras",
+      "En el movimiento del viento",
+      "En la ruptura del núcleo del átomo"
+    ],
+    "respuesta_correcta": "En la fuerza de atracción o repulsión",
+    "explicacion": "La energía magnética se manifiesta cuando hay fuerza de atracción o repulsión sobre algunos materiales.",
+    "cita_textual": "Se manifiesta cuando hay fuerza de atracción o repulsión sobre algunos materiales",
+    "tema": "Clases de energía",
+    "ronda": "septiembre 2026",
+    "pagina": "82",
+    "imagen_referencia": "ciencias_set_04.jpeg"
+  },
+  "sep_36": {
+    "pregunta": "¿Dónde se utiliza la energía magnética?",
+    "opciones": [
+      "En los imanes de los artefactos eléctricos",
+      "En las centrales hidroeléctricas",
+      "En los paneles solares",
+      "En las plantas eólicas"
+    ],
+    "respuesta_correcta": "En los imanes de los artefactos eléctricos",
+    "explicacion": "La energía magnética se utiliza en todos los imanes que se encuentran en artefactos eléctricos.",
+    "cita_textual": "se utiliza en todos los imanes que se encuentran en artefactos eléctricos, entre otros",
+    "tema": "Clases de energía",
+    "ronda": "septiembre 2026",
+    "pagina": "82",
+    "imagen_referencia": "ciencias_set_04.jpeg"
+  },
+  "sep_37": {
+    "pregunta": "¿Cómo se produce la energía nuclear?",
+    "opciones": [
+      "Cuando los átomos se rompen en su núcleo",
+      "Cuando el agua cae en una central",
+      "Cuando sopla el viento",
+      "Cuando el Sol calienta la Tierra"
+    ],
+    "respuesta_correcta": "Cuando los átomos se rompen en su núcleo",
+    "explicacion": "La energía nuclear la producen los átomos cuando se rompe su núcleo.",
+    "cita_textual": "Es la que producen los átomos cuando se rompe su núcleo",
+    "tema": "Clases de energía",
+    "ronda": "septiembre 2026",
+    "pagina": "82",
+    "imagen_referencia": "ciencias_set_04.jpeg"
+  },
+  "sep_38": {
+    "pregunta": "¿Qué energía es limpia y se genera a partir del viento?",
+    "opciones": [
+      "La eólica",
+      "La nuclear",
+      "La sonora",
+      "La geotérmica"
+    ],
+    "respuesta_correcta": "La eólica",
+    "explicacion": "La energía eólica es limpia y se genera a partir del viento.",
+    "cita_textual": "Energía limpia que se genera a partir del viento",
+    "tema": "Clases de energía",
+    "ronda": "septiembre 2026",
+    "pagina": "82",
+    "imagen_referencia": "ciencias_set_04.jpeg"
+  },
+  "sep_39": {
+    "pregunta": "¿De dónde proviene la energía geotérmica?",
+    "opciones": [
+      "Del interior de la Tierra",
+      "De la luz del Sol",
+      "Del viento",
+      "Del agua de los ríos"
+    ],
+    "respuesta_correcta": "Del interior de la Tierra",
+    "explicacion": "La energía geotérmica se encuentra en el interior de la Tierra.",
+    "cita_textual": "Es la energía que se encuentra en el interior de la Tierra",
+    "tema": "Clases de energía",
+    "ronda": "septiembre 2026",
+    "pagina": "82",
+    "imagen_referencia": "ciencias_set_04.jpeg"
+  },
+  "sep_40": {
+    "pregunta": "¿Qué son los imanes?",
+    "opciones": [
+      "Cuerpos que atraen o repelen objetos por el campo magnético",
+      "Cuerpos que solo atraen objetos de madera",
+      "Cuerpos que producen luz solar",
+      "Cuerpos que generan agua"
+    ],
+    "respuesta_correcta": "Cuerpos que atraen o repelen objetos por el campo magnético",
+    "explicacion": "Los imanes son cuerpos que atraen o repelen objetos de materiales, gracias al campo magnético.",
+    "cita_textual": "Los imanes son los cuerpos que atraen o repelen objetos de materiales; esto gracias al campo magnético",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "92",
+    "imagen_referencia": "ciencias_set_05.jpeg"
+  },
+  "sep_41": {
+    "pregunta": "¿Qué son los polos de un imán?",
+    "opciones": [
+      "Zonas con las fuerzas de atracción",
+      "Líneas que separan las zonas",
+      "Zonas sin fuerza magnética",
+      "Líneas que unen los extremos"
+    ],
+    "respuesta_correcta": "Zonas con las fuerzas de atracción",
+    "explicacion": "Los polos son las zonas del imán que contienen las fuerzas de atracción.",
+    "cita_textual": "Polos: zonas que contienen las fuerzas de atracción",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "92",
+    "imagen_referencia": "ciencias_set_05.jpeg"
+  },
+  "sep_42": {
+    "pregunta": "¿Cuántos tipos de polos tiene un imán?",
+    "opciones": [
+      "Dos: el positivo y el negativo",
+      "Tres: positivo, neutro y negativo",
+      "Uno solo",
+      "Cuatro"
+    ],
+    "respuesta_correcta": "Dos: el positivo y el negativo",
+    "explicacion": "El imán tiene dos tipos de polos: el positivo y el negativo.",
+    "cita_textual": "Hay dos tipos: polo positivo y polo negativo",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "92",
+    "imagen_referencia": "ciencias_set_05.jpeg"
+  },
+  "sep_43": {
+    "pregunta": "¿Qué es el eje magnético?",
+    "opciones": [
+      "La zona donde se unen los polos del imán",
+      "La zona donde se separan los polos",
+      "La línea que atrae los objetos",
+      "El extremo del imán"
+    ],
+    "respuesta_correcta": "La zona donde se unen los polos del imán",
+    "explicacion": "El eje magnético es la zona donde se unen los polos del imán.",
+    "cita_textual": "Eje magnético: zona donde se unen los polos del imán",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "92",
+    "imagen_referencia": "ciencias_set_05.jpeg"
+  },
+  "sep_44": {
+    "pregunta": "¿Qué es la línea neutra de un imán?",
+    "opciones": [
+      "La línea que separa las zonas polarizadas",
+      "La línea que une los polos",
+      "La zona de mayor atracción",
+      "El centro del campo magnético"
+    ],
+    "respuesta_correcta": "La línea que separa las zonas polarizadas",
+    "explicacion": "La línea neutra es la línea que separa las zonas polarizadas del imán.",
+    "cita_textual": "Línea neutra: línea que separa las zonas polarizadas",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "92",
+    "imagen_referencia": "ciencias_set_05.jpeg"
+  },
+  "sep_45": {
+    "pregunta": "¿Qué es el magnetismo?",
+    "opciones": [
+      "La capacidad de atraer objetos con los imanes",
+      "La capacidad de producir luz",
+      "La capacidad de generar agua",
+      "La capacidad de mover el viento"
+    ],
+    "respuesta_correcta": "La capacidad de atraer objetos con los imanes",
+    "explicacion": "El magnetismo es la capacidad de atraer objetos por medio de los imanes, naturales o artificiales.",
+    "cita_textual": "El magnetismo es la capacidad de atraer objetos por medio de los imanes",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "93",
+    "imagen_referencia": "ciencias_set_06.jpeg"
+  },
+  "sep_46": {
+    "pregunta": "¿Qué es el campo magnético?",
+    "opciones": [
+      "El espacio alrededor del imán",
+      "El espacio alrededor de una planta",
+      "El espacio alrededor del Sol",
+      "El espacio alrededor de un río"
+    ],
+    "respuesta_correcta": "El espacio alrededor del imán",
+    "explicacion": "El campo magnético es el espacio alrededor del imán.",
+    "cita_textual": "El campo magnético es el espacio alrededor del imán",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "93",
+    "imagen_referencia": "ciencias_set_06.jpeg"
+  },
+  "sep_47": {
+    "pregunta": "¿Dónde es más fuerte la atracción de un imán?",
+    "opciones": [
+      "En sus dos polos",
+      "En su centro",
+      "En sus bordes superiores",
+      "En la línea neutra"
+    ],
+    "respuesta_correcta": "En sus dos polos",
+    "explicacion": "Los imanes tienen dos zonas donde la atracción es más fuerte: el polo norte y el polo sur.",
+    "cita_textual": "Los imanes tienen dos zonas en las que la atracción es más fuerte",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "93",
+    "imagen_referencia": "ciencias_set_06.jpeg"
+  },
+  "sep_48": {
+    "pregunta": "¿Cuáles son los polos de un imán?",
+    "opciones": [
+      "El polo norte y el polo sur",
+      "El polo este y el polo oeste",
+      "El polo frío y el polo caliente",
+      "El polo alto y el polo bajo"
+    ],
+    "respuesta_correcta": "El polo norte y el polo sur",
+    "explicacion": "Los polos del imán son el polo norte (N) y el polo sur (S), ubicados en los extremos.",
+    "cita_textual": "el polo norte (N) y el polo sur (S), ubicados en el extremo del imán",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "93",
+    "imagen_referencia": "ciencias_set_06.jpeg"
+  },
+  "sep_49": {
+    "pregunta": "¿Qué pasa cuando se acercan polos diferentes de dos imanes?",
+    "opciones": [
+      "Se atraen",
+      "Se repelen",
+      "Se derriten",
+      "No pasa nada"
+    ],
+    "respuesta_correcta": "Se atraen",
+    "explicacion": "Cuando se acercan polos diferentes (norte con sur), los imanes se atraen.",
+    "cita_textual": "Cuando se acercan polos diferentes (polo norte con el polo sur), los imanes se atraen",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "93",
+    "imagen_referencia": "ciencias_set_06.jpeg"
+  },
+  "sep_50": {
+    "pregunta": "¿Qué pasa cuando se acercan dos imanes por el mismo polo?",
+    "opciones": [
+      "Se repelen",
+      "Se atraen",
+      "Se unen",
+      "Se enfrían"
+    ],
+    "respuesta_correcta": "Se repelen",
+    "explicacion": "Si se acercan ambos imanes por su mismo polo, se repelen.",
+    "cita_textual": "Si se acercan ambos imanes por su mismo polo se repelen",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "93",
+    "imagen_referencia": "ciencias_set_06.jpeg"
+  },
+  "sep_51": {
+    "pregunta": "¿Qué tipos de imanes existen?",
+    "opciones": [
+      "Naturales y artificiales",
+      "Grandes y pequeños",
+      "Frágiles y resistentes",
+      "Claros y oscuros"
+    ],
+    "respuesta_correcta": "Naturales y artificiales",
+    "explicacion": "Existen dos tipos de imanes: los naturales y los artificiales.",
+    "cita_textual": "dos tipos de imanes los naturales y artificiales",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "93",
+    "imagen_referencia": "ciencias_set_06.jpeg"
+  },
+  "sep_52": {
+    "pregunta": "¿Para qué se usan los imanes en las brújulas?",
+    "opciones": [
+      "Para la orientación",
+      "Para la fabricación de juguetes",
+      "Para sostener objetos",
+      "Para producir sonido"
+    ],
+    "respuesta_correcta": "Para la orientación",
+    "explicacion": "Los imanes se usan en las brújulas para la orientación.",
+    "cita_textual": "En el uso de las brújulas, para la orientación",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "95",
+    "imagen_referencia": "ciencias_set_07.jpeg"
+  },
+  "sep_53": {
+    "pregunta": "¿Qué guarda la cinta magnética de las tarjetas?",
+    "opciones": [
+      "Información de crédito y débito",
+      "El agua de los ríos",
+      "La luz del Sol",
+      "Los minerales del suelo"
+    ],
+    "respuesta_correcta": "Información de crédito y débito",
+    "explicacion": "Los imanes están en las cintas magnéticas de las tarjetas de crédito y débito.",
+    "cita_textual": "En las cintas magnéticas de las tarjetas de crédito y débito",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "95",
+    "imagen_referencia": "ciencias_set_07.jpeg"
+  },
+  "sep_54": {
+    "pregunta": "¿Cuál es un uso de los imanes mencionado en el texto?",
+    "opciones": [
+      "Sostener y levantar objetos",
+      "Cocinar los alimentos",
+      "Regar bien las plantas",
+      "Lavar toda la ropa"
+    ],
+    "respuesta_correcta": "Sostener y levantar objetos",
+    "explicacion": "Los imanes se usan para sostener y levantar objetos.",
+    "cita_textual": "Para sostener y levantar objetos",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "95",
+    "imagen_referencia": "ciencias_set_07.jpeg"
+  },
+  "sep_55": {
+    "pregunta": "¿En qué se utilizan los imanes según el texto?",
+    "opciones": [
+      "En la fabricación de juguetes",
+      "En la producción de alimentos",
+      "En la construcción de carreteras",
+      "En el cultivo de maíz"
+    ],
+    "respuesta_correcta": "En la fabricación de juguetes",
+    "explicacion": "Los imanes se utilizan en la fabricación de juguetes.",
+    "cita_textual": "En la fabricación de juguetes",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "95",
+    "imagen_referencia": "ciencias_set_07.jpeg"
+  },
+  "sep_56": {
+    "pregunta": "¿Qué tipo de energía se genera con los imanes?",
+    "opciones": [
+      "Energía eléctrica",
+      "Energía solar",
+      "Energía sonora",
+      "Energía eólica"
+    ],
+    "respuesta_correcta": "Energía eléctrica",
+    "explicacion": "Los imanes se usan para la generación de energía eléctrica.",
+    "cita_textual": "Para generación de energía eléctrica",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "95",
+    "imagen_referencia": "ciencias_set_07.jpeg"
+  },
+  "sep_57": {
+    "pregunta": "¿Qué es un electroimán?",
+    "opciones": [
+      "Un cable enrollado en un objeto de hierro con corriente",
+      "Un imán natural encontrado en las rocas",
+      "Un objeto de madera con corriente",
+      "Un cable enrollado alrededor de una planta"
+    ],
+    "respuesta_correcta": "Un cable enrollado en un objeto de hierro con corriente",
+    "explicacion": "Un electroimán consiste en enrollar un cable alrededor de un objeto de hierro y hacer pasar corriente eléctrica.",
+    "cita_textual": "enrollar un cable alrededor de un objeto de hierro y se hace pasar corriente eléctrica por el cable",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "96",
+    "imagen_referencia": "ciencias_set_08.jpeg"
+  },
+  "sep_58": {
+    "pregunta": "¿Qué es un electroimán según el texto?",
+    "opciones": [
+      "Un ejemplo de imán artificial",
+      "Un ejemplo de imán natural",
+      "Un ejemplo de energía solar",
+      "Un ejemplo de energía eólica"
+    ],
+    "respuesta_correcta": "Un ejemplo de imán artificial",
+    "explicacion": "El electroimán es un ejemplo de un imán artificial.",
+    "cita_textual": "Este es un ejemplo de un imán artificial",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "96",
+    "imagen_referencia": "ciencias_set_08.jpeg"
+  },
+  "sep_59": {
+    "pregunta": "¿Cuál es una aplicación del electroimán?",
+    "opciones": [
+      "Los timbres eléctricos",
+      "Los paneles solares",
+      "Las centrales hidroeléctricas",
+      "Las plantas eólicas"
+    ],
+    "respuesta_correcta": "Los timbres eléctricos",
+    "explicacion": "Los electroimanes se usan en timbres eléctricos, teléfonos, radios y grúas.",
+    "cita_textual": "en los timbres eléctricos, teléfonos, radios, en máquinas como las grúas",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "96",
+    "imagen_referencia": "ciencias_set_08.jpeg"
+  },
+  "sep_60": {
+    "pregunta": "¿Por qué la Tierra se parece a un gran imán?",
+    "opciones": [
+      "Porque su núcleo interno de hierro fundido gira",
+      "Porque está cubierta de mucha agua",
+      "Porque recibe la luz del Sol",
+      "Porque tiene muchísimas plantas"
+    ],
+    "respuesta_correcta": "Porque su núcleo interno de hierro fundido gira",
+    "explicacion": "La Tierra posee un núcleo interno de hierro fundido que, al girar, genera un campo magnético.",
+    "cita_textual": "posee un núcleo interno, donde se encuentran materiales de hierro fundido",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "96",
+    "imagen_referencia": "ciencias_set_08.jpeg"
+  },
+  "sep_61": {
+    "pregunta": "¿Qué genera el movimiento del hierro del núcleo terrestre?",
+    "opciones": [
+      "Un campo magnético",
+      "Un campo de agua",
+      "Un campo solar",
+      "Un campo de viento"
+    ],
+    "respuesta_correcta": "Un campo magnético",
+    "explicacion": "El movimiento del hierro del núcleo genera un campo magnético terrestre.",
+    "cita_textual": "generando un campo magnético",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "96",
+    "imagen_referencia": "ciencias_set_08.jpeg"
+  },
+  "sep_62": {
+    "pregunta": "¿Coinciden los polos magnéticos con los polos geográficos?",
+    "opciones": [
+      "No, los ejes son diferentes",
+      "Sí, son exactamente iguales",
+      "Solo coinciden en el polo norte",
+      "Solo coinciden en el polo sur"
+    ],
+    "respuesta_correcta": "No, los ejes son diferentes",
+    "explicacion": "Los polos magnéticos no coinciden con los geográficos, porque los ejes son diferentes.",
+    "cita_textual": "los ejes geográficos y magnéticos son diferentes",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "96",
+    "imagen_referencia": "ciencias_set_08.jpeg"
+  },
+  "sep_63": {
+    "pregunta": "¿Para qué se usa la energía magnética en la fabricación de juguetes?",
+    "opciones": [
+      "Para dar variedad al juego, colores y sonidos",
+      "Para que los juguetes duren más",
+      "Para que los juguetes sean más caros",
+      "Para que se rompan fácilmente"
+    ],
+    "respuesta_correcta": "Para dar variedad al juego, colores y sonidos",
+    "explicacion": "En los juguetes, la energía magnética permite variedad en el juego y los hace llamativos por sus colores y sonidos.",
+    "cita_textual": "Para que los niños tengan variedad en el juego, y resulten llamativos por sus colores y sonidos",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "98",
+    "imagen_referencia": "ciencias_set_09.jpeg"
+  },
+  "sep_64": {
+    "pregunta": "¿En qué se usa la energía magnética para las máquinas?",
+    "opciones": [
+      "En la construcción de casas e iluminación",
+      "En la siembra de los cultivos",
+      "En la pesca de los ríos",
+      "En la cocina de los alimentos"
+    ],
+    "respuesta_correcta": "En la construcción de casas e iluminación",
+    "explicacion": "La energía magnética se usa en las máquinas para la construcción de casas e iluminación.",
+    "cita_textual": "En la construcción de casas e iluminación",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "98",
+    "imagen_referencia": "ciencias_set_09.jpeg"
+  },
+  "sep_65": {
+    "pregunta": "¿Qué simplifica el uso de las máquinas en el hogar?",
+    "opciones": [
+      "Los trabajos del hogar",
+      "Los trabajos del campo",
+      "Los trabajos de la escuela",
+      "Los trabajos de oficina"
+    ],
+    "respuesta_correcta": "Los trabajos del hogar",
+    "explicacion": "El uso de máquinas simplifica los trabajos del hogar.",
+    "cita_textual": "Simplifica los trabajos del hogar",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "98",
+    "imagen_referencia": "ciencias_set_09.jpeg"
+  },
+  "sep_66": {
+    "pregunta": "¿Qué materiales se necesitan para el circuito simple con un imán?",
+    "opciones": [
+      "Cable eléctrico, batería, bombillo e imán de barra",
+      "Agua, tierra, sol y viento",
+      "Madera, clavos, martillo y pintura",
+      "Papel, tijeras, goma y lápiz"
+    ],
+    "respuesta_correcta": "Cable eléctrico, batería, bombillo e imán de barra",
+    "explicacion": "El circuito simple usa cable eléctrico, batería AA, bombillo pequeño e imán de barra.",
+    "cita_textual": "cable eléctrico, batería AA, bombillo pequeño, imán de barra",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "98",
+    "imagen_referencia": "ciencias_set_09.jpeg"
+  },
+  "sep_67": {
+    "pregunta": "¿En qué artefactos se usa la energía eléctrica para generar electricidad?",
+    "opciones": [
+      "En el hogar, restaurantes y hoteles",
+      "En los cultivos de las montañas",
+      "En las montañas muy nevadas",
+      "En los ríos y los grandes lagos"
+    ],
+    "respuesta_correcta": "En el hogar, restaurantes y hoteles",
+    "explicacion": "La energía eléctrica se usa en los artefactos del hogar, restaurantes y hoteles.",
+    "cita_textual": "En el uso de artefactos eléctricos utilizados en el hogar, restaurantes, hoteles",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "99",
+    "imagen_referencia": "ciencias_set_10.jpeg"
+  },
+  "sep_68": {
+    "pregunta": "¿Qué evita sostener y levantar objetos con ayuda de imanes?",
+    "opciones": [
+      "Daños en las personas, como las hernias",
+      "El crecimiento de las plantas",
+      "La contaminación del aire",
+      "El desgaste de los ríos"
+    ],
+    "respuesta_correcta": "Daños en las personas, como las hernias",
+    "explicacion": "Sostener y levantar objetos con imanes evita daños en las personas, como hernias o desgaste.",
+    "cita_textual": "Evita ocasionar daños en las personas, por ejemplo en la columna, desgaste, hernias",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "99",
+    "imagen_referencia": "ciencias_set_10.jpeg"
+  },
+  "sep_69": {
+    "pregunta": "¿Qué sistemas dependen de señales electromagnéticas?",
+    "opciones": [
+      "Los teléfonos móviles, radios y televisiones",
+      "Las plantas, flores y árboles",
+      "Los ríos, lagos y mares",
+      "Las montañas, valles y volcanes"
+    ],
+    "respuesta_correcta": "Los teléfonos móviles, radios y televisiones",
+    "explicacion": "Los sistemas de comunicación, como teléfonos, radios y televisiones, dependen de señales electromagnéticas.",
+    "cita_textual": "Sistemas de comunicación como teléfonos móviles, radios y televisiones: Dependen de señales electromagnéticas",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "99",
+    "imagen_referencia": "ciencias_set_10.jpeg"
+  },
+  "sep_70": {
+    "pregunta": "¿Qué convierten los vehículos eléctricos para generar movimiento?",
+    "opciones": [
+      "La energía eléctrica en energía magnética",
+      "La energía solar en energía eólica",
+      "El agua en electricidad",
+      "El viento en calor"
+    ],
+    "respuesta_correcta": "La energía eléctrica en energía magnética",
+    "explicacion": "Los vehículos eléctricos convierten la energía eléctrica en energía magnética para generar movimiento.",
+    "cita_textual": "convierten la energía eléctrica en energía magnética para generar movimiento",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "99",
+    "imagen_referencia": "ciencias_set_10.jpeg"
+  },
+  "sep_71": {
+    "pregunta": "¿Cuál es un ejemplo de vehículo eléctrico?",
+    "opciones": [
+      "Automóvil, bicicleta y scooter",
+      "Tren, barco y avión de vapor",
+      "Barco, canoa y velero",
+      "Avión, globo y helicóptero"
+    ],
+    "respuesta_correcta": "Automóvil, bicicleta y scooter",
+    "explicacion": "Los automóviles, bicicletas y scooters son ejemplos de vehículos eléctricos.",
+    "cita_textual": "automóviles, bicicletas y scooters",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "99",
+    "imagen_referencia": "ciencias_set_10.jpeg"
+  },
+  "sep_72": {
+    "pregunta": "¿En qué se usan las cintas magnéticas de las tarjetas?",
+    "opciones": [
+      "En el consumo diario",
+      "En la siembra de maíz",
+      "En la pesca del día",
+      "En el cultivo de café"
+    ],
+    "respuesta_correcta": "En el consumo diario",
+    "explicacion": "Las cintas magnéticas de las tarjetas de crédito y débito se usan para el consumo diario.",
+    "cita_textual": "En las cintas magnéticas de las tarjetas de crédito y débito: Para el consumo diario",
+    "tema": "Energía magnética",
+    "ronda": "septiembre 2026",
+    "pagina": "99",
+    "imagen_referencia": "ciencias_set_10.jpeg"
+  },
+  "sep_73": {
+    "pregunta": "¿Qué es la carga eléctrica?",
+    "opciones": [
+      "Una propiedad de las partículas subatómicas",
+      "Una propiedad del agua y el viento",
+      "Una propiedad de la luz solar",
+      "Una propiedad de las plantas"
+    ],
+    "respuesta_correcta": "Una propiedad de las partículas subatómicas",
+    "explicacion": "La carga eléctrica es una propiedad fundamental de las partículas subatómicas, como electrones y protones.",
+    "cita_textual": "La carga eléctrica es una propiedad fundamental de las partículas subatómicas",
+    "tema": "Corriente eléctrica",
+    "ronda": "septiembre 2026",
+    "pagina": "101",
+    "imagen_referencia": "ciencias_set_11.jpeg"
+  },
+  "sep_74": {
+    "pregunta": "¿Qué partículas tienen carga eléctrica?",
+    "opciones": [
+      "Los electrones y los protones",
+      "El agua y el aire",
+      "El Sol y la Luna",
+      "Las raíces y las hojas"
+    ],
+    "respuesta_correcta": "Los electrones y los protones",
+    "explicacion": "Los electrones y los protones son partículas subatómicas con carga eléctrica.",
+    "cita_textual": "como los electrones y los protones",
+    "tema": "Corriente eléctrica",
+    "ronda": "septiembre 2026",
+    "pagina": "101",
+    "imagen_referencia": "ciencias_set_11.jpeg"
+  },
+  "sep_75": {
+    "pregunta": "¿Qué tipos de carga eléctrica existen?",
+    "opciones": [
+      "Positiva y negativa",
+      "Grande y pequeña",
+      "Clara y oscura",
+      "Caliente y fría"
+    ],
+    "respuesta_correcta": "Positiva y negativa",
+    "explicacion": "La carga eléctrica puede ser positiva o negativa.",
+    "cita_textual": "La carga eléctrica puede ser positiva o negativa",
+    "tema": "Corriente eléctrica",
+    "ronda": "septiembre 2026",
+    "pagina": "101",
+    "imagen_referencia": "ciencias_set_11.jpeg"
+  },
+  "sep_76": {
+    "pregunta": "¿Qué pasa entre las partículas con carga opuesta?",
+    "opciones": [
+      "Se atraen entre sí",
+      "Se repelen entre sí",
+      "Se evaporan",
+      "No se afectan"
+    ],
+    "respuesta_correcta": "Se atraen entre sí",
+    "explicacion": "Las partículas con carga opuesta se atraen entre sí.",
+    "cita_textual": "las partículas con carga opuesta se atraen entre sí",
+    "tema": "Corriente eléctrica",
+    "ronda": "septiembre 2026",
+    "pagina": "101",
+    "imagen_referencia": "ciencias_set_11.jpeg"
+  },
+  "sep_77": {
+    "pregunta": "¿Qué carga tiene el electrón?",
+    "opciones": [
+      "Carga negativa",
+      "Carga positiva",
+      "Carga neutra",
+      "No tiene carga"
+    ],
+    "respuesta_correcta": "Carga negativa",
+    "explicacion": "El electrón tiene una carga eléctrica negativa.",
+    "cita_textual": "El electrón tiene una carga eléctrica negativa",
+    "tema": "Corriente eléctrica",
+    "ronda": "septiembre 2026",
+    "pagina": "101",
+    "imagen_referencia": "ciencias_set_11.jpeg"
+  },
+  "sep_78": {
+    "pregunta": "¿Qué carga tiene el protón?",
+    "opciones": [
+      "Carga positiva",
+      "Carga negativa",
+      "Carga neutra",
+      "No tiene carga"
+    ],
+    "respuesta_correcta": "Carga positiva",
+    "explicacion": "El protón tiene una carga eléctrica positiva.",
+    "cita_textual": "el protón tiene una carga eléctrica positiva",
+    "tema": "Corriente eléctrica",
+    "ronda": "septiembre 2026",
+    "pagina": "101",
+    "imagen_referencia": "ciencias_set_11.jpeg"
+  },
+  "sep_79": {
+    "pregunta": "¿Qué mantiene unido al átomo en su conjunto?",
+    "opciones": [
+      "La interacción de electrones y protones",
+      "La fuerza del viento que sopla",
+      "La luz que viene del Sol",
+      "La gravedad que tiene la Luna"
+    ],
+    "respuesta_correcta": "La interacción de electrones y protones",
+    "explicacion": "La interacción electrostática entre electrones y protones mantiene unido al átomo.",
+    "cita_textual": "lo que mantiene unido el átomo en su conjunto",
+    "tema": "Corriente eléctrica",
+    "ronda": "septiembre 2026",
+    "pagina": "101",
+    "imagen_referencia": "ciencias_set_11.jpeg"
+  },
+  "sep_80": {
+    "pregunta": "¿Qué sucede con las partículas de cargas iguales?",
+    "opciones": [
+      "Se repelen",
+      "Se atraen",
+      "Se mezclan",
+      "Se duplican"
+    ],
+    "respuesta_correcta": "Se repelen",
+    "explicacion": "Las partículas con cargas iguales se repelen.",
+    "cita_textual": "las partículas con cargas iguales se repelen",
+    "tema": "Corriente eléctrica",
+    "ronda": "septiembre 2026",
+    "pagina": "101",
+    "imagen_referencia": "ciencias_set_11.jpeg"
+  },
+  "sep_81": {
+    "pregunta": "¿Qué es la carga por contacto?",
+    "opciones": [
+      "Se ponen en contacto un cuerpo cargado y otro neutro",
+      "Se frotan dos cuerpos de diferente materia",
+      "Se calientan dos cuerpos",
+      "Se enfrían dos cuerpos"
+    ],
+    "respuesta_correcta": "Se ponen en contacto un cuerpo cargado y otro neutro",
+    "explicacion": "La carga por contacto se presenta cuando se ponen en contacto un cuerpo cargado y otro neutro.",
+    "cita_textual": "Se presenta cuando se ponen en contacto dos cuerpos, uno está completamente cargado y el otro no tiene carga (neutro)",
+    "tema": "Corriente eléctrica",
+    "ronda": "septiembre 2026",
+    "pagina": "102",
+    "imagen_referencia": "ciencias_set_12.jpeg"
+  },
+  "sep_82": {
+    "pregunta": "¿Qué es la carga por frotación?",
+    "opciones": [
+      "Se frotan dos cuerpos de diferente materia",
+      "Se tocan dos cuerpos sin frotarse",
+      "Se mojan dos cuerpos",
+      "Se separan dos cuerpos"
+    ],
+    "respuesta_correcta": "Se frotan dos cuerpos de diferente materia",
+    "explicacion": "La carga por frotación se da cuando se frotan dos cuerpos de diferente materia.",
+    "cita_textual": "Se da cuando se frotan dos cuerpos del diferente materia",
+    "tema": "Corriente eléctrica",
+    "ronda": "septiembre 2026",
+    "pagina": "102",
+    "imagen_referencia": "ciencias_set_12.jpeg"
+  },
+  "sep_83": {
+    "pregunta": "¿Qué es la carga por inducción?",
+    "opciones": [
+      "Una carga eléctrica sin contacto directo",
+      "Una carga por contacto directo",
+      "Una carga por frotación",
+      "Una carga por calentamiento"
+    ],
+    "respuesta_correcta": "Una carga eléctrica sin contacto directo",
+    "explicacion": "La inducción es un proceso de carga eléctrica sin contacto directo.",
+    "cita_textual": "Es un proceso de carga eléctrica sin contacto directo",
+    "tema": "Corriente eléctrica",
+    "ronda": "septiembre 2026",
+    "pagina": "102",
+    "imagen_referencia": "ciencias_set_12.jpeg"
+  },
+  "sep_84": {
+    "pregunta": "¿Qué puede hacer un cuerpo cargado por inducción?",
+    "opciones": [
+      "Atraer a otro cuerpo que está neutro",
+      "Atraer solo a cuerpos cargados",
+      "Repeler a todos los cuerpos",
+      "No afectar a ningún cuerpo"
+    ],
+    "respuesta_correcta": "Atraer a otro cuerpo que está neutro",
+    "explicacion": "Un cuerpo cargado eléctricamente puede atraer a otro que está neutro.",
+    "cita_textual": "Un cuerpo cargado eléctricamente puede atraer a otro que está neutro",
+    "tema": "Corriente eléctrica",
+    "ronda": "septiembre 2026",
+    "pagina": "102",
+    "imagen_referencia": "ciencias_set_12.jpeg"
+  },
+  "sep_85": {
+    "pregunta": "Según el diagrama, ¿qué pasa entre dos cargas positivas?",
+    "opciones": [
+      "Se repelen",
+      "Se atraen",
+      "Se neutralizan",
+      "Se duplican"
+    ],
+    "respuesta_correcta": "Se repelen",
+    "explicacion": "Las cargas iguales (positiva con positiva) se repelen.",
+    "cita_textual": "Se repelen + ←→ +",
+    "tema": "Corriente eléctrica",
+    "ronda": "septiembre 2026",
+    "pagina": "102",
+    "imagen_referencia": "ciencias_set_12.jpeg"
+  },
+  "sep_86": {
+    "pregunta": "¿Qué cargas se atraen según el diagrama?",
+    "opciones": [
+      "Una positiva y una negativa",
+      "Dos cargas positivas",
+      "Dos cargas negativas",
+      "Dos cargas neutras"
+    ],
+    "respuesta_correcta": "Una positiva y una negativa",
+    "explicacion": "Las cargas opuestas (positiva con negativa) se atraen.",
+    "cita_textual": "Se atraen + ←→ -",
+    "tema": "Corriente eléctrica",
+    "ronda": "septiembre 2026",
+    "pagina": "102",
+    "imagen_referencia": "ciencias_set_12.jpeg"
+  },
+  "sep_87": {
+    "pregunta": "¿Cuántos tipos de carga eléctrica se describen?",
+    "opciones": [
+      "Tres: contacto, frotación e inducción",
+      "Dos: contacto y frotación",
+      "Cuatro: contacto, frotación, inducción y calor",
+      "Uno solo: contacto"
+    ],
+    "respuesta_correcta": "Tres: contacto, frotación e inducción",
+    "explicacion": "Los tres tipos de carga eléctrica son contacto, frotación e inducción.",
+    "cita_textual": "TIPOS DE CARGAS ELÉCTRICAS: Contacto, Frotación, Inducción",
+    "tema": "Corriente eléctrica",
+    "ronda": "septiembre 2026",
+    "pagina": "102",
+    "imagen_referencia": "ciencias_set_12.jpeg"
+  }
+}
