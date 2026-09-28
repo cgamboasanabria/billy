@@ -15,12 +15,21 @@
 ## Reglas de Oro
 1. No borrar comentarios ni documentacion existente
 2. TDD obligatorio para toda nueva feature
-3. Arquitectura modular — UI separada de logica de negocio
+3. Arquitectura modular — UI separada de logica de negocio. La logica vive en
+   `Script/functions/` sin imports del framework UI; la capa UI solo orquesta.
+   Debe poder envolverse con FastAPI (u otra API) sin reescribir logica
+   (swap-readiness). Ver skill `framework-selector`, seccion Evolucion MVP -> Producto.
 4. Validacion con Exit Code 0 como criterio de completitud
 5. Sin caracteres especiales ni emojis en codigo o docs
 6. Rutas con barras diagonales (/)
 7. Type hints en todas las funciones Python
-8. Compatibilidad hacia adelante — nunca romper APIs publicas
+8. **Usuario como maxima autoridad**: cuando el plan especifica un punto
+   de validacion del usuario ([USER-VAL]), una dependencia externa ([EXT-DEP]),
+   o un gate de contenido ([CONTENT-GATE]), el agente se detiene y espera.
+   La iniciativa del agente no sobrepasa la autoridad del usuario. Si el
+   agente detecta un posible problema no mencionado, debe LISTARLO y
+   solicitar autorizacion antes de modificarlo.
+9. Compatibilidad hacia adelante — nunca romper APIs publicas
 
 ## Comandos del Proyecto
 
@@ -88,46 +97,8 @@ Fase 4 - Umbral de Cobertura: `pytest --cov-fail-under=80`.
 Fase 5 - Linter: `ruff check .` — cero violaciones.
 Fase 6 - Formatter: `black --check .` — cero diferencias. Si hay, `black .`.
 Fase 7 - Actualizacion de Estado: Actualizar progress.md (marcar Done con Exit Code 0) y memory.md.
-Fase 8 - Memoria bstrd: ejecutar `bstrd memory save` por cada T-NN completada (decision, bug, patron, preference, note, result). La fuente de verdad de la sesion es bstrd; `memory.md` es el snapshot legible para commit.
 
 Si algun paso falla, la tarea NO esta completada.
-
-## Memoria bstrd
-
-Este proyecto esta registrado en bstrd como `billy`. Comandos clave:
-
-```bash
-# Cargar contexto al iniciar sesion
-bstrd session start
-bstrd memory search "<keyword>"
-
-# Guardar observacion al cerrar una tarea
-bstrd memory save --project billy --type decision --content "..."
-
-# Migrar memory.md -> SQLite cuando se actualice el archivo a mano
-bstrd memory migrate
-```
-
-Tipos validos: `decision`, `bug`, `pattern`, `preference`, `note`, `result`.
-Regla: por cada T-NN marcada Done, al menos un `bstrd memory save` correspondiente.
-
-## Profe mode (password gate)
-
-El modo Profe esta oculto detras de una contrasena que se guarda en el
-keychain del sistema operativo (servicio `billy`, usuario `profe_password`).
-La primera vez que el padre escribe una contrasena en el sidebar de la app
-Streamlit, queda persistida. En lanzamientos posteriores la misma contrasena
-es requerida para ver el panel Profe (verificacion, regeneracion, curation).
-Billy nunca ve este panel.
-
-- Servicio keychain: `billy`
-- Usuario: `profe_password`
-- Sin contrasena persistida: cualquier no-vacia se acepta y se guarda
-- Reset: `keyring delete billy profe_password` (PowerShell/cmd)
-
-Importante: la API key del LLM (`billy` / `llm_key`) y la contrasena del
-Profe (`billy` / `profe_password`) son dos entradas separadas en el mismo
-servicio del keychain.
 
 ## Seguridad de Paquetes (Node/JS projects)
 
